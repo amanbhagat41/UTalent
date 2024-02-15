@@ -1,10 +1,9 @@
-'use client'
 import React from 'react'
-import Todo from '@/components/test'
+import { NavigationMenuDemo } from '@/components/nav'
 export default function page() {
   return (
     <>
-    <Todo></Todo>
+    <NavigationMenuDemo></NavigationMenuDemo>
     </>
   )
 }
