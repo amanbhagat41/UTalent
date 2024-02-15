@@ -72,6 +72,14 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+      colors: {
+        'error':{
+          100:'#1F3555',
+          200:'#FFFBFE',
+          300: '#89023E',
+          black: '#000000',
+        }
+      },
   },
   plugins: [require("tailwindcss-animate")],
 }
