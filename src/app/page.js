@@ -36,11 +36,11 @@ export default function Page() {
           </Link>
         </div>
       </div>
-      <div className="pt-14 flex items-center justify-center">
+      <div className="pt-14 flex items-center justify-center mb-10">
         <CarouselDemo></CarouselDemo>
       </div>
       <div>
-        <footer className="bg-error-100 h-20 w-full absolute left-0 bottom-0">
+        <footer className="bg-error-100 h-10 w-full absolute left-0 bottom-0 mt-10">
         <div className="flex items-center justify-between h-full">
           <h4 className="text-2xl text-error-200 ml-8">UTalent</h4>
           {/* <h4 className="flex justify-end flex-grow"></h4> */}
