@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <>
     <div className="flex flex-col h-[1662px]z">
-      <nav className="bg-error-100 h-20 sticky top-0">
+      <nav className="bg-error-100 h-20 sticky top-0 z-40">
         <div className="flex items-center justify-between h-full">
           <div>
             <Image src={logo} width="150" height="150" alt="logo"></Image>
@@ -40,7 +40,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="pt-14 flex items-center justify-center mb-10">
+      <div className="pt-14 flex items-center justify-center mb-10 z-0">
         <CarouselDemo></CarouselDemo>
       </div>
 
