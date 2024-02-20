@@ -9,13 +9,13 @@ import { NavigationMenuDemoFooter } from "@/components/navfooter";
 export default function Page() {
   return (
     <>
-    <div className="flex flex-col h-[1662px]z">
-      <nav className="bg-error-100 h-20 sticky top-0 z-40">
+    <div className="flex flex-col h-[1662px]z dark:bg-error-black">
+      <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
         <div className="flex items-center justify-between h-full">
           <div>
             <Image src={logo} width="150" height="150" alt="logo"></Image>
           </div>
-          <div className="flex justify-end flex-grow">
+          <div className="flex justify-end flex-grow ">
             <NavigationMenuDemo />
           </div>
           <div className="w-10 h-10"></div>
@@ -34,7 +34,7 @@ export default function Page() {
         </div>
 
         <div className="flex justify-center pt-5">
-          <Link href="/signup" legacyBehavior passHref>
+          <Link href="/student-employersignup" legacyBehavior passHref>
           <Button className='bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12'>Get Started</Button>
           </Link>
         </div>
@@ -45,7 +45,7 @@ export default function Page() {
       </div>
 
       <div>
-        <footer className="bg-error-100 h-20 w-full stickey left-0 bottom-0 mt-24">
+        <footer className="bg-error-100 h-20 w-full stickey left-0 bottom-0 mt-24 dark:bg-error-black">
         <div className="flex items-center justify-between h-full">
           <h4 className="text-2xl text-error-200 ml-8">UTalent</h4>
           {/* <h4 className="flex justify-end flex-grow"></h4> */}

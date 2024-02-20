@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-
+import { ModeToggle } from "./toggle";
 import { cn } from "@/lib/utils";
 
 import {
@@ -58,6 +58,11 @@ function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
+          <NavigationMenuTrigger>
+            <ModeToggle></ModeToggle>
+          </NavigationMenuTrigger>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
           <NavigationMenuTrigger>About</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[200px] lg:w-[300px] lg:grid-cols-[.75fr_1fr]">
@@ -98,7 +103,7 @@ function NavigationMenuDemo() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/signup" legacyBehavior passHref>
+          <Link href="/student-employersignup" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Create Account
             </NavigationMenuLink>
