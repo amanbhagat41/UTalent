@@ -58,9 +58,7 @@ function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>
             <ModeToggle></ModeToggle>
-          </NavigationMenuTrigger>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>About</NavigationMenuTrigger>
