@@ -1,9 +1,12 @@
 import React from "react";
+
 import { NavigationMenuEmployerLoggedIn } from "@/components/navloggedinEmployer";
 import Image from "next/image";
 import { Input } from "@/components/ui/input"
 import logo from "../../../public/images/logo-no-bg.png";
+
 import { CarouselDemo } from "@/components/carousel";
+import { JobPostingCarousel } from "@/components/jobPostingCarousel";
 import { Label } from "@/components/ui/label";
 import { NavigationMenuDemoFooter } from "@/components/navfooter";
 import { Button } from "@/components/ui/button"
@@ -15,7 +18,7 @@ export default function Page() {
         <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
           <div className="flex items-center justify-between h-full">
             <div>
-              <Image src={logo} width="150" height="150" alt="logo"></Image>
+              <Image src={logo} width="150" height="150" alt="logo" ></Image>
             </div>
             <div className="flex justify-end flex-grow">
               <NavigationMenuEmployerLoggedIn />
@@ -25,8 +28,8 @@ export default function Page() {
         </nav>
 
 
-        <div className = "flex mb-10 items-center justify-center">
-        <SearchWithQuickFilters/>
+        <div className = "flex mb-10 items-center justify-center ">
+          <SearchWithQuickFilters/>
         </div>
         
         {/* Main content wrapper adjusted for centering */}
@@ -38,7 +41,25 @@ export default function Page() {
             <CarouselDemo id="topJobs"></CarouselDemo>
           </div>
         </div>
-
+        <div className=""> 
+          <div className="flex items-center justify-center w-full h-full bg-error-100 dark:bg-error-black">
+            <div className="mt-12">
+              <Label htmlFor="jobsforyou" className="flex text-[48px] text-error-white font-bold">Jobs For You:</Label>
+              <div id="jobsforyou" className="w-[2250px]">
+                <JobPostingCarousel/>
+              </div>
+              <Label htmlFor="jobsforyou" className="flex mt-10 text-[48px] text-error-white font-bold">Fresh Jobs:</Label>
+              <div id="jobsforyou" className="w-[2250px]">
+                <JobPostingCarousel/>
+              </div>
+              <Label htmlFor="jobsforyou" className="flex mt-10 text-[48px] text-error-white font-bold">Popular Jobs:</Label>
+              <div id="jobsforyou" className="w-[2250px]">
+                <JobPostingCarousel/>
+              </div>
+            </div>
+          </div>
+        </div>
+          
         {/* Footer */}
         <footer className="h-20 w-full sticky bottom-0 dark:bg-error-black bg-error-reallyDarkBlue">
           <div className="flex items-center justify-between h-full">

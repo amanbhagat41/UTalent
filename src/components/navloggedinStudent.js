@@ -53,7 +53,7 @@ const components = [
   },
 ];
 
-function NavigationMenuEmployerLoggedIn() {
+function NavigationMenuStudentLoggedIn() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -61,21 +61,21 @@ function NavigationMenuEmployerLoggedIn() {
             <ModeToggle></ModeToggle>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/jobPostingEmployer" legacyBehavior passHref>
+          <Link href="" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              VIEW JOBS
+              BIDS
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/createJobPosting" legacyBehavior passHref>
+          <Link href="" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              POST JOB
+              ABOUT
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/jobViewingEmployer" legacyBehavior passHref>
+          <Link href="" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               PROFILE
             </NavigationMenuLink>
@@ -110,4 +110,4 @@ const ListItem = React.forwardRef(
   }
 );
 ListItem.displayName = "ListItem";
-export { NavigationMenuEmployerLoggedIn };
+export { NavigationMenuStudentLoggedIn };

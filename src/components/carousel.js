@@ -16,7 +16,7 @@ function CarouselDemo() {
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index}>
             <div className="p-1">
-              <Card className="rounded-lg overflow-hidden bg-error-black h-96">
+              <Card className="rounded-lg overflow-hidden bg-error-black h-96 dark:border-error-white dark:shadow-glow">
                 <CardContent className="flex items-center justify-center p-6 bg-gray-200 h-full">
                   <span className="text-4xl font-semibold text-error-200 ">{'Job Posting '+(index + 1)}</span>
                 </CardContent>

@@ -16,13 +16,13 @@ const SearchWithQuickFilters = () => {
     };
 
     return (
-        <div className="space-y-4 w-[1000px]">
-            <div className="flex flex-wrap gap-2 mt-[180px] justify-center ">
+        <div className="space-y-5 w-[50%]">
+            <div className="flex flex-wrap gap-2 mt-[60px] justify-center ">
                 {filters.map((filter) => (
                     <button
                         key={filter}
                         onClick={() => selectFilter(filter)}
-                        className="border-2 bg-error-white border-error-black rounded-[40px] m-1 px-6 py-2 hover:bg-error-darkBlue hover:text-error-white"
+                        className="border-2 dark:bg-error-black bg-error-white dark:border-error-white border-error-black rounded-[40px] m-1 px-6 py-2 hover:bg-error-darkBlue hover:text-error-white dark:hover:bg-error-darkPink"
                     >
                         {filter}
                     </button>
@@ -35,11 +35,11 @@ const SearchWithQuickFilters = () => {
                   value={searchTerm} 
                   onChange={(e) => setSearchTerm(e.target.value)} 
                   placeholder="Search"
-                  className="w-full h-[60px] px-4 py-2 border border-error-darkBlue rounded-[40px] pl-[48px] pr-[48px]"
+                  className="w-full h-[60px] px-4 py-2 border dark:border-error-white dark:bg-error-black border-error-darkBlue rounded-[40px] pl-[48px] pr-[48px]"
                 />
                 <button 
                   type="submit" 
-                  className="absolute inset-y-[10px] right-[20px] bg-error-100 rounded-[40px] w-[40px] h-[40px] flex items-center justify-center"
+                  className="absolute inset-y-[10px] right-[20px] dark:bg-error-darkPink bg-error-100 rounded-[40px] w-[40px] h-[40px] flex items-center justify-center"
                 >
                   <img src= "images/search-icon.png" alt="Search" style={{ width: '20px', height: '20px'}} />
                 </button>
