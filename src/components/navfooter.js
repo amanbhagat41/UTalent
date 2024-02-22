@@ -58,14 +58,14 @@ function NavigationMenuDemoFooter() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/login" legacyBehavior passHref>
+          <Link href="/contact" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Contact
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/signup" legacyBehavior passHref>
+          <Link href="https://www.linkedin.com/in/michael-chagnon-24514a254/" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Linkdin
             </NavigationMenuLink>

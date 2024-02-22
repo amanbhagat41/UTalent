@@ -1,5 +1,5 @@
 import React from "react";
-import { NavigationMenuDemo } from "@/components/nav";
+import { NavigationMenuDemo } from "@/components/navhomepage";
 import Image from "next/image";
 import logo from "../../public/images/logo-no-bg.png";
 import { CarouselDemo } from "@/components/carousel";
