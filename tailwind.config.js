@@ -17,6 +17,12 @@ module.exports = {
       },
     },
     extend: {
+      boxShadow: {
+        'glow': '0 0 30px rgba(255, 255, 255, 0.5)', // White glow effect
+      },
+      fontFamily: {
+        sans:['Poppins', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -72,14 +78,19 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
-      colors: {
-        'error':{
-          100:'#1F3555',
-          200:'#FFFBFE',
-          300: '#89023E',
-          black: '#000000',
-        }
-      },
+    colors: {
+      'error':{
+        100:'#1F3555',
+        200:'#FFFBFE',
+        300: '#89023E',
+        darkBlue: '#1F3555',
+        reallyDarkBlue: '#111D2E',
+        white: '#FFFFFF',
+        gray: '#7F7F7F',
+        darkPink: '#89023E',
+        black: '#000000',
+      }
+    },
   },
   plugins: [require("tailwindcss-animate")],
 }
