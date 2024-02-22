@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      boxShadow: {
+        'glow': '0 0 30px rgba(255, 255, 255, 0.5)', // White glow effect
+      },
       fontFamily: {
         sans:['Poppins', 'sans-serif'],
       },
@@ -81,6 +84,7 @@ module.exports = {
         200:'#FFFBFE',
         300: '#89023E',
         darkBlue: '#1F3555',
+        reallyDarkBlue: '#111D2E',
         white: '#FFFFFF',
         gray: '#7F7F7F',
         darkPink: '#89023E',
