@@ -68,6 +68,13 @@ function NavigationMenuDemo() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
+          <Link href="/placebidStudent" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              placebidStudent
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
           <Link href="/jobViewingEmployer" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               JobViewingEmployer
