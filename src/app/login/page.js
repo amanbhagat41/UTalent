@@ -35,6 +35,8 @@ export default function login() {
           const user = userCredential.user;
           const docRef = collection(db, "users");
           const userDocRef = doc(docRef, user.uid);
+          console.log(user.uid)
+          console.log(userDocRef)
           getDoc(userDocRef).then((doc) => {
             if (doc.exists) {
               // console.log(docRef)
@@ -116,7 +118,7 @@ export default function login() {
               </div>
             </form>
             <div className="flex justify-center md:justify-end items-start w-full md:w-1/2">
-            <Image src={theme === 'dark' ? logoDark : logo} width="350" height="350" alt="logo" />
+            <Image src={theme === 'dark' ? logoDark : logo} width="350" height="350" alt="logo" priority style={{width: 'auto', height: 'auto'}} />
             </div>
           </div>
         </div>

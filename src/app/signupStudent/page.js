@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTheme } from 'next-themes';
 import { useState, useEffect } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
@@ -45,13 +45,14 @@ export default function signupStudent() {
       createUserWithEmailAndPassword(auth, user.email, user.password)
       .then((userCredential) => {
         const userauth = userCredential.user;
-        const docRef =  addDoc(collection(db, "users"), {
-          id: userauth.uid,
+        const data =  {
+          uid: userauth.uid,
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
           role: user.role,
-        })
+        }
+        const docRef = setDoc(doc(db, "users", userauth.uid), data)
       .finally(()=> {
         console.log("User written with ID: ", docRef.id);
         router.push("/skillsStudent")
@@ -159,7 +160,7 @@ export default function signupStudent() {
               </div>
             </form>
             <div className="flex justify-center md:justify-end items-start w-full md:w-1/2">
-            <Image src={theme === 'dark' ? logoDark : logo} width="350" height="350" alt="logo" />
+            <Image src={theme === 'dark' ? logoDark : logo} width="350" height="350" alt="logo" priority/>
             </div>
           </div>
         </div>
