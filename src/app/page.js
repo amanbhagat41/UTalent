@@ -6,6 +6,7 @@ import { CarouselDemo } from "@/components/carousel";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { NavigationMenuDemoFooter } from "@/components/navfooter";
+
 export default function Page() {
   return (
     <>

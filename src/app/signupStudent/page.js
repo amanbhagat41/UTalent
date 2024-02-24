@@ -13,16 +13,17 @@ import { db } from "../../firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
-export default function signupEmployer() {
+export default function signupStudent() {
   const { theme, setTheme } = useTheme();
   const router = useRouter();
   const auth = getAuth();
   const [user, setUser] = useState({
     email: "",
-    companyName: "",
+    firstName: "",
+    lastName:"",
     password: "",
     confirmPassword: "",
-    role: "Employer"
+    role: "Student"
   })
 
   const onInputChange = (e) => {
@@ -31,7 +32,7 @@ export default function signupEmployer() {
 
   const onSignUpSubmit = async(e) =>{
     e.preventDefault()
-    if (!user.email || !user.companyName || !user.password || !user.confirmPassword) {
+    if (!user.email || !user.firstName || !user.lastName || !user.password || !user.confirmPassword) {
       console.log("All fields are required");
       return;
     }
@@ -47,25 +48,16 @@ export default function signupEmployer() {
         const docRef =  addDoc(collection(db, "users"), {
           id: userauth.uid,
           email: user.email,
-          companyName: user.companyName,
+          firstName: user.firstName,
+          lastName: user.lastName,
           role: user.role,
         })
       .finally(()=> {
         console.log("User written with ID: ", docRef.id);
-        router.push("/loggedInEmployer")
+        router.push("/skillsStudent")
       });
 
       })
-      // const user = userCredential.user;
-      // console.log(user);
-      // const docRef = await addDoc(collection(db, "users"), {
-      //   email: user.email,
-      //   password: user.password,
-      //   companyName: user.companyName,
-      //   role: user.role,
-      // });
-      // console.log("User written with ID: ", docRef.id);
-
   } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -85,17 +77,26 @@ export default function signupEmployer() {
           </h1>
           <div className="flex flex-col md:flex-row">
             <form onSubmit={onSignUpSubmit} className="w-full md:w-1/2">
-              <label htmlFor="cName" className="flex pt-10 pl-10">
-                Company Name
+              <label htmlFor="cFirstName" className=" pt-10 pl-10">
+                First Name
               </label>
+              <label htmlFor="cLastName" className="pt-4 pl-10 md:pl-36">Last Name</label>
               <div className="flex pl-10">
                 <input
                   type="text"
-                  id="cName"
-                  name="companyName"
-                  value={user.companyName}
+                  id="FirstName"
+                  name="firstName"
+                  value={user.firstName}
                   onChange={onInputChange}
-                  className="border border-gray-400 border-opacity-35 rounded-xl text-center h-8 w-full"
+                  className="border border-gray-400 border-opacity-35 rounded-xl text-center h-8 w-full md:w-2/3 mr-10"
+                />
+                <input
+                  type="text"
+                  id="cLastName"
+                  name="lastName"
+                  value={user.lastName}
+                  onChange={onInputChange}
+                  className="border border-gray-400 border-opacity-35 rounded-xl text-center h-8 w-full md:w-2/3 mr-10"
                 />
               </div>
               <label htmlFor="cEmail" className="flex pt-4 pl-10">
