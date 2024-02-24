@@ -103,6 +103,13 @@ function NavigationMenuDemo() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
+          <Link href="/userProfile" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              userProfile
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
           <NavigationMenuTrigger>About</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[200px] lg:w-[300px] lg:grid-cols-[.75fr_1fr]">

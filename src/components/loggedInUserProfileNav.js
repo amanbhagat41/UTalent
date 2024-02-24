@@ -53,31 +53,18 @@ const components = [
   },
 ];
 
-function NavigationMenuStudentLoggedIn() {
+function LoggedInUserProfileNav() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
             <ModeToggle></ModeToggle>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              BIDS
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
+        
         <NavigationMenuItem>
           <Link href="" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               ABOUT
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/userProfile" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              PROFILE
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -110,4 +97,4 @@ const ListItem = React.forwardRef(
   }
 );
 ListItem.displayName = "ListItem";
-export { NavigationMenuStudentLoggedIn };
+export { LoggedInUserProfileNav };
