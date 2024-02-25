@@ -49,7 +49,7 @@ export default function Page() {
                   <div>
                       <h2 className="text-4xl font-semibold text-start mb-10">Creating a New <br></br>Opportunity for Students</h2>
                       <div className="w-[20vw] h-[.3vw] -mt-5 bg-error-300 rounded-lg float-left"></div>
-                      <p className="text-3xl font-thin">We provide students with an alternative option to typical work experiences. With a network of employers seeking various projects, we provide students with opportunities tailored to their skills and interests.</p>
+                      <p className="text-3xl font-light">We provide students with an alternative option to typical work experiences. With a network of employers seeking various projects, we provide students with opportunities tailored to their skills and interests.</p>
                   </div>
               </div>
               <Image src={section1} className="md:w-100 object-cover"></Image>
@@ -60,7 +60,7 @@ export default function Page() {
                   <div>
                       <h2 className="text-4xl font-semibold text-end mb-10"> A place for employers eager to <br></br>tap into fresh, innovative talent.</h2>
                       <div className="w-[20vw] h-[.3vw] -mt-5 bg-error-300 rounded-lg float-right"></div>
-                      <p className="text-3xl font-thin text-end">UTalent streamlines the process of connecting with motivated and skilled students, inspiring collaborations that create innovation and success. Employers are given an opportunity to invest in young talent in a low risk manner.</p>
+                      <p className="text-3xl font-light text-end">UTalent streamlines the process of connecting with motivated and skilled students, inspiring collaborations that create innovation and success. Employers are given an opportunity to invest in young talent in a low risk manner.</p>
                   </div>
               </div>
           </div>
@@ -69,7 +69,7 @@ export default function Page() {
                   <div>
                       <h2 className="text-4xl font-semibold text-start mb-10">A Glimpse Into an <br></br>Alternative to Traditional Work </h2>
                       <div className="w-[20vw] h-[.3vw] -mt-5 bg-error-300 rounded-lg float-left"></div>
-                      <p className="text-3xl font-thin">UTalent offers students an alternative to traditional employment, empowering them to take control of their work experience and schedule. Giving the ability to explore diverse projects that align with their skills and interests.</p>
+                      <p className="text-3xl font-light">UTalent offers students an alternative to traditional employment, empowering them to take control of their work experience and schedule. Giving the ability to explore diverse projects that align with their skills and interests.</p>
                   </div>
               </div>
               <Image src={section3} className="md:w-100 object-cover"></Image>
@@ -79,7 +79,7 @@ export default function Page() {
       <div className="flex flex-col items-center justify-center mt-32">
       </div>
       <div className="flex flex-col items-center justify-center mt-32">
-          <h2 className="text-center text-error-black text-5xl font-bold">Founders</h2>
+          <h2 className="text-center text-error-black text-5xl font-bold dark:text-error-white">Founders</h2>
           <div className="w-[30vw] max-w-2xl h-[0.3vw] bg-error-300 rounded-lg mt-5"></div>
       </div>
 
@@ -95,7 +95,7 @@ export default function Page() {
       </div>
 
       <div className="flex flex-col items-center justify-center mt-32">
-          <h2 className="text-center text-error-black text-5xl font-bold">Why it works</h2>
+          <h2 className="text-center text-error-black text-5xl font-bold dark:text-error-white">Why it works</h2>
           <div className="w-[30vw] max-w-2xl h-[0.3vw] bg-error-300 rounded-lg mt-5"></div>
       </div>
 
