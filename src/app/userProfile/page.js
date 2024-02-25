@@ -49,7 +49,7 @@ export default function Page() {
                             <h1 id="firstName" className="font-semibold text-[1.5vw]">FirstName</h1>
                             <h2 id="title" className="font-light mt-1 text-[1vw]">Web-Designer</h2>
                             <h3 id="location" className="font-normal mt-2 text-[1.2vw]">Location</h3>
-                            <span id="bio" className="mt-4 text-base text-center w-[20vw] h-[10vw] text-[1vw] leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet mauris commodo quis imperdiet.</span>
+                            <span id="bio" className="mt-4 text-center w-[20vw] h-[10vw] text-[.7vw] leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet mauris commodo quis imperdiet.</span>
                         </div>
                     </div>
                 </div>

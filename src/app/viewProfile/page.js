@@ -1,0 +1,61 @@
+import React from "react";
+import Head from 'next/head';
+import { MessageSquareText } from 'lucide-react';
+import Image from "next/image";
+import logo from "../../../public/images/logo-no-bg.png";
+import BubbleSkills from "@/components/ui/bubbleSkills";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+
+import { ViewProfileNavBar } from "@/components/navViewOtherProfile";
+export default function Page() {
+  return (
+    <>
+        <Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        </Head>
+        <div className="dark:bg-error-darkGray">
+        <div className="flex flex-col h-auto dark:bg-error-black">
+            <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
+                <div className="flex items-center justify-between h-auto">
+                <div>
+                    <Image src={logo} width="150" height="150" alt="logo"></Image>
+                </div>
+                <div className="flex justify-end flex-grow ">
+                    <ViewProfileNavBar />
+                </div>
+                <div className="w-10 h-10"></div>
+                </div>
+            </nav>
+        </div>
+        
+        <div className="h-[35vh] w-auto bg-error-darkBlue dark:bg-error-black"></div>
+
+        <div className="grid grid-rows-2 -mt-[10vh] h-screen">
+            <div className="w-full">
+                <div className="flex items-center justify-center h-auto ">
+                    <div className="">
+                        <Avatar className="w-[10vw] h-[10vw] m-auto">
+                            <AvatarImage src="https://github.com/shadcn.png" />
+                            <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                        <div className="grid grid-flow-row auto-rows-max justify-items-center mt-8">
+                            <h1 id="firstName" className="font-semibold text-[1.5vw]">FirstName</h1>
+                            <h3 id="location" className="font-normal mt-2 text-[1vw]">Location</h3>
+                            <span id="bio" className="mt-4 text-center w-[20vw] h-[10vw] text-[.7vw] leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet mauris commodo quis imperdiet.</span>
+                            <Button className="w-[10vw] h-[2vw] text-[.7vw] -mt-[5vw] dark:bg-error-black text-error-white dark:border-2 dark:border-error-white dark:shadow-glow">
+                                <MessageSquareText/>
+                                <div className="ml-[.5vw]">Message</div>
+                            </Button>
+                            <div className="bg-error-darkBlue w-[15vw] h-[2vw] text-center text-[1.2vw] dark:bg-error-black text-error-white rounded-xl">Skills</div>
+                            <BubbleSkills></BubbleSkills>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </>
+  );
+}
