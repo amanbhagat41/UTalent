@@ -87,9 +87,13 @@ module.exports = {
         reallyDarkBlue: '#111D2E',
         white: '#FFFFFF',
         darkGray: '#222222',
+        hoveredGray: '#e6e6e6',
         gray: '#7F7F7F',
         darkPink: '#89023E',
         black: '#000000',
+        green: '#1bc41b',
+        lightGreen: '#1efa1e',
+        red: '#cf1500',
       }
     },
   },
