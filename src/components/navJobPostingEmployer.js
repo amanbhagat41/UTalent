@@ -61,14 +61,14 @@ function NavigationMenuDemo() {
             <ModeToggle></ModeToggle>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/login" legacyBehavior passHref>
+          <Link href="/createJobPosting" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Post Job
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/student-employersignup" legacyBehavior passHref>
+          <Link href="/userProfile" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Profile
             </NavigationMenuLink>
