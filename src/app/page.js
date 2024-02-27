@@ -46,7 +46,9 @@ export default function Page() {
           </div>
         </div>
 
-        <footer className="bg-error-100 h-20 w-full sticky bottom-0 dark:bg-error-black">
+       
+      </div>
+      <footer className="bg-error-100 h-20 w-full sticky bottom-0 dark:bg-error-black">
           <div className="flex items-center justify-between h-full">
             <h4 className="text-2xl text-error-200 ml-8">UTalent</h4>
             <div className="flex justify-end flex-grow mr-10">
@@ -54,7 +56,6 @@ export default function Page() {
             </div>
           </div>
         </footer>
-      </div>
     </>
   );
 }

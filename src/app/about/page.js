@@ -31,8 +31,8 @@ export default function Page() {
           </div>
         </nav>
         <section className="relative flex items-center justify-center h-auto py-24">
-            <Image className="absolute inset-0 w-full h-full object-cover blur-md" src={banner}></Image>
-            <div class="z-10">
+            <Image className="absolute inset-0 w-full h-full object-cover blur-md" src={banner} alt="banner"></Image>
+            <div className="z-10">
                 <h1 className="text-error-white text-[10vw] text-center">About Us</h1>
                 <p className="text-center text-error-white w-[40vw] font-bold">
                     We are looking to revolutionize the Freelance market  for college students in hopes of growing their skills, improving portfolios, and giving real-world applications in their respective fields. With UTalent younger generations are given an new opportunity.
@@ -52,10 +52,10 @@ export default function Page() {
                       <p className="text-3xl font-light">We provide students with an alternative option to typical work experiences. With a network of employers seeking various projects, we provide students with opportunities tailored to their skills and interests.</p>
                   </div>
               </div>
-              <Image src={section1} className="md:w-100 object-cover"></Image>
+              <Image src={section1} className="md:w-100 object-cover" alt="sideImage1"></Image>
           </div>
           <div className="flex flex-col md:flex-row items-center justify-center mt-32">
-            <Image src={section2} className="md:w-100 object-cover"></Image>
+            <Image src={section2} className="md:w-100 object-cover" alt="sideImage2"></Image>
               <div className="flex-1 flex justify-center md:justify-start md:pl-6 w-[30vw] ml-44">
                   <div>
                       <h2 className="text-4xl font-semibold text-end mb-10"> A place for employers eager to <br></br>tap into fresh, innovative talent.</h2>
@@ -72,7 +72,7 @@ export default function Page() {
                       <p className="text-3xl font-light">UTalent offers students an alternative to traditional employment, empowering them to take control of their work experience and schedule. Giving the ability to explore diverse projects that align with their skills and interests.</p>
                   </div>
               </div>
-              <Image src={section3} className="md:w-100 object-cover"></Image>
+              <Image src={section3} className="md:w-100 object-cover" alt="sideImage3"></Image>
           </div>
         </div>
       </div>
@@ -86,10 +86,10 @@ export default function Page() {
       <div className="grid grid-cols-8 mt-10 gap-16">
         <div></div>
         <div></div>
-        <Image src={zachabout} class=""></Image>
-        <Image src={michaelabout} class=""></Image>
-        <Image src={amanabout} class=""></Image>
-        <Image src={alexabout} class=""></Image>
+        <Image src={zachabout} alt="Zach"></Image>
+        <Image src={michaelabout} alt="Michael"></Image>
+        <Image src={amanabout} alt="Aman"></Image>
+        <Image src={alexabout} alt="Alex"></Image>
         <div></div>
         <div></div>
       </div>
@@ -103,17 +103,17 @@ export default function Page() {
         <div></div>
         <div></div>
         <div>
-          <Image src={specializework} class="m-auto"></Image>
+          <Image src={specializework} className="m-auto" alt="specializework"></Image>
           <h1 className="text-center text-2xl font-bold mt-4">Specialized Work</h1>
           <p className="text-center mt-2 text-xl">Students can apply themselves to jobs that they are interested in and companies can select candidates that fit their needs.</p>
         </div>
         <div>
-          <Image src={reliablework} class="m-auto"></Image>
+          <Image src={reliablework} className="m-auto" alt="reliablework"></Image>
           <h1 className="text-center text-2xl font-bold mt-4">Reliable Work</h1>
           <p className="text-center mt-2 text-xl">Requiring University verified accounts gives companies confidence in their selection for freelance work.</p>
         </div>
         <div>
-          <Image src={earlyinvestment} class="m-auto"></Image>
+          <Image src={earlyinvestment} className="m-auto" alt="earlyinvestment"></Image>
           <h1 className="text-center text-2xl font-bold mt-4">Early Investment</h1>
           <p className="text-center mt-2 text-xl">By creating early connections with fresh talent companies increase their reach to a new generation of driven workers.</p>
         </div>
