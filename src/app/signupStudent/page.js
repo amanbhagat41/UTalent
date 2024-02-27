@@ -168,7 +168,7 @@ export default function signupStudent() {
                                 <Button
                                     type="submit"
                                     id="signUp"
-                                    className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12"
+                                    className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12 dark:text-error-200"
                                 >
                                     Sign Up
                                 </Button>

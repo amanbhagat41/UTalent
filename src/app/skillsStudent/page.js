@@ -83,7 +83,7 @@ export default function skillsStudent() {
                                 {skills.map((skill, index) => (
                                     <div
                                         key={index}
-                                        className=" bg-error-gray hover:bg-[#FF0000] rounded-2xl text-lg h-10 w-20 text-error-white text-center"
+                                        className=" bg-error-gray hover:bg-[#FF0000] rounded-2xl text-lg h-10 w-20 text-error-white text-center pt-1"
                                         onClick={(e) => deleteSkill(index)}
                                     >
                                         {skill}{" "}
@@ -92,7 +92,7 @@ export default function skillsStudent() {
                             </div>
                             <div className="pt-10 pl-10">
                                 <Button
-                                    className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12 w-36"
+                                    className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12 w-36 dark:text-error-200"
                                     onClick={onSubmit}
                                 >
                                     Continue

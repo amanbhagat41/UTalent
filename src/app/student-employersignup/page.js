@@ -24,7 +24,7 @@ export default function studentemployersignup() {
                                     legacyBehavior
                                     passHref
                                 >
-                                    <Button className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12 w-36">
+                                    <Button className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12 w-36 dark:text-error-200">
                                         Student
                                     </Button>
                                 </Link>
@@ -33,8 +33,8 @@ export default function studentemployersignup() {
                                 href="/signupEmployer"
                                 legacyBehavior
                                 passHref
-                            >
-                                <Button className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12 w-36">
+                                >
+                                <Button className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12 w-36 dark:text-error-200">
                                     Employer
                                 </Button>
                             </Link>

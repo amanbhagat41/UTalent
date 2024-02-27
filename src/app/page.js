@@ -37,7 +37,7 @@ export default function Page() {
 
           <div className="flex justify-center pt-5">
             <Link href="/student-employersignup" legacyBehavior passHref>
-              <Button className='bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12'>Get Started</Button>
+              <Button className='bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12 dark:text-error-200'>Get Started</Button>
             </Link>
           </div>
 

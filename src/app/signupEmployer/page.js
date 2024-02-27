@@ -142,7 +142,7 @@ export default function signupEmployer() {
                 </div>
               </div>
               <div className="pt-10 pl-10 flex">
-                <Button type="submit" id="signUp" className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12">
+                <Button type="submit" id="signUp" className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12 dark:text-error-200">
                   Sign Up
                 </Button>
               </div>
