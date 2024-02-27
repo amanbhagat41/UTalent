@@ -30,7 +30,7 @@ export default function skillsStudent() {
     };
 
     const _handleKeyDown = (e) => {
-        if (e.key === "Enter" && skills.length < 10) {
+        if (e.key === "Enter" && skills.length < 50) {
             setSkills([...skills, curSkill]);
             setCurSkill("");
             //   setDoc(doc(db, "users", userauth.uid), data)
@@ -65,7 +65,7 @@ export default function skillsStudent() {
             <div className="flex items-center justify-center h-screen">
                 <div className="bg-error-200 dark:bg-error-black dark:outline dark:outline-offset-2 dark:outline-white-500 dark:shadow-[0_4px_36px_16px_rgba(255,255,255,0.25)] w-10/12 md:w-6/12 h-4/6 rounded-3xl">
                     <h1 className="pt-40 text-2xl pl-10 dark:text-error-200">
-                        Display Your Skills (Max of 10)
+                        Display Your Skills
                     </h1>
                     <div className="flex flex-col lg:flex-row justify-between">
                         <div className="flex-auto lg:w-64">
@@ -79,7 +79,7 @@ export default function skillsStudent() {
                                     onKeyDown={_handleKeyDown}
                                 />
                             </div>
-                            <div className="pl-4 pt-4 flex flex-row gap-x-4 flex-wrap gap-y-2 text-xs items-center">
+                            <div className="pl-4 pt-4 flex flex-row gap-x-4 flex-wrap gap-y-2 text-xs items-center overflow-y-auto h-40">
                                 {skills.map((skill, index) => (
                                     <div
                                         key={index}
