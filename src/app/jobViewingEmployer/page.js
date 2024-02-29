@@ -27,7 +27,8 @@ export default function JobViewingEmployer() {
 
   <div className="w-full h-screen dark:bg-error-black">
     <div className="grid grid-cols-2 h-full">
-      <div className="w-[50%] h-full">
+    <div className="col-end-2">
+      <div className="col-end-2 w-full md:w-1/2 h-full">
         <div className="flex items-center justify-left ml-8 bg-neutral-500">
             <div class="bg-white p-8 rounded-lg shadow-lg ">
                   <div class="mb-4">
@@ -96,7 +97,7 @@ export default function JobViewingEmployer() {
               </div>
             </div>
           </div>
-          
+          </div>
         </div>
         <div class="flex flex-col space-y-4 mr-8">
           <div class="bg-white p-4 rounded-lg shadow-lg">
@@ -111,7 +112,7 @@ export default function JobViewingEmployer() {
               <span class="text-sm text-gray-600 ml-2">/ hr</span>
             </div>
           </div>
-
+          <div>
           <div class="bg-white p-4 rounded-lg shadow-lg">
             <h3 class="text-lg font-semibold">Dynamic Residential Listings Portal</h3>
             <span class="text-sm text-gray-600 mt-2">6 bids</span>
@@ -133,6 +134,7 @@ export default function JobViewingEmployer() {
               <span class="text-gray-900 font-semibold">$30-$40</span>
             </div>
           </div>
+        </div>
         </div>
       </div>
       
