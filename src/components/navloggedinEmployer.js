@@ -61,7 +61,7 @@ function NavigationMenuEmployerLoggedIn() {
             <ModeToggle></ModeToggle>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/jobPostingEmployer" legacyBehavior passHref>
+          <Link href="/jobViewingEmployer" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               VIEW JOBS
             </NavigationMenuLink>
@@ -75,7 +75,7 @@ function NavigationMenuEmployerLoggedIn() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/jobViewingEmployer" legacyBehavior passHref>
+          <Link href="/userProfile" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               PROFILE
             </NavigationMenuLink>
