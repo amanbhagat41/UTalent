@@ -38,9 +38,6 @@ export default function Page() {
         </nav>
 
         
-        {/* Content goes here. Ensure you have content here to push the footer down. */}
-        
-        
         <div class="container mx-auto px-4 py-8 mt-10 dark:bg-error-black">
           <Label htmlFor="filter" className="text-4xl underline">Jobs For You:</Label>
           <div id="filter" class="flex flex-wrap -mx-4 mt-10">
