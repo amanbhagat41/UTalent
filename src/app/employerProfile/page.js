@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { db, auth } from "../../firebase";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, getDoc, updateDoc,collection } from "firebase/firestore";
-import { onAuthStateChanged, getAuth, signOut } from "firebase/auth";
+import { onAuthStateChanged, getAuth, signOut, updateEmail } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
 
@@ -27,22 +27,19 @@ export default function Page() {
     const [wordsRemaining, setWordsRemaining] = useState(100);
     const [userDetails, setUserDetails] = useState({
         uid: '', // Include uid for update operations
-        firstName: "",
-        lastName: "",
         email: "",
-        skills: [],
         bio: "",
-        title: "",
+        companyName: "",
         location: "",
+        website: "",
+
     });
     const [formDetails, setFormDetails] = useState({
-        firstName: "",
-        lastName: "",
         email: "",
-        skills: [],
         bio: "",
-        title: "",
+        companyName: "",
         location: "",
+        website: "",
     });
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -121,7 +118,7 @@ export default function Page() {
     }
 };
     const goBackToUserProfile = () => {
-        router.push("/userProfile")
+        router.push("/employerProfile")
     }
     const handlePageChange = ()=> {
         const docRef = collection(db, "users");
@@ -142,10 +139,7 @@ export default function Page() {
         setFormDetails({ ...formDetails, [name]: value });
     };
     
-    const handleSkillsChange = (e) => {
-        const skillsArray = e.target.value.split(',').map(skill => skill.trim());
-        setFormDetails({ ...formDetails, skills: skillsArray });
-    };
+
     const handleAboutMeChange = (e) => {
         const text = e.target.value;
         const words = text.trim().split(/\s+/).filter(Boolean);
@@ -209,7 +203,7 @@ export default function Page() {
                     </Avatar>
                     <div className="grid grid-flow-row auto-rows-max justify-items-center mt-9 ">
                         <h1 id="fullName" className="font-semibold text-[1.5vw]">
-                            {userDetails.firstName} {userDetails.lastName}
+                            {userDetails.companyName}
                         </h1>
                         <h2 id="title" className="font-light mt-1 text-[1vw]">{userDetails.title}</h2>
                         <h3 id="location" className="font-normal mt-2 text-[1.2vw]">{userDetails.location}</h3>
@@ -231,32 +225,24 @@ export default function Page() {
                                 <div className="grid grid-flow-row gap-[1vw]">
                                         <div className="grid grid-flow-col">
                                             <div>
-                                                <Label className="uppercase text-[.5vw]" htmlFor="firstName">FIRSTNAME</Label>
-                                                <h1 className = "text-[1.2vw]" id="firstName">{userDetails.firstName}</h1>
-                                            </div>
-                                            <div>
-                                                <Label className="uppercase text-[.5vw]" htmlFor="lastName">LASTNAME</Label>
-                                                <h1 className = "text-[1.2vw]" id="lastName">{userDetails.lastName}</h1>
+                                                <Label className="uppercase text-[.5vw]" htmlFor="firstName">Company</Label>
+                                                <h1 className = "text-[1.2vw]" id="firstName">{userDetails.companyName}</h1>
                                             </div>
                                         </div>
                                         <div>
-                                            <Label className="uppercase text-[.5vw]" htmlFor="title">TITLE</Label>
-                                            <h1 className = "text-[1.2vw]" id="title">{userDetails.title}</h1>
+                                            <Label className="uppercase text-[.5vw]" htmlFor="firstName">Website</Label>
+                                            <h1 className = "text-[1.2vw]" id="firstName">{userDetails.website}</h1>
                                         </div>
                                         <div>
                                             <Label className="uppercase text-[.5vw]" htmlFor="email">Email</Label>
                                             <h1 className = "text-[1.2vw]" id="email">{userDetails.email}</h1>
                                         </div>
                                         <div>
-                                            <Label className="uppercase text-[.5vw]" htmlFor="skills">skills</Label>
-                                            <p className = "text-[1vw]" id="skills">{userDetails.skills.join(', ')}</p>
-                                        </div>
-                                        <div>
-                                            <Label className="uppercase text-[.5vw]" htmlFor="aboutMe">ABOUT ME</Label>
+                                            <Label className="uppercase text-[.5vw]" htmlFor="aboutMe">ABOUT US</Label>
                                             <p className = "text-[1vw]" id="aboutMe">{userDetails.bio}</p>
                                         </div>
                                         <div className="flex items-center justify-center w-full">
-                                            <button type="button" onClick={handleLogout} className="border-2 border-error-black h-12 w-[50%] rounded-[12px] dark:bg-error-white dark:text-error-black">Sign Out</button>
+                                            <button type="button" onClick={handleLogout} className=" h-12 w-[50%] rounded-[12px] bg-error-red text-error-white">Sign Out</button>
                                         </div>
                                 </div>
                                 
@@ -265,30 +251,23 @@ export default function Page() {
                                     <form onSubmit={handleSubmit} className="grid grid-flow-row gap-4 dark:bg-error-black">
                                         <div className="grid grid-cols-2 gap-5">   
                                             <div>   
-                                                <Label htmlFor="editFirstName">First Name</Label>
-                                                <Input name="firstName" className="border-2 border-error-black dark:bg-error-darkGray" value={formDetails.firstName} onChange={handleChange} />
+                                                <Label htmlFor="editCompany">Company</Label>
+                                                <Input name="companyName" className="border-2 border-error-black dark:bg-error-darkGray" value={formDetails.companyName} onChange={handleChange} />
                                             </div>
-                                            <div className="">
-                                                <Label htmlFor="editLastName">Last Name</Label>
-                                                <Input name="lastName" className="border-2 border-error-black dark:bg-error-darkGray" value={formDetails.lastName} onChange={handleChange} />
-                                            </div>
-                                        </div>
-                                        <div className="grid grid-cols-2 gap-5">
                                             <div>
                                                 <Label htmlFor="editEmail">Email</Label>
                                                 <Input name="email" className="border-2 border-error-black dark:bg-error-darkGray" type="email" value={formDetails.email} onChange={handleChange} />
                                             </div>
+                                        </div>
+                                        <div className="grid grid-cols-1 gap-5">
                                             <div>
-                                                <Label htmlFor="editTitle">Title</Label>
-                                                <Input name="title" className="border-2 border-error-black dark:bg-error-darkGray" value={formDetails.title} onChange={handleChange} />
+                                                <Label htmlFor="editWebsite">Website</Label>
+                                                <Input name="website" className="border-2 border-error-black dark:bg-error-darkGray" value={formDetails.website} onChange={handleChange} />
                                             </div>
                                         </div>
                                         
                                         <Label htmlFor="editLocation">Location</Label>
                                         <Input name="location" className="border-2 border-error-black dark:bg-error-darkGray" value={formDetails.location} onChange={handleChange} />
-
-                                        <Label htmlFor="editSkills">Skills (Separate with comma)</Label>
-                                        <textarea name="skills" className="pl-3 border-2 border-error-black dark:bg-error-darkGray" value={formDetails.skills.join(',')} onChange={handleSkillsChange} />
 
                                         <Label htmlFor="editAboutMe">
                                             About Me: ({wordsRemaining} words remaining)

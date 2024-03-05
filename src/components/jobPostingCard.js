@@ -10,7 +10,8 @@ import {
   } from "@/components/ui/card"
 import { Button } from "./ui/button";
   
-  function jobPostingCard(index) {
+  // jobID array and use the index to differentiate between the job cards
+  function jobPostingCard(index, array=[]) {
     return (
         <Card className="w-[420px] h-[420px] dark:border-error-white dark:shadow-glow dark:bg-error-black rounded-3xl">
             <img src= "images/jobPostIcon.png" alt="" style={{ width: '48px', height: '48px'} } className="justify-start mt-2 ml-5 bg-transparent rounded-3xl"/>

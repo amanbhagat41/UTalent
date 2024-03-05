@@ -68,7 +68,7 @@ function NavigationMenuDemo() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/userProfile" legacyBehavior passHref>
+          <Link href="/employerProfile" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Profile
             </NavigationMenuLink>

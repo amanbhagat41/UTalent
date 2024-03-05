@@ -30,6 +30,7 @@ export default function jobPostingEmployer() {
     jobSkills: "",
     daysToDeliver: "",
     postedDate: "",
+    jobLocation: "",
   })
   const onInputChange = (e) =>{
     setJob({...job, [e.target.name]: e.target.value });
@@ -41,7 +42,8 @@ export default function jobPostingEmployer() {
       !job.skills ||
       !job.description ||
       !job.rate ||
-      !job.daysDeliver) {
+      !job.daysDeliver ||
+      !job.jobLocation) {
         console.log("All fields are required");
         return;
       }
@@ -52,7 +54,8 @@ export default function jobPostingEmployer() {
         jobRate: job.rate,
         jobSkills: job.skills,
         jobDaysToDeliver: job.daysDeliver,
-        postedDate: serverTimestamp()
+        postedDate: serverTimestamp(),
+        jobLocation: job.jobLocation,
       });
       await updateDoc(docRef, {
         jobId: docRef.id,
@@ -87,6 +90,10 @@ export default function jobPostingEmployer() {
             <div>
               <Label htmlFor="daystodeliver" className="text-[16px]">Days to Deliver</Label>
               <Input id = "daystodeliver" name='daysDeliver' placeholder="Days" onChange={onInputChange} className="w-[259px] h-[56px] mt-[7px] dark:border-1 dark:border-error-white dark:bg-error-black"/>
+            </div>
+            <div>
+              <Label htmlFor="location" className="text-[16px]">Location</Label>
+              <Input id = "location" name='jobLocation' placeholder="Virtual/OnSite" onChange={onInputChange} className="w-[259px] h-[56px] mt-[7px] dark:border-1 dark:border-error-white dark:bg-error-black"/>
             </div>
           </div>
         </CardContent>

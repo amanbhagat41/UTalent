@@ -93,7 +93,7 @@ module.exports = {
         black: '#000000',
         green: '#1bc41b',
         lightGreen: '#1efa1e',
-        red: '#cf1500',
+        red: '#fc2c03',
       }
     },
   },
