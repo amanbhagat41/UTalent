@@ -2,14 +2,12 @@ import React from "react";
 
 import { NavigationMenuStudentLoggedIn } from "@/components/navloggedinStudent";
 import Image from "next/image";
-import { Input } from "@/components/ui/input"
 import logo from "../../../public/images/logo-no-bg.png";
 
 import { CarouselDemo } from "@/components/carousel";
 import { JobPostingCarousel } from "@/components/jobPostingCarousel";
 import { Label } from "@/components/ui/label";
 import { NavigationMenuDemoFooter } from "@/components/navfooter";
-import { Button } from "@/components/ui/button"
 import SearchWithQuickFilters from '@/components/ui/SearchWithQuickFilters'; 
 export default function Page() {
   return (

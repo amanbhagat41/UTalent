@@ -2,14 +2,12 @@ import React from "react";
 
 import { NavigationMenuEmployerLoggedIn } from "@/components/navloggedinEmployer";
 import Image from "next/image";
-import { Input } from "@/components/ui/input"
 import logo from "../../../public/images/logo-no-bg.png";
 
 import { CarouselDemo } from "@/components/carousel";
 import { JobPostingCarousel } from "@/components/jobPostingCarousel";
 import { Label } from "@/components/ui/label";
 import { NavigationMenuDemoFooter } from "@/components/navfooter";
-import { Button } from "@/components/ui/button"
 import SearchWithQuickFilters from '@/components/ui/SearchWithQuickFilters'; 
 export default function Page() {
   return (
@@ -41,24 +39,36 @@ export default function Page() {
             <CarouselDemo id="topJobs"></CarouselDemo>
           </div>
         </div>
-        <div className=""> 
-          <div className="flex items-center justify-center w-full h-full bg-error-100 dark:bg-error-black">
-            <div className="mt-12">
-              <Label htmlFor="jobsforyou" className="flex text-[48px] text-error-white font-bold">Jobs For You:</Label>
-              <div id="jobsforyou" className="w-[2250px]">
-                <JobPostingCarousel/>
-              </div>
-              <Label htmlFor="jobsforyou" className="flex mt-10 text-[48px] text-error-white font-bold">Fresh Jobs:</Label>
-              <div id="jobsforyou" className="w-[2250px]">
-                <JobPostingCarousel/>
-              </div>
-              <Label htmlFor="jobsforyou" className="flex mt-10 text-[48px] text-error-white font-bold">Popular Jobs:</Label>
-              <div id="jobsforyou" className="w-[2250px]">
-                <JobPostingCarousel/>
-              </div>
+        
+
+
+       <div className="flex items-center justify-center w-full h-full bg-error-100 dark:bg-error-black">
+        <div className="mt-12 w-full flex flex-col items-center">
+          {/* Jobs For You Section */}
+          <div className="w-[88%] flex flex-col items-start">
+            <Label htmlFor="jobsforyou" className="text-[48px] text-error-white font-bold mb-4 underline">Jobs For You:</Label>
+            <div id="jobsforyou" className="w-full flex justify-center">
+              <JobPostingCarousel/>
+            </div>
+          </div>
+
+          {/* Fresh Jobs Section */}
+          <div className="w-[88%] flex flex-col items-start mt-10">
+            <Label htmlFor="freshjobs" className="text-[48px] text-error-white font-bold mb-4 underline">Fresh Jobs:</Label>
+            <div id="freshjobs" className="w-full flex justify-center">
+              <JobPostingCarousel/>
+            </div>
+          </div>
+
+          {/* Popular Jobs Section */}
+          <div className="w-[88%] flex flex-col items-start mt-10">
+            <Label htmlFor="popularjobs" className="text-[48px] text-error-white font-bold mb-4 underline">Popular Jobs:</Label>
+            <div id="popularjobs" className="w-full flex justify-center">
+              <JobPostingCarousel/>
             </div>
           </div>
         </div>
+      </div>
           
         {/* Footer */}
         <footer className="h-20 w-full sticky bottom-0 dark:bg-error-black bg-error-reallyDarkBlue">

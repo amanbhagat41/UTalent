@@ -60,6 +60,8 @@ export default function signupStudent() {
                     firstName: user.firstName,
                     lastName: user.lastName,
                     role: user.role,
+                    title: "",
+                    
                 };
                 const docRef = setDoc(
                     doc(db, "users", userauth.uid),
