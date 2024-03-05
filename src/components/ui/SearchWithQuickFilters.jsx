@@ -1,8 +1,49 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { auth, db } from '../../firebase'; // Make sure this path is correct
+import { onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+
 const SearchWithQuickFilters = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const filters = ['Explore', 'UI/UX', 'Logo Design', 'Design Systems', 'MySQL', 'Urgent', 'Medical', 'Typography', 'Mobile Design', 'Web Design', 'React.js'];
+    const [filters, setFilters] = useState([]); // State to hold user-specific filters
+
+    useEffect(() => {
+        // Listen for changes to the auth state (i.e., user login/logout)
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, fetch their skills
+                fetchUserSkills(user.uid);
+            } else {
+                // User is signed out, clear filters
+                setFilters([]);
+            }
+        });
+
+        return () => unsubscribe(); // Cleanup subscription
+    }, []);
+
+    const fetchUserSkills = async (userId) => {
+        try {
+            const userDocRef = doc(db, "users", userId); // Adjust "users" to your users collection name
+            const userDoc = await getDoc(userDocRef);
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                // Assuming the user's skills are stored in a field named "skills"
+                // and it's an array of strings
+                if (userData.skills && userData.skills.length > 0) {
+                    setFilters(userData.skills);
+                } else {
+                    console.log("No skills found for user.");
+                    setFilters([]); // Clear filters if none found
+                }
+            } else {
+                console.log("No such user document!");
+            }
+        } catch (error) {
+            console.error("Error fetching user skills:", error);
+        }
+    };
 
     const handleSearch = (e) => {
         e.preventDefault();

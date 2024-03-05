@@ -12,6 +12,7 @@ import { db } from "../../firebase";
 import { collection, getDoc, doc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+
 export default function login() {
     const { theme, setTheme } = useTheme();
     const router = useRouter();
@@ -78,13 +79,8 @@ export default function login() {
                     </h1>
                     <div className="pl-10 text-sm">
                         Don't Have An Account?{" "}
-                        <Link
-                            href="/student-employersignup"
-                            legacyBehavior
-                            passHref
-                            className="text-error-300"
-                        >
-                            Signup
+                        <Link href="/student-employersignup" legacyBehavior passHref>
+                            <a className="text-error-darkPink">Signup</a>
                         </Link>
                     </div>
                     <div className="flex flex-col md:flex-row">
@@ -127,7 +123,7 @@ export default function login() {
                                     id="login"
                                     className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12"
                                 >
-                                    Sign Up
+                                    Login
                                 </Button>
                             </div>
                         </form>

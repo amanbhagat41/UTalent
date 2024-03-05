@@ -28,7 +28,15 @@ export default function Page() {
         title: "",
         location: "",
     });
-
+    const [formDetails, setFormDetails] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        skills: [],
+        bio: "",
+        title: "",
+        location: "",
+    });
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -36,7 +44,9 @@ export default function Page() {
                 const userRef = doc(db, "users", uid);
                 getDoc(userRef).then((docSnap) => {
                     if (docSnap.exists()) {
-                        setUserDetails({ uid: uid, ...docSnap.data() });
+                        const userData = docSnap.data();
+                        setUserDetails(userData); // Set fetched data into userDetails
+                        setFormDetails(userData); // Also prefill formDetails with the same data
                     } else {
                         console.log("No such document!");
                     }
@@ -45,17 +55,18 @@ export default function Page() {
                 });
             }
         });
-
+    
         return () => unsubscribe();
     }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setUserDetails({...userDetails, [name]: value});
+        setFormDetails({ ...formDetails, [name]: value });
     };
-
+    
     const handleSkillsChange = (e) => {
-        setUserDetails({...userDetails, skills: e.target.value.split(',').map(skill => skill.trim())});
+        const skillsArray = e.target.value.split(',').map(skill => skill.trim());
+        setFormDetails({ ...formDetails, skills: skillsArray });
     };
     const handleAboutMeChange = (e) => {
         const text = e.target.value;
@@ -63,25 +74,27 @@ export default function Page() {
         const numberOfWords = words.length;
     
         if (numberOfWords <= MAX_WORDS) {
-            setUserDetails({ ...userDetails, bio: text });
-            // Update words remaining only if within limit
+            // Directly update formDetails with the new text
+            setFormDetails({ ...formDetails, bio: text });
+            // Update words remaining
             setWordsRemaining(MAX_WORDS - numberOfWords);
         } else {
-            // If user tries to add more words beyond the limit, prevent it
-            e.preventDefault();
-            // Optionally, provide feedback that the word limit has been reached
+            // Prevent additional input by not updating formDetails.bio
+            // Optionally, you might trim the text to the word limit here as an extra measure
+            // though it's usually better for user experience to allow them to adjust manually
+            const trimmedText = words.slice(0, MAX_WORDS).join(' ');
+            setFormDetails({ ...formDetails, bio: trimmedText });
+            setWordsRemaining(0);
             console.log(`Maximum word count of ${MAX_WORDS} has been reached.`);
         }
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await updateDoc(doc(db, "users", userDetails.uid), {
-                ...userDetails,
-                skills: userDetails.skills,
-            });
+            await updateDoc(doc(db, "users", userDetails.uid), formDetails); // Submit new values from formDetails
+            setUserDetails(formDetails); // Update userDetails to reflect changes
             console.log("Profile updated successfully.");
-            router.push('/loggedinStudent')
+            // Optional: Redirect or perform additional actions here
         } catch (error) {
             console.error("Error updating profile:", error);
         }
@@ -167,27 +180,27 @@ export default function Page() {
                                 <TabsContent className="dark:bg-error-black" value="accountSettings">
                                     <form onSubmit={handleSubmit} className="grid grid-flow-row gap-6">
                                         <Label htmlFor="editFirstName">First Name</Label>
-                                        <Input name="firstName" value={userDetails.firstName} onChange={handleChange} />
+                                        <Input name="firstName" value={formDetails.firstName} onChange={handleChange} />
 
                                         <Label htmlFor="editLastName">Last Name</Label>
-                                        <Input name="lastName" value={userDetails.lastName} onChange={handleChange} />
+                                        <Input name="lastName" value={formDetails.lastName} onChange={handleChange} />
 
                                         <Label htmlFor="editEmail">Email</Label>
-                                        <Input name="email" type="email" value={userDetails.email} onChange={handleChange} />
+                                        <Input name="email" type="email" value={formDetails.email} onChange={handleChange} />
 
                                         <Label htmlFor="editTitle">Title</Label>
-                                        <Input name="title" value={userDetails.title} onChange={handleChange} />
+                                        <Input name="title" value={formDetails.title} onChange={handleChange} />
 
                                         <Label htmlFor="editLocation">Location</Label>
-                                        <Input name="location" value={userDetails.location} onChange={handleChange} />
+                                        <Input name="location" value={formDetails.location} onChange={handleChange} />
 
                                         <Label htmlFor="editSkills">Skills (Separate with comma)</Label>
-                                        <textarea name="skills" value={userDetails.skills.join(', ')} onChange={handleSkillsChange} />
+                                        <textarea name="skills" value={formDetails.skills.join(',')} onChange={handleSkillsChange} />
 
                                         <Label htmlFor="editAboutMe">
                                             About Me: ({wordsRemaining} words remaining)
                                         </Label>
-                                        <textarea className="h-56" name="bio" value={userDetails.bio} onChange={handleAboutMeChange} />
+                                        <textarea className="h-56" name="bio" value={formDetails.bio} onChange={handleAboutMeChange} />
 
                                         <Button type="submit">Save Changes</Button>
                                     </form>
