@@ -99,7 +99,16 @@ body {
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #aaaaaa; /* Dark thumb hover */
 }
-
+.text-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%; /* Adjust this value to control the covered area */
+  background: linear-gradient(to top, #ffffff, transparent);
+  z-index: 1;
+}
 @layer base {
   * {
     @apply border-border;
