@@ -79,7 +79,7 @@ export default function jobPostingEmployer() {
               <Input id = "titleBox"type="Title" name='title' onChange={onInputChange} placeholder="Enter a Title" className="w-[420px] h-[56px] mt-[7px] dark:border-1 dark:border-error-white dark:bg-error-black "/>
             </div>
             <div>
-              <Label htmlFor="reqSkillsBox" className="text-[16px]">Required Skills</Label>
+              <Label htmlFor="reqSkillsBox" className="text-[16px]">Required Skills (put commas in between)</Label>
               <Input id = "reqSkillsBox" name='skills' onChange={onInputChange} placeholder="Enter Skills"className="w-[420px] h-[56px] mt-[7px] dark:border-1 dark:border-error-white dark:bg-error-black"/>
             </div>
           </div>

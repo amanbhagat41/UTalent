@@ -61,18 +61,8 @@ export default function Page() {
           </div>
         </div>
         
-
-
        <div className="flex items-center justify-center w-full h-full bg-error-100 dark:bg-error-black">
         <div className="mt-12 w-full flex flex-col items-center">
-          {/* Jobs For You Section */}
-          <div className="w-[88%] flex flex-col items-start">
-            <Label htmlFor="jobsforyou" className="text-[48px] text-error-white font-bold mb-4 underline">Jobs For You:</Label>
-            <div id="jobsforyou" className="w-full flex justify-center">
-              <JobPostingCarousel jobs={[1,2,3,4,5,6,7,8,9,10]}/>
-            </div>
-          </div>
-
           {/* Fresh Jobs Section */}
           <div className="w-[88%] flex flex-col items-start mt-10">
             <Label htmlFor="freshjobs" className="text-[48px] text-error-white font-bold mb-4 underline">Fresh Jobs:</Label>
