@@ -45,7 +45,7 @@ function JobPostingCard({job, index}) {
                 <p className="text-wrap line-clamp-4">{job.description}</p>
             </CardContent>
             <CardFooter>
-                <Button variant="outline" className = "bg-error-darkPink rounded-[32px] w-[100%] h-auto text-error-white text-[22px] z-10">Bid</Button>
+                <Button variant="outline" className = "bg-error-darkPink rounded-[32px] w-[100%] h-auto text-error-white text-[22px] z-10">View</Button>
             </CardFooter>
         </Card>
     );
