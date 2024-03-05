@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useState, useEffect } from "react";
 
 import { NavigationMenuEmployerLoggedIn } from "@/components/navloggedinEmployer";
 import Image from "next/image";
@@ -8,8 +9,28 @@ import { CarouselDemo } from "@/components/carousel";
 import { JobPostingCarousel } from "@/components/jobPostingCarousel";
 import { Label } from "@/components/ui/label";
 import { NavigationMenuDemoFooter } from "@/components/navfooter";
-import SearchWithQuickFilters from '@/components/ui/SearchWithQuickFilters'; 
+import { collection, getDocs, limit, orderBy ,query} from "firebase/firestore";
+import { db } from "../../firebase";
+import SearchWithQuickFilters from '@/components/ui/SearchWithQuickFilters';
+
+
 export default function Page() {
+  const [freshJobs, setFreshJobs] = useState([]);
+
+
+  useEffect(()=> {
+    const fetchJobs = async () => {
+      const q = query(collection(db, "jobPostings"), orderBy("postedDate", "desc"), limit(10))
+      const jobDoc = await getDocs(q);
+      const jobsData = []
+      jobDoc.forEach((doc) => {
+        jobsData.push(doc.data())
+      })
+      setFreshJobs(jobsData)
+    }
+    fetchJobs()
+  },[]);
+  
   return (
     <>
       <div className="flex flex-col min-h-screen dark:bg-error-black">
@@ -48,7 +69,7 @@ export default function Page() {
           <div className="w-[88%] flex flex-col items-start">
             <Label htmlFor="jobsforyou" className="text-[48px] text-error-white font-bold mb-4 underline">Jobs For You:</Label>
             <div id="jobsforyou" className="w-full flex justify-center">
-              <JobPostingCarousel/>
+              <JobPostingCarousel jobs={[1,2,3,4,5,6,7,8,9,10]}/>
             </div>
           </div>
 
@@ -56,7 +77,7 @@ export default function Page() {
           <div className="w-[88%] flex flex-col items-start mt-10">
             <Label htmlFor="freshjobs" className="text-[48px] text-error-white font-bold mb-4 underline">Fresh Jobs:</Label>
             <div id="freshjobs" className="w-full flex justify-center">
-              <JobPostingCarousel/>
+              <JobPostingCarousel jobs={freshJobs}/>
             </div>
           </div>
 
@@ -64,7 +85,7 @@ export default function Page() {
           <div className="w-[88%] flex flex-col items-start mt-10">
             <Label htmlFor="popularjobs" className="text-[48px] text-error-white font-bold mb-4 underline">Popular Jobs:</Label>
             <div id="popularjobs" className="w-full flex justify-center">
-              <JobPostingCarousel/>
+              <JobPostingCarousel jobs={[1,2,3,4,5,6,7,8,9,10]} />
             </div>
           </div>
         </div>

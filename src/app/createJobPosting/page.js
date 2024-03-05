@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { collection, addDoc, doc, setDoc, serverTimestamp, documentId, updateDoc } from "firebase/firestore";
+import { collection, addDoc, doc, serverTimestamp, updateDoc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { getAuth } from "firebase/auth";
 import { Car } from 'lucide-react'
@@ -47,15 +47,18 @@ export default function jobPostingEmployer() {
         console.log("All fields are required");
         return;
       }
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      const userData = userDoc.data()
       const docRef = await addDoc(collection(db, "jobPostings"), {
-        jobPosterId: user.uid,
-        jobTitle: job.title,
-        jobDescription: job.description,
-        jobRate: job.rate,
-        jobSkills: job.skills,
-        jobDaysToDeliver: job.daysDeliver,
+        companyId: user.uid,
+        companyName: userData.companyName,
+        title: job.title,
+        description: job.description,
+        rate: job.rate,
+        skills: job.skills.split(", "),
+        daysToDeliver: job.daysDeliver,
         postedDate: serverTimestamp(),
-        jobLocation: job.jobLocation,
+        location: job.jobLocation,
       });
       await updateDoc(docRef, {
         jobId: docRef.id,
