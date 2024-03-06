@@ -74,6 +74,7 @@ export default function JobPostingEmployer() {
       daysToDeliver: job.daysToDeliver,
       postedDate: serverTimestamp(),
       location: job.jobLocation,
+      numberOfBids: 0,
     });
 
     await updateDoc(docRef, {

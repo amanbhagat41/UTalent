@@ -120,7 +120,7 @@ export default function page({ params }) {
                     ) : role === "Student" ? (
                         <div className="flex justify-center pt-5">
                             <Link
-                                href="/placebidStudent"
+                                href={`/bids/${job.jobId}`}
                                 legacyBehavior
                                 passHref
                             >

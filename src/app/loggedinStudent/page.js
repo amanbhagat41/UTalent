@@ -15,6 +15,8 @@ import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 import SearchWithQuickFilters from '@/components/ui/SearchWithQuickFilters'; 
 export default function Page() {
   const [freshJobs, setFreshJobs] = useState([]);
+  const [popularJobs, setPopularJobs] = useState([])
+
   useEffect(()=> {
     const fetchJobs = async () => {
       const q = query(collection(db, "jobPostings"), orderBy("postedDate", "desc"), limit(10))
@@ -26,6 +28,19 @@ export default function Page() {
       setFreshJobs(jobsData)
     }
     fetchJobs()
+  },[]);
+
+  useEffect(()=> {
+    const fetchPopularJobs = async () => {
+      const q = query(collection(db, "jobPostings"), orderBy("numberOfBids", "desc"), limit(10))
+      const jobDoc = await getDocs(q);
+      const jobsData = []
+      jobDoc.forEach((doc) => {
+        jobsData.push(doc.data())
+      })
+      setPopularJobs(jobsData)
+    }
+    fetchPopularJobs()
   },[]);
   return (
     <>
@@ -81,7 +96,7 @@ export default function Page() {
           <div className="w-[88%] flex flex-col items-start mt-10">
             <Label htmlFor="popularjobs" className="text-[48px] text-error-white font-bold mb-4 underline">Popular Jobs:</Label>
             <div id="popularjobs" className="w-full flex justify-center">
-              <JobPostingCarousel jobs={[1,2,3,4,5,6,7,8,9,10]}/>
+              <JobPostingCarousel jobs={popularJobs}/>
             </div>
           </div>
         </div>
