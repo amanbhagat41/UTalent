@@ -114,8 +114,16 @@ export default function JobPostingEmployer() {
             editorState={editorState}
             onEditorStateChange={handleEditorChange}
             wrapperClassName="wrapper-class"
-            editorClassName="editor-class"
+            editorClassName="editor-class p-2"
             toolbarClassName="toolbar-class"
+            toolbar={{
+              options: ['inline', 'list', 'textAlign'], // Specify the options you want
+              inline: { inDropdown: false },
+              list: { inDropdown: false },
+              textAlign: { inDropdown: false },
+              link: { inDropdown: true },
+              // Note: By omitting 'emoji', 'image', and other options, they will not be included in the toolbar
+            }}
           />
         </div>
         <div className="flex justify-center mt-12">
