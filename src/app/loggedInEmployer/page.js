@@ -19,7 +19,7 @@ export default function Page() {
 
 
   useEffect(()=> {
-    const fetchJobs = async () => {
+    const fetchFreshJobs = async () => {
       const q = query(collection(db, "jobPostings"), orderBy("postedDate", "desc"), limit(10))
       const jobDoc = await getDocs(q);
       const jobsData = []
@@ -28,7 +28,7 @@ export default function Page() {
       })
       setFreshJobs(jobsData)
     }
-    fetchJobs()
+    fetchFreshJobs()
   },[]);
   
   return (
