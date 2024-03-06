@@ -1,11 +1,11 @@
 import React from "react";
-import { NavigationMenuDemo } from "@/components/navhomepage";
+import { NavigationMenuDemo } from "@/components/navbar/navhomepage";
 import Image from "next/image";
 import logo from "../../public/images/logo-no-bg.png";
 import { CarouselDemo } from "@/components/carousel";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { NavigationMenuDemoFooter } from "@/components/navfooter";
+import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 
 export default function Page() {
   return (

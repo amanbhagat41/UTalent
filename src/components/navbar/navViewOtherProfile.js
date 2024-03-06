@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ModeToggle } from "./toggle";
+import { ModeToggle } from "../toggle";
 import { cn } from "@/lib/utils";
 
 import {
@@ -53,31 +53,18 @@ const components = [
   },
 ];
 
-function NavigationMenuEmployerLoggedIn() {
+function ViewProfileNavBar() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
             <ModeToggle></ModeToggle>
         </NavigationMenuItem>
+        
         <NavigationMenuItem>
-          <Link href="/jobViewingEmployer" legacyBehavior passHref>
+          <Link href="/about" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              VIEW JOBS
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/createJobPosting" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              POST JOB
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/employerProfile" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              PROFILE
+              ABOUT
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -110,4 +97,4 @@ const ListItem = React.forwardRef(
   }
 );
 ListItem.displayName = "ListItem";
-export { NavigationMenuEmployerLoggedIn };
+export { ViewProfileNavBar };

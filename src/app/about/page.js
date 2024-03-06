@@ -1,6 +1,6 @@
 import React from "react";
 
-import { NavigationMenuStudentLoggedIn } from "@/components/navloggedinStudent";
+import { NavigationMenuStudentLoggedIn } from "@/components/navbar/navloggedinStudent";
 import Image from "next/image";
 import logo from "../../../public/images/logo-no-bg.png";
 import section1 from "../../../public/images/about/Section1Picture.png";
@@ -14,7 +14,7 @@ import specializework from "../../../public/images/about/specializedWorkLogo.png
 import reliablework from "../../../public/images/about/reliableWorkLogo.png"
 import earlyinvestment from "../../../public/images/about/earlyInvestmentLogo.png"
 import banner from "../../../public/images/about/university-massachusetts-lowell.jpg"
-import { NavigationMenuDemoFooter } from "@/components/navfooter";
+import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 export default function Page() {
   return (
     <><div className="dark:bg-error-black">

@@ -1,6 +1,6 @@
 import React from 'react';
-import { TestingDemo } from '@/components/jobPostCard';
-import { NavigationMenuStudentLoggedIn } from "@/components/navloggedinStudent";
+import { TestingDemo } from '@/components/job-posting/jobPostCard';
+import { NavigationMenuStudentLoggedIn } from "@/components/navbar/navloggedinStudent";
 import Image from "next/image";
 import logo from "../../../public/images/logo-no-bg.png";
 import { Label } from "@/components/ui/label"
@@ -15,7 +15,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
-import { NavigationMenuDemoFooter } from "@/components/navfooter";
+import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 
 export default function Page() {
   

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ModeToggle } from "./toggle";
+import { ModeToggle } from "../toggle";
 import { cn } from "@/lib/utils";
 
 import {
@@ -57,22 +57,25 @@ function NavigationMenuDemo() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-			<NavigationMenuItem>
-			<Link href="/post-job" legacyBehavior passHref>
-				<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-				Post Job
-				</NavigationMenuLink>
-			</Link>
-			</NavigationMenuItem>
-			<NavigationMenuItem>
-			<Link href="/profile" legacyBehavior passHref>
-				<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-				Profile
-				</NavigationMenuLink>
-			</Link>
-			</NavigationMenuItem>
-    </NavigationMenuList>
-  </NavigationMenu>
+        <NavigationMenuItem>
+            <ModeToggle></ModeToggle>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/createJobPosting" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Post Job
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/employerProfile" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Profile
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 }
 

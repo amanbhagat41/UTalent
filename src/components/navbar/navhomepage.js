@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ModeToggle } from "./toggle";
+import { ModeToggle } from "../toggle";
 import { cn } from "@/lib/utils";
 
 import {
@@ -53,7 +53,7 @@ const components = [
   },
 ];
 
-function NavigationMenuStudentLoggedIn() {
+function NavigationMenuDemo() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -61,26 +61,27 @@ function NavigationMenuStudentLoggedIn() {
             <ModeToggle></ModeToggle>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              BIDS
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
           <Link href="/about" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              ABOUT
+              About
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/userProfile" legacyBehavior passHref>
+          <Link href="/login" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              PROFILE
+              Login
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/student-employersignup" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Create Account
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        
       </NavigationMenuList>
     </NavigationMenu>
   );
@@ -110,4 +111,4 @@ const ListItem = React.forwardRef(
   }
 );
 ListItem.displayName = "ListItem";
-export { NavigationMenuStudentLoggedIn };
+export { NavigationMenuDemo };

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ModeToggle } from "./toggle";
+import { ModeToggle } from "../toggle";
 import { cn } from "@/lib/utils";
 
 import {
@@ -53,23 +53,26 @@ const components = [
   },
 ];
 
-function ViewProfileNavBar() {
+function NavigationMenuDemo() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem>
-            <ModeToggle></ModeToggle>
-        </NavigationMenuItem>
-        
-        <NavigationMenuItem>
-          <Link href="/about" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              ABOUT
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+			<NavigationMenuItem>
+			<Link href="/post-job" legacyBehavior passHref>
+				<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+				Post Job
+				</NavigationMenuLink>
+			</Link>
+			</NavigationMenuItem>
+			<NavigationMenuItem>
+			<Link href="/profile" legacyBehavior passHref>
+				<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+				Profile
+				</NavigationMenuLink>
+			</Link>
+			</NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>
   );
 }
 
@@ -97,4 +100,4 @@ const ListItem = React.forwardRef(
   }
 );
 ListItem.displayName = "ListItem";
-export { ViewProfileNavBar };
+export { NavigationMenuDemo };

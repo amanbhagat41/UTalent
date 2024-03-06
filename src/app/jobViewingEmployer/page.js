@@ -1,12 +1,12 @@
 import React from "react";
-import { NavigationMenuDemo } from "@/components/navjobviewingemployer";
+import { NavigationMenuDemo } from "@/components/navbar/navjobviewingemployer";
 import Image from "next/image";
 import logo from "../../../public/images/logo-no-bg.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { NavigationMenuDemoFooter } from "@/components/navfooter";
+import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 
 export default function JobViewingEmployer() {
   return (

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ModeToggle } from "./toggle";
+import { ModeToggle } from "../toggle";
 import { cn } from "@/lib/utils";
 
 import {
@@ -53,7 +53,7 @@ const components = [
   },
 ];
 
-function NavigationMenuDemo() {
+function NavigationMenuEmployerLoggedIn() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -61,23 +61,23 @@ function NavigationMenuDemo() {
             <ModeToggle></ModeToggle>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/login" legacyBehavior passHref>
+          <Link href="/jobViewingEmployer" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Bids
+              VIEW JOBS
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/about" legacyBehavior passHref>
+          <Link href="/createJobPosting" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              About
+              POST JOB
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/viewProfile" legacyBehavior passHref>
+          <Link href="/employerProfile" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Profile
+              PROFILE
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -110,4 +110,4 @@ const ListItem = React.forwardRef(
   }
 );
 ListItem.displayName = "ListItem";
-export { NavigationMenuDemo };
+export { NavigationMenuEmployerLoggedIn };

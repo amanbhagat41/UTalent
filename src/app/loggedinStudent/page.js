@@ -2,16 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 
-import { NavigationMenuStudentLoggedIn } from "@/components/navloggedinStudent";
+import { NavigationMenuStudentLoggedIn } from "@/components/navbar/navloggedinStudent";
 import Image from "next/image";
 import logo from "../../../public/images/logo-no-bg.png";
 import { collection, getDocs, limit, orderBy ,query} from "firebase/firestore";
 import { db } from "../../firebase";
 
 import { CarouselDemo } from "@/components/carousel";
-import { JobPostingCarousel } from "@/components/jobPostingCarousel";
+import { JobPostingCarousel } from "@/components/job-posting/jobPostingCarousel";
 import { Label } from "@/components/ui/label";
-import { NavigationMenuDemoFooter } from "@/components/navfooter";
+import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 import SearchWithQuickFilters from '@/components/ui/SearchWithQuickFilters'; 
 export default function Page() {
   const [freshJobs, setFreshJobs] = useState([]);
