@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { NavigationMenuStudentLoggedIn } from "@/components/navbar/navloggedinStudent";
+import { NavigationMenuEmployerLoggedIn } from "@/components/navbar/navloggedinEmployer";
 import { NavigationMenuDemo } from "@/components/navbar/navJobPostingEmployer";
 import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 import { Button } from "@/components/ui/button";
@@ -67,8 +69,18 @@ export default function page({ params }) {
                                 alt="logo"
                             ></Image>
                         </div>
+                        
                         <div className="flex justify-end flex-grow ">
-                            <NavigationMenuDemo />
+                        {role === null ? (
+    
+                                <Loader2 className="animate-spin" />
+                         
+                    ) : role === "Student" ? (
+                        <NavigationMenuStudentLoggedIn/>
+                    ) : (
+                        <NavigationMenuEmployerLoggedIn />
+                    )}
+                            
                         </div>
                         <div className="w-10 h-10"></div>
                     </div>
@@ -108,7 +120,7 @@ export default function page({ params }) {
                     ) : role === "Student" ? (
                         <div className="flex justify-center pt-5">
                             <Link
-                                href="/student-employersignup"
+                                href="/placebidStudent"
                                 legacyBehavior
                                 passHref
                             >
