@@ -57,7 +57,7 @@ export default function page({ params }) {
 
     return (
         <>
-            <div className="flex flex-col h-[1662px]z dark:bg-[#222]">
+            <div className="flex flex-col height-full dark:bg-[#222]">
                 {/*Header*/}
                 <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
                     <div className="flex items-center justify-between h-full">
@@ -143,17 +143,12 @@ export default function page({ params }) {
                         </div>
                     )}
                 </div>
-
-                <div>
-                    <footer className="bg-error-100 h-20 w-full stickey bottom-0 mt-24 dark:bg-error-black ">
-                        {/*Footer*/}
+                <div className="flex flex-end">
+                    <footer className="h-20 w-full bottom-0 relative dark:bg-error-black bg-error-reallyDarkBlue">
                         <div className="flex items-center justify-between h-full">
-                            <h4 className="text-2xl text-error-200 ml-8">
-                                UTalent
-                            </h4>
-                            {/* <h4 className="flex justify-end flex-grow"></h4> */}
-                            <div className="flex justify-end flex-grow mr-10  ">
-                                <NavigationMenuDemoFooter></NavigationMenuDemoFooter>
+                            <h4 className="text-3xl text-error-200 ml-8 font-extrabold">UTalent</h4>
+                            <div className="flex justify-end flex-grow mr-10">
+                             <NavigationMenuDemoFooter></NavigationMenuDemoFooter>
                             </div>
                         </div>
                     </footer>
