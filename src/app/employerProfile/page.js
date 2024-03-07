@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Head from 'next/head';
-import Image from "next/image";
 import logo from "../../../public/images/logo-no-bg.png";
 import {LoggedInUserProfileNav} from "@/components/loggedInUserProfileNav";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -11,12 +10,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { db, auth } from "../../firebase";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { doc, getDoc, updateDoc,collection } from "firebase/firestore";
+import {  collection, addDoc, doc, serverTimestamp, getDoc, updateDoc  } from "firebase/firestore";
 import { onAuthStateChanged, getAuth, signOut, updateEmail } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import Link from 'next/link';
+import { useToast } from "@/components/ui/use-toast"
+import { Timer } from "lucide-react";
+
 
 export default function Page() {
+    const { toast } = useToast()
     const MAX_WORDS = 100;
     const [image, setImage] = useState(null);
     const [profileImageUrl, setProfileImageUrl] = useState('https://github.com/shadcn.png'); // Default or placeholder image
@@ -90,35 +92,85 @@ export default function Page() {
     
     const handleImageChange = (e) => {
         if (e.target.files[0]) {
-          setImage(e.target.files[0]);
+            const file = e.target.files[0];
+            const validTypes = ['image/jpeg', 'image/png'];
+    
+            // Check if the file type is valid
+            if (!validTypes.includes(file.type)) {
+                toast({
+                    variant: "destructive",
+                    title: "Only PNG and JPG images are allowed.",
+                })
+                return;
+            }
+    
+            // Use FileReader to read the file
+            const reader = new FileReader();
+            reader.onloadend = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    // Check if the image size is 512x512
+                    if (img.width === 512 && img.height === 512) {
+                        setImage(file);
+                    } else {
+                        toast({
+                            variant: "destructive",
+                            title: "Image must be 512px by 512px.",
+                        })
+                    }
+                };
+                img.onerror = () => {
+                    toast({
+                        variant: "destructive",
+                        title: "There was an error loading the image.",
+                    })
+                };
+                img.src = reader.result;
+            };
+            reader.onerror = () => {
+                toast({
+                    variant: "destructive",
+                    title: "There was an error reading the file.",
+                })
+            };
+            reader.readAsDataURL(file);
         }
-      };
+    };
     
     const handleUpload = async () => {
-    if (!image) return;
-    const storage = getStorage();
-    const storageRef = ref(storage, `profileImages/${user.uid}`); // Create a reference to 'profileImages/USER_ID'
-    
-    try {
-        // Upload the file and metadata
-        const snapshot = await uploadBytes(storageRef, image);
+        if (!image) return;
+        const storage = getStorage();
+        const storageRef = ref(storage, `profileImages/${user.uid}`); // Create a reference to 'profileImages/USER_ID'
         
-        // Get the URL of the uploaded file
-        const url = await getDownloadURL(snapshot.ref);
+        try {
+            // Upload the file and metadata
+            const snapshot = await uploadBytes(storageRef, image);
+            
+            // Get the URL of the uploaded file
+            const url = await getDownloadURL(snapshot.ref);
 
-        // Save the URL to Firestore under the user's document
-        const userRef = doc(db, "users", user.uid);
-        await updateDoc(userRef, {
-        profileImageUrl: url,
-        });
-        setProfileImageUrl(url);
-        console.log('Uploaded a file!');
-    } catch (error) {
-        console.error("Error uploading image: ", error);
-    }
-};
+            // Save the URL to Firestore under the user's document
+            const userRef = doc(db, "users", user.uid);
+            await updateDoc(userRef, {
+            profileImageUrl: url,
+            });
+            setProfileImageUrl(url);
+            toast({
+                variant: "success",
+                title: "Profile Picture Updated",
+            })
+            console.log('Uploaded a file!');
+        } catch (error) {
+            console.error("Error uploading image: ", error);
+            toast({
+                variant: "destructive",
+                title: "Error uploading image",
+            })
+        }
+    };
     const goBackToUserProfile = () => {
-        router.push("/employerProfile")
+        
+        
     }
     const handlePageChange = ()=> {
         const docRef = collection(db, "users");
@@ -160,9 +212,17 @@ export default function Page() {
         try {
             await updateDoc(doc(db, "users", userDetails.uid), formDetails); // Submit new values from formDetails
             setUserDetails(formDetails); // Update userDetails to reflect changes
-            console.log("Profile updated successfully.");
+            toast({
+                variant: "success",
+                title: "Profile Updated Successfully.",
+            })
+            console.log("Profile Updated Successfully.");
             // Optional: Redirect or perform additional actions here
         } catch (error) {
+            toast({
+                variant: "destructive",
+                title: "Profile Update Failed",
+            })
             console.error("Error updating profile:", error);
         }
     };
@@ -170,6 +230,10 @@ export default function Page() {
         signOut(auth).then(() => {
         // Sign-out successful.
             router.push("/");
+            toast({
+                variant: "success",
+                title: "Signed Out Successfully",
+            })
             console.log("Signed out successfully")
         }).catch((error) => {
         // An error happened.
@@ -185,7 +249,7 @@ export default function Page() {
         
         <div className="flex items-center justify-between h-full">
           <div>
-            <Image src={logo} onClick={handlePageChange} width="150" height="150" alt="logo" style={{ cursor: 'pointer' }} />
+            <img src={logo} onClick={handlePageChange} width="150" height="150" alt="logo" style={{ cursor: 'pointer' }} />
           </div>
           <div className="flex justify-end flex-grow">
             <LoggedInUserProfileNav />
@@ -273,7 +337,8 @@ export default function Page() {
                                             About Me: ({wordsRemaining} words remaining)
                                         </Label>
                                         <textarea className="h-56 border-2 border-error-black dark:bg-error-darkGray pl-3" name="bio" value={formDetails.bio} onChange={handleAboutMeChange} />
-                                        <Button type="submit" onClick={goBackToUserProfile}>Save Changes</Button>
+
+                                        <Button type="submit" onClick={(goBackToUserProfile)}>Save Changes</Button>
                                     </form>
                                     <div className="grid grid-cols-1">
                                         <div className="mt-12">

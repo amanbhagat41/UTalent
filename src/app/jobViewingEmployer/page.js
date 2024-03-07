@@ -1,73 +1,74 @@
-import React from "react";
-import { NavigationMenuDemo } from "@/components/navbar/navjobviewingemployer";
+import React from 'react';
+import { ViewJobPostCard } from '@/components/job-posting/viewJobPostCard';
+import { NavViewJobPostingsEmployerLoggedIn } from '@/components/navbar/navViewJobPostings';
 import Image from "next/image";
 import logo from "../../../public/images/logo-no-bg.png";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label"
+
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
+
 import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 
-export default function JobViewingEmployer() {
+export default function Page() {
+  
   return (
-    <div>
-    <div className="flex flex-col h-[1662px]z dark:bg-error-white">
-      <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-white">
-        <div className="flex items-center justify-between h-full">
-          <div>
-            <Image src={logo} width="150" height="150" alt="logo"></Image>
-          </div>
-          <div className="flex justify-end flex-grow ">
-            <NavigationMenuDemo />
-          </div>
-          <div className="w-10 h-10"></div>
-        </div>
-      </nav>
-      </div>
+    <>
+    <div className="dark:bg-error-black">
 
-  <div className="w-full h-screen dark:bg-error-black">
-    <div className="grid grid-cols-2 h-full">
-    <div className="col-end-2">
-      <div className="col-end-2 w-full md:w-1/2 h-full">
-        <div className="flex items-center justify-left ml-8 bg-neutral-500">
-            <div className="bg-white p-8 rounded-lg shadow-lg ">
-                  <div className="mb-4">
-                  <h1 className="uppercase text-[1.5vw] mb-4">Filter By:</h1>
-                  <label htmlFor="fixed-price-min" className="block text-sm font-medium text-gray-700">Fixed Price</label>
-                  <div className="mt-4 flex rounded-md shadow-sm">
-                  <input type="number" name="fixed-price-min" id="fixed-price-min" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-4 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="Min">
-                  </input>
-                      <h1 className="inline-flex items-center px-3  text-sm text-gray-500">
+    
+      <div className="flex flex-col justify-between min-h-screen dark:bg-black">
+        <nav className="bg-error-100 dark:bg-error-black h-20 sticky top-0 z-40 dark:bg-black">
+          <div className="flex items-center justify-between h-full">
+            <div>
+              <Image src={logo} width="150" height="150" alt="logo"></Image>
+            </div>
+            <div className="flex justify-end flex-grow">
+              <NavViewJobPostingsEmployerLoggedIn />
+            </div>
+            <div className="w-10 h-10"></div>
+          </div>
+        </nav>
+
+        
+        <div class="container mx-auto px-4 py-8 mt-10 dark:bg-error-black">
+          <Label htmlFor="filter" className="text-4xl underline">Your Posted Jobs:</Label>
+          <div id="filter" class="flex flex-wrap -mx-4 mt-10">
+            {/*!-- Filter Column --*/}
+            <div class="w-full md:w-1/4 px-4 mb-4 md:mb-0 rounded-lg">
+              <div class="bg-white p-4 shadow-lg rounded-lg dark:bg-error-darkGray">
+                <h2 class="font-bold text-lg mb-4">Filters</h2>
+                {/*!-- Filters content here --*/}
+                  <div className='mb-8'>
+                    <label htmlFor="hourly-rate-min" className="block text-sm font-medium text-gray-700">Hourly Rate</label>
+                    <div className="mt-1 flex rounded-md shadow-sm">
+                      <input type="number" name="hourly-rate-min" id="hourly-rate-min" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-4 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="Min"></input>
+                      <span className="inline-flex items-center px-3  text-sm text-gray-500">
                         to
-                      </h1>
-                      <input type="number" name="fixed-price-max" id="fixed-price-max" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-4 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="Max">
-                      </input>
+                      </span>
+                      <input type="number" name="hourly-rate-max" id="hourly-rate-max" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-4 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="Max"></input>
+                    </div>
                   </div>
 
-                <div className="mb-4">
-                  <label htmlFor="hourly-rate-min" className="block text-sm font-medium text-gray-700">Hourly Rate</label>
-                  <div className="mt-1 flex rounded-md shadow-sm">
-                    <input type="number" name="hourly-rate-min" id="hourly-rate-min" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-4 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="Min"></input>
-                    <span className="inline-flex items-center px-3  text-sm text-gray-500">
-                      to
-                    </span>
-                    <input type="number" name="hourly-rate-max" id="hourly-rate-max" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-4 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="Max"></input>
+                  <div className='mb-8'>
+                    <label htmlFor="duration" className="block text-sm font-medium text-gray-700">Duration</label>
+                    <select id="duration" name="duration" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                      <option>Less than 1 week</option>
+                      <option>1-2 weeks</option>
+                      <option>2-3 weeks</option>
+                      <option>3-4 weeks</option>
+                      <option>1-2 months</option>
+                      <option>3+ months</option>
+                    </select>
                   </div>
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="duration" className="block text-sm font-medium text-gray-700">Duration</label>
-                  <select id="duration" name="duration" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                    <option>Less than 1 week</option>
-                    <option>1-2 weeks</option>
-                    <option>2-3 weeks</option>
-                    <option>3-4 weeks</option>
-                    <option>1-2 months</option>
-                    <option>3+ months</option>
-                  </select>
-                </div>
-
-                <div className="mb-4">
+                  <div className="mb-8">
                   <fieldset>
                     <legend className="text-sm font-medium text-gray-700">Type</legend>
                     <div className="mt-4 space-y-4">
@@ -96,62 +97,71 @@ export default function JobViewingEmployer() {
                 </div>
               </div>
             </div>
-          </div>
-          </div>
-        </div>
-        <div className="flex flex-col space-y-4 mr-8">
-          <div className="bg-white p-4 rounded-lg shadow-lg">
-            
-            <h3 className="text-lg font-semibold">Innovative Coin-Based Engagement App</h3>
-            <span className="text-sm text-gray-600 mt-2">0 bids</span>
-            <p className="text-sm text-gray-600 mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisi cras fermentum odio eu. Duis at tellus at urna condimentum mattis pellentesque id nibh. Placerat orci nulla pellentesque dignissim enim sit. Ullamcorper eget nulla facilisi etiam dignissim. Faucibus in ornare quam viverra. Nulla at volutpat diam ut. Elementum integer enim neque volutpat ac. Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Posuere morbi leo urna molestie at elementum eu facilisis sed. Nunc consequat interdum varius sit.
-            </p>
-            <div className="flex items-baseline mt-2">
-              <span className="text-gray-900 font-semibold">$8-15</span>
-              <span className="text-sm text-gray-600 ml-2">/ hr</span>
-            </div>
-          </div>
-          <div>
-          <div className="bg-white p-4 rounded-lg shadow-lg">
-            <h3 className="text-lg font-semibold">Dynamic Residential Listings Portal</h3>
-            <span className="text-sm text-gray-600 mt-2">6 bids</span>
-            <p className="text-sm text-gray-600 mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisi cras fermentum odio eu. Duis at tellus at urna condimentum mattis pellentesque id nibh. Placerat orci nulla pellentesque dignissim enim sit. Ullamcorper eget nulla facilisi etiam dignissim. Faucibus in ornare quam viverra. Nulla at volutpat diam ut. Elementum integer enim neque volutpat ac. Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Posuere morbi leo urna molestie at elementum eu facilisis sed. Nunc consequat interdum varius sit.
-            </p>
-            <div className="flex items-baseline mt-2">
-              <span className="text-gray-900 font-semibold">$300-$500</span>
-            </div>
-          </div>
 
-          <div className="bg-white p-4 rounded-lg shadow-lg">
-            <h3 className="text-lg font-semibold">E-commerce Website and Logo Design</h3>
-            <span className="text-sm text-gray-600 mt-2">2 bids</span>
-            <p className="text-sm text-gray-600 mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisi cras fermentum odio eu. Duis at tellus at urna condimentum mattis pellentesque id nibh. Placerat orci nulla pellentesque dignissim enim sit. Ullamcorper eget nulla facilisi etiam dignissim. Faucibus in ornare quam viverra. Nulla at volutpat diam ut. Elementum integer enim neque volutpat ac. Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Posuere morbi leo urna molestie at elementum eu facilisis sed. Nunc consequat interdum varius sit.
-            </p>
-            <div className="flex items-baseline mt-2">
-              <span className="text-gray-900 font-semibold">$30-$40</span>
+            <div class="w-full md:w-3/4 px-4">
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious href="#" />
+                </PaginationItem>
+
+                <PaginationItem>
+                  <PaginationLink href="#" isActive>1</PaginationLink>
+                </PaginationItem>
+
+                <PaginationItem>
+                  <PaginationLink href="#">2</PaginationLink>
+                </PaginationItem>
+
+                <PaginationItem>
+                  <PaginationLink href="#">3</PaginationLink>
+                </PaginationItem>
+
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+
+                <PaginationItem>
+                  <PaginationLink href="#">9</PaginationLink>
+                </PaginationItem>
+
+                <PaginationItem>
+                  <PaginationNext href="#" />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+
+              {/*!-- Cards Container --*/}
+              <div class="grid grid-cols-1 gap-y-9">
+                <ViewJobPostCard/>
+                <ViewJobPostCard/>
+                <ViewJobPostCard/>
+                <ViewJobPostCard/>
+                <ViewJobPostCard/>
+                <ViewJobPostCard/>
+                <ViewJobPostCard/>
+                <ViewJobPostCard/>
+                <ViewJobPostCard/>
+                <ViewJobPostCard/>
+
+              </div>
             </div>
           </div>
         </div>
-        </div>
-      </div>
-      
-      <div>
-        <footer className="bg-error-100 h-20 w-full stickey left-0 bottom-0 mt-24 dark:bg-error-white">
-        <div className="flex items-center justify-between h-full">
-          <h4 className="text-2xl text-error-200 ml-8">UTalent</h4>
-          {/* <h4 className="flex justify-end flex-grow"></h4> */}
-          <div className="flex justify-end flex-grow mr-10  ">
-          <NavigationMenuDemoFooter ></NavigationMenuDemoFooter>
-          </div>
+
+
+
+
+        <footer className="h-20 w-full dark:bg-error-black bg-error-reallyDarkBlue">
+          <div className="flex items-center justify-between h-full">
+            <h4 className="text-3xl text-error-200 ml-8 font-extrabold">UTalent</h4>
+            <div className="flex justify-end flex-grow mr-10">
+              <NavigationMenuDemoFooter />
+            </div>
           </div>
         </footer>
       </div>
-    
-  </div>
-  </div>
-
-  )
+      </div>
+    </>
+  );
 }

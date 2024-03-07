@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "@/components/ui/Toaster";
 
 export const metadata = {
   title: "Create Next App",
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
           >
             {children}
           </ThemeProvider>
+          <Toaster />
         </body>
       </html>
     </>
