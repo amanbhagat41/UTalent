@@ -42,8 +42,8 @@ module.exports = {
           foreground: "hsl(var(--destructive-foreground))",
         },
         success: {
-          DEFAULT: "hsl(114, 85%, 50%)",
-          foreground: "hsl(305, 68%, 50%)",
+          DEFAULT: "hsl(114, 62%, 50%)",
+          foreground: "hsl(0, 0%, 0%)",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",

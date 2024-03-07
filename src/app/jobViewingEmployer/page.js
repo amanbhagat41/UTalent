@@ -21,6 +21,8 @@ import { collection, getDocs, limit, orderBy ,query,doc, getDoc, where} from "fi
 import { db } from "../../firebase";
 import {Loader2} from "lucide-react"
 
+
+
 export default function Page() {
   const [companyJobs, setCompanyJobs] = useState([]);
   const auth = getAuth();
