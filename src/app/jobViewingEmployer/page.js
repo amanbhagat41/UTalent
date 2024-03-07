@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { ViewJobPostCard } from '@/components/job-posting/viewJobPostCard';
 import { NavViewJobPostingsEmployerLoggedIn } from '@/components/navbar/navViewJobPostings';
 import Image from "next/image";
+import Link from "next/link";
 import logo from "../../../public/images/logo-no-bg.png";
 import { Label } from "@/components/ui/label"
 
@@ -79,8 +80,9 @@ if(companyJobs === null || userUid === null){
         <nav className="bg-error-100 dark:bg-error-black h-20 sticky top-0 z-40 dark:bg-black">
           <div className="flex items-center justify-between h-full">
             <div>
-              <Image src={logo} width="150" height="150" alt="logo"></Image>
-            </div>
+            <Link href="/loggedInEmployer" legacyBehavior passHref>
+              <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
+            </Link>            </div>
             <div className="flex justify-end flex-grow">
               <NavViewJobPostingsEmployerLoggedIn />
             </div>
@@ -150,7 +152,7 @@ if(companyJobs === null || userUid === null){
             </div>
 
             <div className="w-full md:w-3/4 px-4">
-            <Pagination>
+            <Pagination className="mb-8">
               <PaginationContent>
                 <PaginationItem>
                   <PaginationPrevious href="#" />

@@ -73,7 +73,7 @@ export default function page({ params }) {
         router.push("/loggedinStudent");
     };
     return (
-        <body className="bg-error-darkBlue  dark:bg-error-black dark:border-1">
+        <div className="bg-error-darkBlue  dark:bg-error-black dark:border-1">
             <div className="flex justify-center items-center min-h-screen">
                 <Card className="w-auto h-auto rounded-[24px]  dark:bg-error-black dark:border-1 dark:border-error-white dark:shadow-glow">
                     <CardHeader>
@@ -153,6 +153,6 @@ export default function page({ params }) {
                     </CardFooter>
                 </Card>
             </div>
-        </body>
+        </div>
     );
 }

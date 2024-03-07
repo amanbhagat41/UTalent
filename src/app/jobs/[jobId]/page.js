@@ -82,12 +82,9 @@ export default function page({ params }) {
                 <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
                     <div className="flex items-center justify-between h-full">
                         <div>
-                            <Image
-                                src={logo}
-                                width="150"
-                                height="150"
-                                alt="logo"
-                            ></Image>
+                        <Link href="/loggedInEmployer" legacyBehavior passHref>
+                            <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
+                        </Link>
                         </div>
                         
                         <div className="flex justify-end flex-grow ">
@@ -140,7 +137,7 @@ export default function page({ params }) {
                         ) : role === "Student" ? (
                             <div className="flex justify-center pt-5">
                                 <Link href={`/bids/${job.jobId}`} legacyBehavior passHref>
-                                    <Button className="bg-error-300 rounded-3xl hover:bg-error-100 text-lg h-12 mt-8 dark:text-[#FFFFFF]">
+                                    <Button className="bg-error-300 rounded-3xl hover:bg-error-100 text-lg w-36 mb-8 h-12 mt-8 dark:text-[#FFFFFF]">
                                         Bid
                                     </Button>
                                 </Link>
