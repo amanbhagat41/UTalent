@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useState, useEffect } from "react";
 import { ViewJobPostCard } from '@/components/job-posting/viewJobPostCard';
 import { NavViewJobPostingsEmployerLoggedIn } from '@/components/navbar/navViewJobPostings';
 import Image from "next/image";
@@ -14,11 +15,59 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
-
+import { getAuth, onAuthStateChanged} from "firebase/auth";
 import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
+import { collection, getDocs, limit, orderBy ,query,doc, getDoc, where} from "firebase/firestore";
+import { db } from "../../firebase";
+import {Loader2} from "lucide-react"
 
 export default function Page() {
-  
+  const [companyJobs, setCompanyJobs] = useState([]);
+  const auth = getAuth();
+  const [userUid, setUserUid] = useState(null);
+  const user = auth.currentUser
+ 
+
+  useEffect(() => {
+    const fetchUserUid = onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const uid = user.uid;
+            const userRef = doc(db, "users", uid);
+            getDoc(userRef).then((docSnap) => {
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+                    setUserUid(userData.uid); // Set fetched data into userDetails
+                } else {
+                    console.log("No such document!");
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+        }
+    });
+    return () => fetchUserUid();
+}, []);
+
+useEffect(()=> {
+  const fetchCompanyJobs = async () => {
+    if (userUid) {
+      const q = query(collection(db, "jobPostings"),where("companyId", "==", userUid),orderBy("postedDate", "desc"),limit(10));
+      const jobDoc = await getDocs(q);
+      const jobsData = []
+      jobDoc.forEach((doc) => {
+        jobsData.push(doc.data())
+      })
+      setCompanyJobs(jobsData)
+    }
+  }
+  fetchCompanyJobs()
+},[userUid]);
+
+if(companyJobs === null || userUid === null){
+  return(
+      <Loader2 className="animate-spin"></Loader2>
+  )
+}
   return (
     <>
     <div className="dark:bg-error-black">
@@ -38,13 +87,13 @@ export default function Page() {
         </nav>
 
         
-        <div class="container mx-auto px-4 py-8 mt-10 dark:bg-error-black">
+        <div className="container mx-auto px-4 py-8 mt-10 dark:bg-error-black">
           <Label htmlFor="filter" className="text-4xl underline">Your Posted Jobs:</Label>
-          <div id="filter" class="flex flex-wrap -mx-4 mt-10">
+          <div id="filter" className="flex flex-wrap -mx-4 mt-10">
             {/*!-- Filter Column --*/}
-            <div class="w-full md:w-1/4 px-4 mb-4 md:mb-0 rounded-lg">
-              <div class="bg-white p-4 shadow-lg rounded-lg dark:bg-error-darkGray">
-                <h2 class="font-bold text-lg mb-4">Filters</h2>
+            <div className="w-full md:w-1/4 px-4 mb-4 md:mb-0 rounded-lg">
+              <div className="bg-white p-4 shadow-lg rounded-lg dark:bg-error-darkGray">
+                <h2 className="font-bold text-lg mb-4">Filters</h2>
                 {/*!-- Filters content here --*/}
                   <div className='mb-8'>
                     <label htmlFor="hourly-rate-min" className="block text-sm font-medium text-gray-700">Hourly Rate</label>
@@ -98,7 +147,7 @@ export default function Page() {
               </div>
             </div>
 
-            <div class="w-full md:w-3/4 px-4">
+            <div className="w-full md:w-3/4 px-4">
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
@@ -132,18 +181,8 @@ export default function Page() {
             </Pagination>
 
               {/*!-- Cards Container --*/}
-              <div class="grid grid-cols-1 gap-y-9">
-                <ViewJobPostCard/>
-                <ViewJobPostCard/>
-                <ViewJobPostCard/>
-                <ViewJobPostCard/>
-                <ViewJobPostCard/>
-                <ViewJobPostCard/>
-                <ViewJobPostCard/>
-                <ViewJobPostCard/>
-                <ViewJobPostCard/>
-                <ViewJobPostCard/>
-
+              <div className="grid grid-cols-1 gap-y-9">
+                <ViewJobPostCard  jobs={companyJobs} />
               </div>
             </div>
           </div>

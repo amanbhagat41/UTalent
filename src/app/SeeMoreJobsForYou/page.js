@@ -38,18 +38,18 @@ export default function Page() {
         </nav>
 
         
-        <div class="container mx-auto px-4 py-8 mt-10 dark:bg-error-black">
+        <div className="container mx-auto px-4 py-8 mt-10 dark:bg-error-black">
           <Label htmlFor="filter" className="text-4xl underline">Jobs For You:</Label>
-          <div id="filter" class="flex flex-wrap -mx-4 mt-10">
+          <div id="filter" className="flex flex-wrap -mx-4 mt-10">
             {/*!-- Filter Column --*/}
-            <div class="w-full md:w-1/4 px-4 mb-4 md:mb-0 rounded-lg ">
-              <div class="bg-white p-4 shadow-lg rounded-lg dark:bg-error-darkGray">
-                <h2 class="font-bold text-lg mb-4">Filters</h2>
+            <div className="w-full md:w-1/4 px-4 mb-4 md:mb-0 rounded-lg ">
+              <div className="bg-white p-4 shadow-lg rounded-lg dark:bg-error-darkGray">
+                <h2 className="font-bold text-lg mb-4">Filters</h2>
                 {/*!-- Filters content here --*/}
               </div>
             </div>
 
-            <div class="w-full md:w-3/4 px-4">
+            <div className="w-full md:w-3/4 px-4">
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
@@ -83,7 +83,7 @@ export default function Page() {
             </Pagination>
 
               {/*!-- Cards Container --*/}
-              <div class="grid grid-cols-1 gap-y-9">
+              <div className="grid grid-cols-1 gap-y-9">
                 <TestingDemo />
                 <TestingDemo />
                 <TestingDemo />
