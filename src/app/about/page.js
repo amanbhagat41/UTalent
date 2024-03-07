@@ -3,6 +3,7 @@ import React from "react";
 import { NavigationMenuStudentLoggedIn } from "@/components/navbar/navloggedinStudent";
 import Image from "next/image";
 import logo from "../../../public/images/logo-no-bg.png";
+import Link from "next/link";
 import section1 from "../../../public/images/about/Section1Picture.png";
 import section2 from "../../../public/images/about/Section2Picture.png";
 import section3 from "../../../public/images/about/Section3Picture.png";
@@ -22,7 +23,9 @@ export default function Page() {
         <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
           <div className="flex items-center justify-between h-full">
             <div>
-              <Image src={logo} width="150" height="150" alt="logo" ></Image>
+            <Link href="/loggedInEmployer" legacyBehavior passHref>
+              <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
+            </Link>
             </div>
             <div className="flex justify-end flex-grow">
               <NavigationMenuStudentLoggedIn />
@@ -120,7 +123,7 @@ export default function Page() {
         <div></div>
       </div>
 
-      <footer className="h-20 w-full sticky bottom-0 dark:bg-error-black bg-error-reallyDarkBlue">
+      <footer className="h-20 w-full relative bottom-0 dark:bg-error-black bg-error-reallyDarkBlue">
           <div className="flex items-center justify-between h-full">
             <h4 className="text-3xl text-error-200 ml-8 font-extrabold">UTalent</h4>
             <div className="flex justify-end flex-grow mr-10">

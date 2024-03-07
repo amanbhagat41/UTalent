@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Head from 'next/head';
+import Image from "next/image";
+import Link from "next/link";
 import logo from "../../../public/images/logo-no-bg.png";
 import {LoggedInUserProfileNav} from "@/components/loggedInUserProfileNav";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -242,18 +244,21 @@ export default function Page() {
   return (
     <>
     <div className="dark:bg-error-black h-auto">
-        <Head>
-            <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
-        </Head>
-        <nav className="bg-error-100 h-[6vh] sticky top-0 z-40 dark:bg-error-black">
+        <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
+          <div className="flex items-center justify-between h-full">
+            <div>
+            <Link href="/loggedInEmployer" legacyBehavior passHref>
+              <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
+            </Link>
+            </div>
+            <div className="flex justify-end flex-grow">
+              <LoggedInUserProfileNav />
+            </div>
+            <div className="w-10 h-10"></div>
+          </div>
+        </nav>
         
         <div className="flex items-center justify-between h-full">
-          <div>
-            <img src={logo} onClick={handlePageChange} width="150" height="150" alt="logo" style={{ cursor: 'pointer' }} />
-          </div>
-          <div className="flex justify-end flex-grow">
-            <LoggedInUserProfileNav />
-          </div>
           <div className="w-10 h-10"></div>
         </div>
         <div className="w-full h-screen dark:bg-error-black">
@@ -353,9 +358,7 @@ export default function Page() {
                 </div>
             </div>
         </div>
-        
-      </nav>
-      </div>
+    </div>
     </>
   );
 }
