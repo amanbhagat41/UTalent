@@ -98,7 +98,7 @@ export default function login() {
                                     name="email"
                                     value={user.email}
                                     onChange={onInputChange}
-                                    className="border border-gray-400 border-opacity-35 rounded-xl text-center h-8 w-full"
+                                    className="border border-gray-400 border-opacity-35 rounded-xl text-left pl-2 h-8 w-full"
                                 />
                             </div>
                             <label
@@ -114,7 +114,7 @@ export default function login() {
                                     name="password"
                                     value={user.password}
                                     onChange={onInputChange}
-                                    className="border border-gray-400 border-opacity-35 rounded-xl text-center h-8 w-full"
+                                    className="border border-gray-400 border-opacity-35 rounded-xl text-left pl-2 h-8 w-full"
                                 />
                             </div>
                             <div className="pt-10 pl-10 flex justify-center">
