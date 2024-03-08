@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Head from 'next/head';
-import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../public/images/logo-no-bg.png";
 import {LoggedInUserProfileNav} from "@/components/loggedInUserProfileNav";
@@ -248,7 +247,7 @@ export default function Page() {
           <div className="flex items-center justify-between h-full">
             <div>
             <Link href="/loggedInEmployer" legacyBehavior passHref>
-              <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
+              <img src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></img>
             </Link>
             </div>
             <div className="flex justify-end flex-grow">
