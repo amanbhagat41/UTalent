@@ -24,10 +24,18 @@ import {Loader2} from "lucide-react"
 
 
 export default function Page() {
+  const itemsPerPage = 5;
+
   const [companyJobs, setCompanyJobs] = useState([]);
   const auth = getAuth();
   const [userUid, setUserUid] = useState(null);
   const user = auth.currentUser
+  
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(itemsPerPage);
+  const [pageIndex, setPageIndex] = useState(1);
+  const [totalJobs, setTotalJobs] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
  
 
   useEffect(() => {
@@ -53,13 +61,16 @@ export default function Page() {
 useEffect(()=> {
   const fetchCompanyJobs = async () => {
     if (userUid) {
-      const q = query(collection(db, "jobPostings"),where("companyId", "==", userUid),orderBy("postedDate", "desc"),limit(10));
+      const q = query(collection(db, "jobPostings"),where("companyId", "==", userUid),orderBy("postedDate", "desc"));
       const jobDoc = await getDocs(q);
       const jobsData = []
       jobDoc.forEach((doc) => {
         jobsData.push(doc.data())
       })
       setCompanyJobs(jobsData)
+      setTotalJobs(jobsData.length)
+      
+      
     }
   }
   fetchCompanyJobs()
@@ -89,7 +100,7 @@ if(companyJobs === null || userUid === null){
         </nav>
 
         
-        <div className="container mx-auto px-4 py-8 mt-10 dark:bg-error-black">
+        <div className="container mx-auto px-4 py-8 mt-10 dark:bg-error-black min-h-full">
           <Label htmlFor="filter" className="text-4xl underline">Your Posted Jobs:</Label>
           <div id="filter" className="flex flex-wrap -mx-4 mt-10">
             {/*!-- Filter Column --*/}
@@ -153,38 +164,40 @@ if(companyJobs === null || userUid === null){
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
-                  <PaginationPrevious href="#" />
+                  <PaginationPrevious
+                    className={startIndex === 0 ? "pointer-events-none opacity-50" : undefined
+                    }
+                    onClick={() => {
+                      setStartIndex(startIndex - itemsPerPage);
+                      setEndIndex(endIndex - itemsPerPage);
+                      setPageIndex(pageIndex - 1)
+                      setTotalPages(Math.ceil(totalJobs / itemsPerPage))
+                    }}
+                  />
                 </PaginationItem>
-
+                <PaginationContent>
+                  <PaginationItem>
+                    {pageIndex} of {totalPages}
+                  </PaginationItem>
+                </PaginationContent>
                 <PaginationItem>
-                  <PaginationLink href="#" isActive>1</PaginationLink>
-                </PaginationItem>
-
-                <PaginationItem>
-                  <PaginationLink href="#">2</PaginationLink>
-                </PaginationItem>
-
-                <PaginationItem>
-                  <PaginationLink href="#">3</PaginationLink>
-                </PaginationItem>
-
-                <PaginationItem>
-                  <PaginationEllipsis />
-                </PaginationItem>
-
-                <PaginationItem>
-                  <PaginationLink href="#">9</PaginationLink>
-                </PaginationItem>
-
-                <PaginationItem>
-                  <PaginationNext href="#" />
+                  <PaginationNext
+                    className={pageIndex === totalPages ? "pointer-events-none opacity-50" : undefined
+                    }
+                    onClick={() => {
+                      setStartIndex(startIndex + itemsPerPage);
+                      setEndIndex(endIndex + itemsPerPage);
+                      setPageIndex(pageIndex + 1)
+                      setTotalPages(Math.ceil(totalJobs / itemsPerPage))
+                    }}
+                  />
                 </PaginationItem>
               </PaginationContent>
             </Pagination>
 
               {/*!-- Cards Container --*/}
               <div className="grid grid-cols-1 gap-y-9">
-                <ViewJobPostCard  jobs={companyJobs} />
+                <ViewJobPostCard  jobs={companyJobs} startIndex={startIndex} endIndex={endIndex}/>
               </div>
             </div>
           </div>

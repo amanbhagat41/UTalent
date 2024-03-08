@@ -14,11 +14,11 @@ import Link from "next/link";
   
 
 
-  export function ViewJobPostCard({ jobs, index }) {
+  export function ViewJobPostCard({ jobs, index , startIndex, endIndex}) {
     const [isHovered, setIsHovered] = useState(false);
     return (
       <>
-    {jobs.map((job, index) => (
+    {jobs.slice(startIndex, endIndex).map((job, index) => (
       <div key={index}>
       <Card className="w-full h-[300px] dark:text-error-white dark:bg-error-darkGray dark:border-1 dark:border-error-white bg-error-white hover:bg-error-hoveredGray transition duration-150 ease-in-out" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <div style={{ display: 'flex', width: '100%' }}>
