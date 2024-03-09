@@ -15,7 +15,6 @@ import {  collection, addDoc, doc, serverTimestamp, getDoc, updateDoc  } from "f
 import { onAuthStateChanged, getAuth, signOut, updateEmail } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast"
-import { Timer } from "lucide-react";
 
 
 export default function Page() {

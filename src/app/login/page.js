@@ -8,7 +8,7 @@ import logoDark from "../../../public/images/logo-no-bg.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { db } from "../../firebase";
 import { collection, getDoc, doc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
@@ -18,6 +18,7 @@ import { Label } from "@radix-ui/react-dropdown-menu";
 
 
 export default function login() {
+    const { toast } = useToast()
     const { theme, setTheme } = useTheme();
     const router = useRouter();
     const auth = getAuth();
@@ -25,6 +26,29 @@ export default function login() {
         email: "",
         password: "",
     });
+    const onForgotPassword = () => {
+        const email = prompt('Please enter your email address:');
+        if (email) {
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    // Password reset email sent!
+                    toast({
+                        variant: "success",
+                        title: "Password reset email sent!",
+                        description: "Please check your email to reset your password.",
+                    })
+                    //alert('Please check your email to reset your password.');
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                    alert(errorMessage);
+                });
+        } else {
+            alert('Email address is required.');
+        }
+    };
     const onInputChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
@@ -91,7 +115,6 @@ export default function login() {
                                     style={{ width: "auto", height: "auto" }}
                                 />
                             </div>
-                            
                             <div className="flex flex-col p-4 gap-4">
                                 <h1 className="text-center text-3xl font-bold">Welcome back to UTalent!</h1>
                                 <h2 className="text-center">With an innovative platform such as this one, we look to help and aid students in their endeavors.</h2>
@@ -105,7 +128,7 @@ export default function login() {
                                             value={user.email}
                                             onChange={onInputChange}
                                             placeholder="   Enter your email address"
-                                            className="w-full h-12 border-2 border-error-darkGray text-error-white rounded-sm"
+                                            className="w-full h-12 border-2 border-error-darkGray dark:text-error-white rounded-sm"
                                         ></input>
                                         <label htmlFor="password" className="font-bold">Password</label>
                                         <input 
@@ -115,14 +138,13 @@ export default function login() {
                                             value={user.password}
                                             onChange={onInputChange}
                                             placeholder="   Enter your password"
-                                            className="w-full h-12 border-2 border-error-darkGray text-error-white rounded-sm"
+                                            className="w-full h-12 border-2 border-error-darkGray dark:text-error-white rounded-sm"
                                         ></input>
                                         <div className="mt-4 flex justify-center ">
                                             <Button
                                                 type="submit"
                                                 id="login"
                                                 className="transition ease-in-out delay-150 bg-error-300 hover:bg-error-100 duration-300 text-error-white rounded-sm text-lg h-12 w-full "
-                                                
                                             >
                                                 Sign in
                                             </Button>
@@ -136,9 +158,7 @@ export default function login() {
                                             </Link>
                                         </div>
                                         <div className="text-sm gap-1">
-                                            <Link href="/null" legacyBehavior passHref>
-                                                <a className="text-error-darkPink underline">Forgot Password</a>
-                                            </Link>
+                                            <a href="#" onClick={onForgotPassword} className="text-error-darkPink underline">Forgot Password</a>
                                         </div>
                                     </div>
                                 </div>
