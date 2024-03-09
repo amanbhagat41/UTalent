@@ -99,6 +99,7 @@ module.exports = {
         lightGreen: '#1efa1e',
         red: '#fc2c03',
         darkRed: '#a61d02',
+        reallyDarkGray: '#171717',
       }
     },
   },

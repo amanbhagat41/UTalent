@@ -74,8 +74,12 @@ useEffect(()=> {
     }
   }
   fetchCompanyJobs()
+  
 },[userUid]);
 
+useEffect (()=> {
+  setTotalPages(Math.ceil(totalJobs / itemsPerPage))
+})
 if(companyJobs === null || userUid === null){
   return(
       <Loader2 className="animate-spin"></Loader2>
@@ -171,7 +175,7 @@ if(companyJobs === null || userUid === null){
                       setStartIndex(startIndex - itemsPerPage);
                       setEndIndex(endIndex - itemsPerPage);
                       setPageIndex(pageIndex - 1)
-                      setTotalPages(Math.ceil(totalJobs / itemsPerPage))
+                      
                     }}
                   />
                 </PaginationItem>
@@ -188,7 +192,7 @@ if(companyJobs === null || userUid === null){
                       setStartIndex(startIndex + itemsPerPage);
                       setEndIndex(endIndex + itemsPerPage);
                       setPageIndex(pageIndex + 1)
-                      setTotalPages(Math.ceil(totalJobs / itemsPerPage))
+                      
                     }}
                   />
                 </PaginationItem>

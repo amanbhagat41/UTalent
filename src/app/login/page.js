@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import studentBid from "../../../public/images/studentbidding.webp"
 import logo from "../../../public/images/UTalent-DarkBlue.png";
 import logoDark from "../../../public/images/logo-no-bg.png";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ import { collection, getDoc, doc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useToast } from "@/components/ui/use-toast"
+import { Label } from "@radix-ui/react-dropdown-menu";
 
 
 export default function login() {
@@ -75,68 +77,74 @@ export default function login() {
     return (
         <div className="bg-error-100 dark:bg-error-black">
             <div className="flex items-center justify-center h-screen">
-                <div className="bg-error-200 dark:bg-error-black dark:outline dark:outline-offset-2 dark:outline-white-500 dark:shadow-[0_4px_36px_16px_rgba(255,255,255,0.25)] w-10/12 md:w-6/12 h-4/6 rounded-3xl">
-                    <h1 className="pt-20 text-2xl pl-10 dark:text-error-200">
-                        Login
-                    </h1>
-                    <div className="pl-10 text-sm">
-                        Don't Have An Account?{" "}
-                        <Link href="/student-employersignup" legacyBehavior passHref>
-                            <a className="text-error-darkPink">Signup</a>
-                        </Link>
-                    </div>
-                    <div className="flex flex-col md:flex-row">
-                        <form
-                            onSubmit={onLoginSubmit}
-                            className="w-full md:w-1/2 pt-8"
-                        >
-                            <label htmlFor="email" className=" pt-10 pl-10">
-                                Email
-                            </label>
-                            <div className="flex pl-10">
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={user.email}
-                                    onChange={onInputChange}
-                                    className="border border-gray-400 border-opacity-35 rounded-xl text-left pl-2 h-8 w-full"
+                <div className="bg-error-200 dark:bg-error-black dark:outline dark:outline-offset-2 dark:outline-white-500 dark:shadow-[0_4px_36px_16px_rgba(255,255,255,0.25)] w-10/12 md:w-6/12 h-4/6 rounded-3xl overflow-hidden">
+                    <div className="grid grid-cols-2 w-full h-full">
+                        
+                        <div className="flex flex-col p-4 justify-center">
+                            <div className="flex w-full justify-center">
+                                <Image
+                                    src={theme === "dark" ? logoDark : logo}
+                                    width="150"
+                                    height="150"
+                                    alt="logo"
+                                    priority
+                                    style={{ width: "auto", height: "auto" }}
                                 />
                             </div>
-                            <label
-                                htmlFor="password"
-                                className="flex pt-4 pl-10"
-                            >
-                                Password
-                            </label>
-                            <div className="pl-10 min-w-fit">
-                                <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    value={user.password}
-                                    onChange={onInputChange}
-                                    className="border border-gray-400 border-opacity-35 rounded-xl text-left pl-2 h-8 w-full"
-                                />
+                            
+                            <div className="flex flex-col p-4 gap-4">
+                                <h1 className="text-center text-3xl font-bold">Welcome back to UTalent!</h1>
+                                <h2 className="text-center">With an innovative platform such as this one, we look to help and aid students in their endeavors.</h2>
+                                <div className="flex flex-col w-full h-auto gap-2">
+                                    <form onSubmit={onLoginSubmit} >
+                                        <label htmlFor="email" className="font-bold">Email address</label>
+                                        <input 
+                                            type="email"
+                                            id = "email"
+                                            name = "email"
+                                            value={user.email}
+                                            onChange={onInputChange}
+                                            placeholder="   Enter your email address"
+                                            className="w-full h-12 border-2 border-error-darkGray text-error-white rounded-sm"
+                                        ></input>
+                                        <label htmlFor="password" className="font-bold">Password</label>
+                                        <input 
+                                            type="password"
+                                            id = "password"
+                                            name = "password"
+                                            value={user.password}
+                                            onChange={onInputChange}
+                                            placeholder="   Enter your password"
+                                            className="w-full h-12 border-2 border-error-darkGray text-error-white rounded-sm"
+                                        ></input>
+                                        <div className="mt-4 flex justify-center ">
+                                            <Button
+                                                type="submit"
+                                                id="login"
+                                                className="transition ease-in-out delay-150 bg-error-300 hover:bg-error-100 duration-300 rounded-sm  text-lg h-12 w-full "
+                                                
+                                            >
+                                                Sign in
+                                            </Button>
+                                        </div>
+                                    </form>
+                                    <div className="flex justify-center text-sm gap-1">
+                                        Don't Have An Account?{" "}
+                                        <Link href="/student-employersignup" legacyBehavior passHref>
+                                            <a className="text-error-darkPink underline">Signup</a>
+                                        </Link>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="pt-10 pl-10 flex justify-center">
-                                <Button
-                                    type="submit"
-                                    id="login"
-                                    className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12"
-                                >
-                                    Login
-                                </Button>
-                            </div>
-                        </form>
-                        <div className="flex justify-center md:justify-end items-start w-full md:w-1/2">
+                        </div>
+                        <div className="relative flex ml-2 w-full h-full"> {/* Adjust the w-1/2 to control the width of the image container */}
                             <Image
-                                src={theme === "dark" ? logoDark : logo}
-                                width="350"
-                                height="350"
+                                src={studentBid}
                                 alt="logo"
                                 priority
-                                style={{ width: "auto", height: "auto" }}
+                                layout="fill"
+                                objectFit="cover" // Use "contain" to ensure the image fits within the container without cropping
+                                className="rounded-br-3xl rounded-tr-3xl"
                             />
                         </div>
                     </div>

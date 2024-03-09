@@ -85,7 +85,6 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555; /* Light thumb hover */
 }
-
 /* Dark Mode Scrollbar Styles */
 .dark ::-webkit-scrollbar-track {
   background: #333333; /* Dark background */
