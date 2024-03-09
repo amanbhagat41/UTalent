@@ -121,18 +121,25 @@ export default function login() {
                                             <Button
                                                 type="submit"
                                                 id="login"
-                                                className="transition ease-in-out delay-150 bg-error-300 hover:bg-error-100 duration-300 rounded-sm  text-lg h-12 w-full "
+                                                className="transition ease-in-out delay-150 bg-error-300 hover:bg-error-100 duration-300 text-error-white rounded-sm text-lg h-12 w-full "
                                                 
                                             >
                                                 Sign in
                                             </Button>
                                         </div>
                                     </form>
-                                    <div className="flex justify-center text-sm gap-1">
-                                        Don't Have An Account?{" "}
-                                        <Link href="/student-employersignup" legacyBehavior passHref>
-                                            <a className="text-error-darkPink underline">Signup</a>
-                                        </Link>
+                                    <div className="flex justify-between">
+                                        <div className="text-sm gap-1">
+                                            Don't Have An Account?{" "}
+                                            <Link href="/student-employersignup" legacyBehavior passHref>
+                                                <a className="text-error-darkPink underline">Signup</a>
+                                            </Link>
+                                        </div>
+                                        <div className="text-sm gap-1">
+                                            <Link href="/null" legacyBehavior passHref>
+                                                <a className="text-error-darkPink underline">Forgot Password</a>
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

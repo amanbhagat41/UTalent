@@ -82,120 +82,103 @@ export default function signupStudent() {
     return (
         <div className="bg-error-100 dark:bg-error-black">
             <div className="flex items-center justify-center h-screen">
-                <div className="bg-error-200 dark:bg-error-black dark:outline dark:outline-offset-2 dark:outline-white-500 dark:shadow-[0_4px_36px_16px_rgba(255,255,255,0.25)] w-10/12 md:w-6/12 h-4/6 rounded-3xl">
-                    <h1 className="pt-20 text-2xl pl-10 dark:text-error-200">
-                        Create an Account
-                    </h1>
-                    <div className="flex flex-col md:flex-row">
-                        <form
-                            onSubmit={onSignUpSubmit}
-                            className="w-full md:w-1/2"
-                        >
-                            <label
-                                htmlFor="cFirstName"
-                                className=" pt-10 pl-10"
-                            >
-                                First Name
-                            </label>
-                            <label
-                                htmlFor="cLastName"
-                                className="pt-4 pl-10 md:pl-36"
-                            >
-                                Last Name
-                            </label>
-                            <div className="flex pl-10">
-                                <input
-                                    type="text"
-                                    id="FirstName"
-                                    name="firstName"
-                                    value={user.firstName}
-                                    onChange={onInputChange}
-                                    className="border border-gray-400 border-opacity-35 rounded-xl text-center h-8 w-full md:w-2/3 mr-10"
-                                />
-                                <input
-                                    type="text"
-                                    id="cLastName"
-                                    name="lastName"
-                                    value={user.lastName}
-                                    onChange={onInputChange}
-                                    className="border border-gray-400 border-opacity-35 rounded-xl text-center h-8 w-full md:w-2/3 mr-10"
-                                />
+                <div className="bg-error-200 dark:bg-error-black dark:outline dark:outline-offset-2 dark:outline-white-500 dark:shadow-[0_4px_36px_16px_rgba(255,255,255,0.25)] w-10/12 md:w-6/12 h-4/6 rounded-3xl overflow-hidden">
+                    <div className="grid grid-cols-2 w-full h-full">
+                        
+                        <div className="flex flex-col p-4 justify-center">
+                            <div className="flex flex-col p-4 gap-4">
+                                <h1 className="text-center text-3xl font-bold mb-8">Create an Account</h1>
+                                <form onSubmit={onSignUpSubmit} className="w-full">
+                                    <div className="flex justify-between gap-4">
+                                        <div className="flex-1">
+                                            <label htmlFor="FirstName" className="">
+                                                First Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="FirstName"
+                                                name="firstName"
+                                                value={user.firstName}
+                                                onChange={onInputChange}
+                                                className="border border-gray-400 rounded-sm h-8 w-full text-left"
+                                            />
+                                        </div>
+                                        <div className="flex-1">
+                                            <label htmlFor="cLastName" className="">
+                                                Last Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="cLastName"
+                                                name="lastName"
+                                                value={user.lastName}
+                                                onChange={onInputChange}
+                                                className="border border-gray-400 rounded-sm h-8 w-full text-left"
+                                            />
+                                        </div>
+                                    </div>  
+                                    <div className="mt-4">
+                                        <label htmlFor="cEmail" className="">
+                                            Email
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="cEmail"
+                                            name="email"
+                                            value={user.email}
+                                            onChange={onInputChange}
+                                            className="border border-gray-400 rounded-sm h-8 w-full text-left"
+                                        />
+                                    </div>
+                                    <div className="flex justify-between gap-4 mt-4">
+                                        <div className="flex-1">
+                                            <label htmlFor="cPassword" className="">
+                                                Password
+                                            </label>
+                                            <input
+                                                type="password"
+                                                id="cPassword"
+                                                name="password"
+                                                value={user.password}
+                                                onChange={onInputChange}
+                                                className="border border-gray-400 rounded-sm h-8 w-full text-left"
+                                            />
+                                        </div>
+                                        <div className="flex-1">
+                                            <label htmlFor="cConfirmPassword" className="">
+                                                Confirm Password
+                                            </label>
+                                            <input
+                                                type="password"
+                                                id="cConfirmPassword"
+                                                name="confirmPassword"
+                                                value={user.confirmPassword}
+                                                onChange={onInputChange}
+                                                className="border border-gray-400 rounded-sm h-8 w-full text-left"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="mt-8 flex justify-center ">
+                                            <Button
+                                                type="submit"
+                                                id="signUp"
+                                                className="transition ease-in-out delay-150 bg-error-300 hover:bg-error-100 duration-300 text-error-white rounded-sm text-lg h-12 w-full "
+                                                
+                                            >
+                                                Sign Up
+                                            </Button>
+                                    </div>
+                                </form>
                             </div>
-                            <label htmlFor="cEmail" className="flex pt-4 pl-10">
-                                Email
-                            </label>
-                            <div className="pl-10 min-w-fit">
-                                <input
-                                    type="email"
-                                    id="cEmail"
-                                    name="email"
-                                    value={user.email}
-                                    onChange={onInputChange}
-                                    className="border border-gray-400 border-opacity-35 rounded-xl text-center h-8 w-full"
-                                />
-                            </div>
-                            <div className="pt-4">
-                                <label
-                                    htmlFor="cPassword"
-                                    className="pt-6 pl-10"
-                                >
-                                    Password
-                                </label>
-                                <label
-                                    htmlFor="cConfirmPassword"
-                                    className="pt-4 pl-10 md:pl-36"
-                                >
-                                    Confirm Password
-                                </label>
-                                <div className="flex pl-10">
-                                    <input
-                                        type="password"
-                                        id="cPassword"
-                                        name="password"
-                                        value={user.password}
-                                        onChange={onInputChange}
-                                        className="border border-gray-400 border-opacity-35 rounded-xl text-center h-8 w-full md:w-2/3 mr-10"
-                                    />
-                                    <input
-                                        type="password"
-                                        id="cConfirmPassword"
-                                        name="confirmPassword"
-                                        value={user.confirmPassword}
-                                        onChange={onInputChange}
-                                        className="border border-gray-400 border-opacity-35 rounded-xl text-center h-8 w-full md:w-2/3"
-                                    />
-                                </div>
-                            </div>
-                            <div className="pt-10 pl-10 flex">
-                                <Button
-                                    type="submit"
-                                    id="signUp"
-                                    className="bg-error-300 rounded-2xl hover:bg-error-100 text-lg h-12 dark:text-error-200"
-                                >
-                                    Sign Up
-                                </Button>
-                            </div>
-                            <div>
-                                <div className="pl-10 text-sm pt-4">
-                                    Already have an account?{" "}
-                                    <Link
-                                        href="/login"
-                                        legacyBehavior
-                                        passHref
-                                        className="text-error-300"
-                                    >
-                                        Sign in
-                                    </Link>
-                                </div>
-                            </div>
-                        </form>
-                        <div className="flex justify-center md:justify-end items-start w-full md:w-1/2">
+                        </div>
+                        <div className="relative flex ml-2 w-full h-full"> {/* Adjust the w-1/2 to control the width of the image container */}
                             <Image
                                 src={theme === "dark" ? logoDark : logo}
-                                width="350"
-                                height="350"
                                 alt="logo"
                                 priority
+                                layout="fill"
+                                objectFit="contain" // Use "contain" to ensure the image fits within the container without cropping
+                                className="rounded-br-3xl rounded-tr-3xl"
                             />
                         </div>
                     </div>
