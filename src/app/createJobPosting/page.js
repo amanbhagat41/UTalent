@@ -84,7 +84,7 @@ export default function JobPostingEmployer() {
     router.push('/loggedInEmployer');
   };
   return (
-    <body className="bg-error-darkBlue dark:bg-error-black">
+    <div className="bg-error-darkBlue dark:bg-error-black">
       <div className="grid grid-flow-row w-[50%] h-full m-auto mt-12 p-6 rounded-xl bg-error-white border-separate border border-error-gray">
         <div className="border-b-[2px]">
           <Label htmlFor="titleBox" className="text-[16px]">Job Title</Label>
@@ -131,6 +131,6 @@ export default function JobPostingEmployer() {
           <button variant="outline" onClick={onJobPostingSubmit} className="bg-error-darkPink rounded-[32px] w-[20%] h-[64px] text-error-white text-[22px]">Post Job</button>
         </div>
       </div>
-    </body>
+    </div>
   );
 }

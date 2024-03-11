@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 
 import { NavigationMenuEmployerLoggedIn } from "@/components/navbar/navloggedinEmployer";
 import Image from "next/image";
-import Link from "next/link";
 import logo from "../../../public/images/logo-no-bg.png";
 
 import { CarouselDemo } from "@/components/carousel";
@@ -50,9 +49,7 @@ export default function Page() {
         <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
           <div className="flex items-center justify-between h-full">
             <div>
-            <Link href="/loggedInEmployer" legacyBehavior passHref>
-              <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
-            </Link>
+              <Image src={logo} width="150" height="150" alt="logo" ></Image>
             </div>
             <div className="flex justify-end flex-grow">
               <NavigationMenuEmployerLoggedIn />

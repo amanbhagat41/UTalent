@@ -187,16 +187,19 @@ export default function Page() {
         <Head>
             <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
         </Head>
-        <nav className="bg-error-100 h-[6vh] sticky top-0 z-40 dark:bg-error-black">
         
-        <div className="flex items-center justify-between h-full">
-          <div>
-            <Image src={logo} onClick={handlePageChange} width="150" height="150" alt="logo" style={{ cursor: 'pointer' }} />
+        <nav className="bg-error-100 dark:bg-error-black h-20 sticky top-0 z-40 dark:bg-black">
+          <div className="flex items-center justify-between h-full">
+            <div>
+            <Link href="/loggedinStudent" legacyBehavior passHref>
+              <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
+            </Link>            </div>
+            <div className="flex justify-end flex-grow">
+              <LoggedInUserProfileNav />
+            </div>
+            <div className="w-10 h-10"></div>
           </div>
-          <div className="flex justify-end flex-grow">
-            <LoggedInUserProfileNav />
-          </div>
-          <div className="w-10 h-10"></div>
+        </nav>
         </div>
         <div className="w-full h-screen dark:bg-error-black">
         <div className="grid grid-cols-2 h-full pt-12">
@@ -256,7 +259,7 @@ export default function Page() {
                                             <p className = "text-[1vw]" id="aboutMe">{userDetails.bio}</p>
                                         </div>
                                         <div className="flex items-center justify-center w-full">
-                                            <button type="button" onClick={handleLogout} className="border-2 border-error-black h-12 w-[50%] rounded-[12px] dark:bg-error-white dark:text-error-black">Sign Out</button>
+                                            <button type="button" onClick={handleLogout} className=" h-12 w-[50%] rounded-[12px] bg-error-red text-error-white">Sign Out</button>
                                         </div>
                                 </div>
                                 
@@ -309,9 +312,6 @@ export default function Page() {
                 </div>
             </div>
         </div>
-        
-      </nav>
-      </div>
     </>
   );
 }
