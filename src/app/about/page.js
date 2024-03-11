@@ -23,7 +23,8 @@ export default function Page() {
         <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
           <div className="flex items-center justify-between h-full">
             <div>
-            <Link href="/loggedInEmployer" legacyBehavior passHref>
+            <Link href="/aman" legacyBehavior passHref>
+              {/*AMAN FIX LINK BACK TO HOME PAGE FOR STUDENT AND EMPLOYER*/}
               <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
             </Link>
             </div>

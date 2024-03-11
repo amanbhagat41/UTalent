@@ -61,7 +61,7 @@ function NavigationMenuStudentLoggedIn() {
             <ModeToggle></ModeToggle>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="" legacyBehavior passHref>
+          <Link href="/bidViewingStudent" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               BIDS
             </NavigationMenuLink>

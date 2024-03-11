@@ -24,6 +24,7 @@ export default function Page() {
           <div className="flex items-center justify-between h-full">
             <div>
             <Link href="/loggedInEmployer" legacyBehavior passHref>
+              {/*AMAN FIX LINK BACK TO HOME PAGE FOR STUDENT AND EMPLOYER*/}
               <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
             </Link>
             </div>

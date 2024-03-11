@@ -15,13 +15,13 @@ import {  collection, addDoc, doc, serverTimestamp, getDoc, updateDoc  } from "f
 import { onAuthStateChanged, getAuth, signOut, updateEmail } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast"
-
+import fallBackImage from "../../../public/images/profile-user.png"
 
 export default function Page() {
     const { toast } = useToast()
     const MAX_WORDS = 100;
     const [image, setImage] = useState(null);
-    const [profileImageUrl, setProfileImageUrl] = useState('https://github.com/shadcn.png'); // Default or placeholder image
+    const [profileImageUrl, setProfileImageUrl] = useState('https://imgur.com/a/BigTsdO'); // Default or placeholder image
     const router = useRouter();
 
     const auth = getAuth();
@@ -84,7 +84,7 @@ export default function Page() {
             if (user) {
                 fetchUserProfileImageUrl(user.uid);
             } else {
-                setProfileImageUrl('https://github.com/shadcn.png'); // Reset to default on logout
+                setProfileImageUrl('https://imgur.com/a/BigTsdO'); // Reset to default on logout
             }
         });
         return () => unsubscribe();
@@ -266,7 +266,9 @@ export default function Page() {
                     <div className="w-[35vw] h-[35vw]">
                     <Avatar className="w-[10vw] h-[10vw] m-auto mt-16">
                         <AvatarImage src={profileImageUrl} />
-                        <AvatarFallback>CN</AvatarFallback>
+                        <AvatarFallback>
+                            <img src={fallBackImage}/>
+                        </AvatarFallback>
                     </Avatar>
                     <div className="grid grid-flow-row auto-rows-max justify-items-center mt-9 ">
                         <h1 id="fullName" className="font-semibold text-[1.5vw]">
