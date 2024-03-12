@@ -210,7 +210,7 @@ export default function Page() {
 
               {/*!-- Cards Container --*/}
               <div className="grid grid-cols-1 gap-y-9">
-                <ViewBidPostCard jobPostings={jobPost} bids={userBids} />
+                <ViewBidPostCard  bids={userBids} />
               </div>
             </div>
           </div>

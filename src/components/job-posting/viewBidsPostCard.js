@@ -11,12 +11,12 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 
-export function ViewBidPostCard({jobPostings,bids, index, startIndex,endIndex,}) {
+export function ViewBidPostCard({bids, index, startIndex,endIndex,}) {
     const [isHovered, setIsHovered] = useState(false);
     return (
         <>
-            {jobPostings.map((jobPosting, jobIndex) => (
-                <div key={jobIndex}>
+            {bids.map((bid, index) => (
+                <div key={index}>
                     <Card
                         className="w-full h-[300px] dark:text-error-white dark:bg-error-darkGray dark:border-1 dark:border-error-white bg-error-white hover:bg-error-hoveredGray transition duration-150 ease-in-out"
                         onMouseEnter={() => setIsHovered(true)}
@@ -25,40 +25,40 @@ export function ViewBidPostCard({jobPostings,bids, index, startIndex,endIndex,})
                         <div style={{ display: "flex", width: "100%" }}>
                             <div style={{ flexBasis: "80%" }}>
                                 <CardHeader>
-                                    <CardTitle>{jobPosting.title}</CardTitle>
+                                    <CardTitle>{bid.jobTitle}</CardTitle>
 
                                     <CardDescription>
-                                        {jobPosting.companyName}
+                                        {bid.jobCompanyName}
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent>
                                     <p className="line-clamp-3">
-                                        {jobPosting.description}
+                                        {bid.jobDescription}
                                     </p>
                                 </CardContent>
                                 <CardFooter className="grid grid-rows-2">
                                     <h1>
                                         Skills Required:{" "}
-                                        {jobPosting.skills.join(", ")}
+                                        {bid.jobSkills.join(", ")}
                                     </h1>
                                 </CardFooter>
                             </div>
                             <div style={{ flexBasis: "20%" }}>
                                 <div className="grid grid-rows-4 h-[80%] items-center justify-center">
                                     <div className="text-end text-2xl">
-                                        {jobPosting.numberOfBids}
+                                        {bid.jobNumberOfBids}
                                         <span className="ml-1 text-xl">
                                             Bids
                                         </span>
                                     </div>
                                     <div className="text-end text-xl text-error-red">
-                                        {jobPosting.daysToDeliver}
+                                        {bid.jobDaysToDeliver}
                                         <span className="ml-1 text-lg">
                                             Days to Deliver
                                         </span>
                                     </div>
                                     <Link
-                                        href={`/jobs/${jobPosting.jobId}`}
+                                        href={`/jobs/${bid.jobId}`}
                                         legacyBehavior
                                         passHref
                                     >
@@ -70,7 +70,7 @@ export function ViewBidPostCard({jobPostings,bids, index, startIndex,endIndex,})
                                             View Job
                                         </Button>
                                     </Link>
-                                    {bids.map((bid, jobIndex) => (
+                                
                                          <Link
                                          href={`/bidProposal/${bid.bidId}`}
                                          legacyBehavior
@@ -84,7 +84,7 @@ export function ViewBidPostCard({jobPostings,bids, index, startIndex,endIndex,})
                                         View Proposal
                                     </Button>
                                     </Link>
-                                     ))}
+                                    
                                 </div>
                             </div>
                         </div>

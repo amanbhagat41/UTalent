@@ -61,6 +61,11 @@ export default function page({ params }) {
             proposal: bid.bidProposal,
             jobId: job.jobId,
             userId: user.uid,
+            jobTitle: job.title,
+            jobDescription: job.description,
+            jobCompanyName: job.companyName,
+            jobSkills: job.skills,
+            jobDaysToDeliver: job.daysToDeliver,
         });
 
         await updateDoc(docRef, {
@@ -70,6 +75,9 @@ export default function page({ params }) {
         await updateDoc(jobRef, {
             numberOfBids: job.numberOfBids + 1,
         })
+        await updateDoc(docRef, {
+            jobNumberOfBids: job.numberOfBids,
+        });
         router.push("/loggedinStudent");
     };
     return (
