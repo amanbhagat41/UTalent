@@ -26,12 +26,12 @@ import {Loader2} from "lucide-react"
 
 
 export default function Page() {
-  const [jobId, setJobId] = useState(null);
+  const [jobId, setJobId] = useState([]);
   const [userBids, setUserBids] = useState([]);
   const auth = getAuth();
   const [userUid, setUserUid] = useState(null);
   const user = auth.currentUser
-
+  const [jobPost, setJobPost]= useState([])
 
   useEffect(() => {
     const fetchUserUid = onAuthStateChanged(auth, (user) => {
@@ -59,18 +59,40 @@ export default function Page() {
         const q = query(collection(db, "bids"), where("userId", "==", userUid));
         const jobDoc = await getDocs(q);
         const jobsData = []
+        const jobsId = []
         jobDoc.forEach((doc) => {
           const docData = doc.data()
+          jobsId.push(docData.jobId)
           jobsData.push(doc.data())
-          setJobId(docData.jobId)
+          
         })
-        
+        setJobId(jobsId)
         setUserBids(jobsData)
-        console.log(jobId)
       }
     }
     fetchUserBids()
   },[userUid]);
+
+
+  useEffect(()=> {
+    const fetchJobPost = async () => {
+      if (userUid && jobId.length > 0) {
+        const q = query(collection(db, "jobPostings"), where("jobId", "in", jobId));
+        const jobDoc = await getDocs(q);
+        const jobsData = []
+        jobDoc.forEach((doc) => {
+          const docData = doc.data()
+          jobsData.push(docData)
+        })
+        setJobPost(jobsData)
+      }
+    }
+    fetchJobPost()
+  },[userUid, jobId]);
+
+  useEffect(() => {
+    console.log(jobId);
+  }, [jobId]);
   return (
     <>
     <div className="dark:bg-error-black">
@@ -188,7 +210,7 @@ export default function Page() {
 
               {/*!-- Cards Container --*/}
               <div className="grid grid-cols-1 gap-y-9">
-                <ViewBidPostCard bids={userBids} />
+                <ViewBidPostCard jobPostings={jobPost} bids={userBids} />
               </div>
             </div>
           </div>
