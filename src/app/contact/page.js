@@ -1,5 +1,6 @@
-import React from "react";
+"use client";
 
+import React, { useEffect, useState } from "react";
 import { NavigationMenuStudentLoggedIn } from "@/components/navbar/navloggedinStudent";
 import Image from "next/image";
 import logo from "../../../public/images/logo-no-bg.png";
@@ -17,15 +18,101 @@ import reliablework from "../../../public/images/about/reliableWorkLogo.png"
 import earlyinvestment from "../../../public/images/about/earlyInvestmentLogo.png"
 import banner from "../../../public/images/about/university-massachusetts-lowell.jpg"
 import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
+import { db } from "../../firebase";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { Loader2 } from "lucide-react";
 export default function Page() {
+  const [role, setRole] = useState(null);
+  const [userUid, setUserUid] = useState(null);
+  const auth = getAuth();
+
+  useEffect(() => {
+      const fetchUserRole = onAuthStateChanged(auth, (user) => {
+          if (user) {
+              const uid = user.uid;
+              const userRef = doc(db, "users", uid);
+              getDoc(userRef)
+                  .then((docSnap) => {
+                      if (docSnap.exists()) {
+                          const userData = docSnap.data();
+                          setRole(userData.role); // Set fetched data into userDetails
+                      } else {
+                          console.log("No such document!");
+                      }
+                  })
+                  .catch((error) => {
+                      console.log("Error getting document:", error);
+                  });
+          }
+      });
+      return () => fetchUserRole();
+  }, []);
+  useEffect(() => {
+      const fetchUserUid = onAuthStateChanged(auth, (user) => {
+          if (user) {
+              const uid = user.uid;
+              const userRef = doc(db, "users", uid);
+              getDoc(userRef)
+                  .then((docSnap) => {
+                      if (docSnap.exists()) {
+                          const userData = docSnap.data();
+                          setUserUid(userData.uid); // Set fetched data into userDetails
+                      } else {
+                          console.log("No such document!");
+                      }
+                  })
+                  .catch((error) => {
+                      console.log("Error getting document:", error);
+                  });
+          }
+      });
+      return () => fetchUserUid();
+  }, []);
   return (
     <><div className="dark:bg-error-black">
         <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
           <div className="flex items-center justify-between h-full">
             <div>
-            <Link href="/loggedInEmployer" legacyBehavior passHref>
-              <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
-            </Link>
+            {role === null ? (
+                                    <Link href="/" legacyBehavior passHref>
+                                        <Image
+                                            src={logo}
+                                            width="150"
+                                            height="150"
+                                            alt="logo"
+                                            className="cursor-pointer"
+                                        ></Image>
+                                    </Link>
+                                ) : role === "Student" ? (
+                                    <Link
+                                        href="/loggedinStudent"
+                                        legacyBehavior
+                                        passHref
+                                    >
+                                        <Image
+                                            src={logo}
+                                            width="150"
+                                            height="150"
+                                            alt="logo"
+                                            className="cursor-pointer"
+                                        ></Image>
+                                    </Link>
+                                ) : (
+                                    <Link
+                                        href="/loggedInEmployer"
+                                        legacyBehavior
+                                        passHref
+                                    >
+                                        <Image
+                                            src={logo}
+                                            width="150"
+                                            height="150"
+                                            alt="logo"
+                                            className="cursor-pointer"
+                                        ></Image>
+                                    </Link>
+                                )}
             </div>
             <div className="flex justify-end flex-grow">
               <NavigationMenuStudentLoggedIn />
@@ -63,11 +150,11 @@ export default function Page() {
         <div className="w-[30vw] max-w-2xl h-[0.3vw] bg-error-300 rounded-lg mt-5"></div>
       </div>
 
-      <div>
+      {/* <div>
         <Link href="/loggedInEmployer" legacyBehavior passHref>
           <Image src={logo2} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
         </Link>
-      </div>
+      </div> */}
 
       <div className="grid grid-cols-5 mt-6 gap-16">
         <div></div>

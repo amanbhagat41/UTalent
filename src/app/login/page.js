@@ -128,7 +128,7 @@ export default function login() {
                                             value={user.email}
                                             onChange={onInputChange}
                                             placeholder="   Enter your email address"
-                                            className="w-full h-12 border-2 border-error-darkGray dark:text-error-white rounded-sm"
+                                            className="w-full h-12 border-2 pl-2 border-error-darkGray dark:text-error-white rounded-sm"
                                         ></input>
                                         <label htmlFor="password" className="font-bold">Password</label>
                                         <input 
@@ -138,7 +138,7 @@ export default function login() {
                                             value={user.password}
                                             onChange={onInputChange}
                                             placeholder="   Enter your password"
-                                            className="w-full h-12 border-2 border-error-darkGray dark:text-error-white rounded-sm"
+                                            className="w-full h-12 pl-2 border-2 border-error-darkGray dark:text-error-white rounded-sm"
                                         ></input>
                                         <div className="mt-4 flex justify-center ">
                                             <Button

@@ -61,6 +61,11 @@ export default function page({ params }) {
             proposal: bid.bidProposal,
             jobId: job.jobId,
             userId: user.uid,
+            jobTitle: job.title,
+            jobDescription: job.description,
+            jobCompanyName: job.companyName,
+            jobSkills: job.skills,
+            jobDaysToDeliver: job.daysToDeliver,
         });
 
         await updateDoc(docRef, {
@@ -70,12 +75,15 @@ export default function page({ params }) {
         await updateDoc(jobRef, {
             numberOfBids: job.numberOfBids + 1,
         })
+        await updateDoc(docRef, {
+            jobNumberOfBids: job.numberOfBids,
+        });
         router.push("/loggedinStudent");
     };
     return (
         <div className="bg-error-darkBlue  dark:bg-error-black dark:border-1">
             <div className="flex justify-center items-center min-h-screen">
-                <Card className="w-auto h-auto rounded-[24px]  dark:bg-error-black dark:border-1 dark:border-error-white dark:shadow-glow">
+                <Card className="w-auto h-auto rounded-[24px] my-24  dark:bg-error-black dark:border-1 dark:border-error-white dark:shadow-glow">
                     <CardHeader>
                         <Label
                             htmlFor="form"
