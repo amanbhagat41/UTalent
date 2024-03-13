@@ -12,15 +12,15 @@ import {
 import Link from "next/link";
 
 export function ViewBidPostCard({bids, index, startIndex,endIndex,}) {
-    const [isHovered, setIsHovered] = useState(false);
+    // const [isHovered, setIsHovered] = useState(false);
     return (
         <>
             {bids.map((bid, index) => (
                 <div key={index}>
                     <Card
                         className="w-full h-[300px] dark:text-error-white dark:bg-error-darkGray dark:border-1 dark:border-error-white bg-error-white hover:bg-error-hoveredGray transition duration-150 ease-in-out"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
+                        // onMouseEnter={() => setIsHovered(true)}
+                        // onMouseLeave={() => setIsHovered(false)}
                     >
                         <div style={{ display: "flex", width: "100%" }}>
                             <div style={{ flexBasis: "80%" }}>
@@ -63,10 +63,11 @@ export function ViewBidPostCard({bids, index, startIndex,endIndex,}) {
                                         passHref
                                     >
                                         <Button
-                                            className={`m-auto w-full bg-error-red hover:bg-error-darkRed ${
-                                                isHovered ? "block" : "hidden"
-                                            }`}
+                                            className={`m-auto w-full bg-error-red hover:bg-error-darkRed`}
                                         >
+                                        {/* ${
+                                        isHovered ? "block" : "hidden"
+                                        } */}
                                             View Job
                                         </Button>
                                     </Link>
@@ -77,10 +78,11 @@ export function ViewBidPostCard({bids, index, startIndex,endIndex,}) {
                                          passHref
                                      >
                                     <Button
-                                        className={`m-auto w-full bg-error-red hover:bg-error-darkRed ${
-                                            isHovered ? "block" : "hidden"
-                                        }`}
+                                        className={`m-auto w-full bg-error-red hover:bg-error-darkRed`}
                                     >
+                                        {/* ${
+                                        isHovered ? "block" : "hidden"
+                                        } */}
                                         View Proposal
                                     </Button>
                                     </Link>
