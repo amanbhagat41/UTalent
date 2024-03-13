@@ -83,7 +83,7 @@ export default function page({ params }) {
     return (
         <div className="bg-error-darkBlue  dark:bg-error-black dark:border-1">
             <div className="flex justify-center items-center min-h-screen">
-                <Card className="w-auto h-auto rounded-[24px]  dark:bg-error-black dark:border-1 dark:border-error-white dark:shadow-glow">
+                <Card className="w-auto h-auto rounded-[24px] my-24  dark:bg-error-black dark:border-1 dark:border-error-white dark:shadow-glow">
                     <CardHeader>
                         <Label
                             htmlFor="form"

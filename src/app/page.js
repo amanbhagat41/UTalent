@@ -15,7 +15,7 @@ export default function Page() {
           <div className="flex items-center justify-between h-full">
             <div>
             <Link href="/" legacyBehavior passHref>
-              <Image src={logo} width="150" height="150" alt="logo"></Image>
+              <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
             </Link>
             </div>
             <div className="flex justify-end flex-grow">
