@@ -26,8 +26,6 @@ export default function page({params}) {
     const {jobId}=params
     const [job, setJobId] = useState([]);
     const [candidate, setCandidate] = useState([])
-    const[userId, setUserId] = useState(null)
-    const [userBids, setUserBids] = useState([]);
     const auth = getAuth();
     const [userUid, setUserUid] = useState(null);
     const user = auth.currentUser
