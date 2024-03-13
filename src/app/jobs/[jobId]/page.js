@@ -179,7 +179,7 @@ export default function page({ params }) {
                             ) : role === "Employer" &&
                               userUid === job.companyId ? (
                                 <div className="flex justify-center pt-5">
-                                    <Link href="/null" legacyBehavior passHref>
+                                    <Link href={`/viewCandidates/${job.jobId}`} legacyBehavior passHref>
                                         <Button className="bg-error-300 rounded-3xl hover:bg-error-100 text-lg h-12 mt-8 dark:text-[#FFFFFF]">
                                             View Candidates
                                         </Button>
