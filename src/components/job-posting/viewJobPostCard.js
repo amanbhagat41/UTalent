@@ -50,9 +50,13 @@ import Link from "next/link";
               <Link href={`/jobs/${job.jobId}`}
                             legacyBehavior
                             passHref>
-                    <Button className={`m-auto w-full bg-error-red hover:bg-error-darkRed ${isHovered ? 'block' : 'hidden'}`}>View</Button>
+                    <Button className={`m-auto w-full bg-error-red hover:bg-error-darkRed ${isHovered ? 'block' : 'hidden'}`}>View Job</Button>
                 </Link>
-              
+                <Link href={`/viewCandidates/${job.jobId}`}
+                            legacyBehavior
+                            passHref>
+                    <Button className={`m-auto w-full bg-error-red hover:bg-error-darkRed ${isHovered ? 'block' : 'hidden'}`}>View Candidates</Button>
+                </Link>
             </div>
           </div>
         </div>
