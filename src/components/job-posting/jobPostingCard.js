@@ -1,5 +1,4 @@
-import * as React from "react";
-
+import React, { useEffect, useState } from "react";
 import {
     Card,
     CardContent,
@@ -10,8 +9,11 @@ import {
 } from "@/components/ui/card";
 import { Button } from "../ui/button";
 import Link from "next/link";
-// jobID array and use the index to differentiate between the job cards
-function JobPostingCard({ job, index }) {
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+export default function JobPostingCard({ job, index }){
+    const [profileImageUrl, setProfileImageUrl] = useState('https://github.com/shadcn.png');
+
     return (
         <Card className="w-[420px] h-[420px] dark:border-error-white dark:shadow-glow dark:bg-error-black rounded-3xl">
             <img
@@ -26,9 +28,15 @@ function JobPostingCard({ job, index }) {
                         <CardTitle className="text-2xl font-bold line-clamp-1 ">
                             {job.title}
                         </CardTitle>
+                        <div className="flex">
+                        <Avatar className=" mr-2 w-[1.9vw] h-[1.9vw]">
+                            <AvatarImage src={profileImageUrl} />
+                            <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
                         <h1 className="text-lg line-clamp-1">
                             {job.companyName}
                         </h1>
+                        </div>
                         <h2 className="text-base line-clamp-1">
                             {job.location}
                         </h2>
@@ -85,4 +93,3 @@ function JobPostingCard({ job, index }) {
         </Card>
     );
 }
-export default JobPostingCard;
