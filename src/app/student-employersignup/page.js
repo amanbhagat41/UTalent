@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 
-export default function studentemployersignup() {
+export default function StudentEmployerSignup() {
     const { theme, setTheme } = useTheme();
     return (
         <div className="bg-error-100 dark:bg-error-black">

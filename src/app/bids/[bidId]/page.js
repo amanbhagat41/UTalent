@@ -19,7 +19,7 @@ import {collection,addDoc,doc,getDoc,updateDoc,} from "firebase/firestore";
 import { db } from "../../../firebase";
 import { useRouter } from "next/navigation";
 
-export default function page({ params }) {
+export default function Page({ params }) {
     const router = useRouter();
     const auth = getAuth();
     const user = auth.currentUser;
@@ -32,7 +32,7 @@ export default function page({ params }) {
             setJob(jobDoc.data())
         }
         fetchJobs()
-    }, [])
+    }, [bidId])
     
     const [bid, setBid] = useState({
         bidId: "",

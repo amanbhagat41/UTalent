@@ -26,7 +26,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { Loader2 } from "lucide-react";
 
-export default function page({ params }) {
+export default function Page({ params }) {
     const [profileImageUrl, setProfileImageUrl] = useState('https://github.com/shadcn.png'); // Default or placeholder image
     const [bid, setbidProposal] = useState(null);
     const [userUid, setUserUid] = useState(null);

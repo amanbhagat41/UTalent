@@ -22,7 +22,7 @@ import { collection, getDocs, limit, orderBy ,query,doc, getDoc, where} from "fi
 import { db } from "../../../firebase";
 import {Loader2} from "lucide-react"
 
-export default function page({params}) {
+export default function Page({params}) {
     const {jobId}=params
     const [job, setJobId] = useState([]);
     const [candidate, setCandidate] = useState([])

@@ -8,15 +8,14 @@ import { Button } from "@/components/ui/button";
 import { getAuth } from 'firebase/auth';
 import { collection, addDoc, doc, serverTimestamp, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { EditorState, convertToRaw } from 'draft-js';
-import draftToHtml from 'draftjs-to-html'; // Ensure you have installed draftjs-to-html
+// import draftToHtml from 'draftjs-to-html'; // Ensure you have installed draftjs-to-html
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 // Dynamic import to prevent SSR of Editor component
-const Editor = dynamic(
-  () => import('react-draft-wysiwyg').then(mod => mod.Editor),
-  { ssr: false }
-);
+// const Editor = dynamic(
+//   () => import('react-draft-wysiwyg').then(mod => mod.Editor),
+//   { ssr: false }
+// );
 
 export default function JobPostingEmployer() {
   const router = useRouter();
@@ -33,25 +32,25 @@ export default function JobPostingEmployer() {
     postedDate: "",
     jobLocation: "",
   });
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  // const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const onInputChange = (e) => {
     setJob({ ...job, [e.target.name]: e.target.value });
   };
 
-  const handleEditorChange = (editorState) => {
-    setEditorState(editorState);
+  // const handleEditorChange = (editorState) => {
+  //   setEditorState(editorState);
   
-    // Extract text content from editorState
-    const currentContent = editorState.getCurrentContent();
-    let plainText = '';
-    currentContent.getBlocksAsArray().forEach(block => {
-      plainText += block.getText() + '\n'; // Append each block's text and a newline
-    });
+  //   // Extract text content from editorState
+  //   const currentContent = editorState.getCurrentContent();
+  //   let plainText = '';
+  //   currentContent.getBlocksAsArray().forEach(block => {
+  //     plainText += block.getText() + '\n'; // Append each block's text and a newline
+  //   });
   
-    // Now plainText contains all the text without any HTML tags
-    setJob({ ...job, description: plainText.trim() }); // Use trim to remove leading/trailing newlines
-  };
+  //   // Now plainText contains all the text without any HTML tags
+  //   setJob({ ...job, description: plainText.trim() }); // Use trim to remove leading/trailing newlines
+  // };
 
   const onJobPostingSubmit = async (e) => {
     e.preventDefault();
@@ -110,8 +109,10 @@ export default function JobPostingEmployer() {
         </div>
         
         <div className="editor-container h-auto max-h-[600px] min-h-96 border-b-[2px] mt-4 border-[1px] overflow-y-auto border-error-gray">
+        <Input id = "description" type="Title" placeholder="description" name='description' onChange={onInputChange} className="h-[300]"/>
+
           {/* Use the Editor here. It will now only load on the client-side */}
-          <Editor
+          {/* <Editor
             editorState={editorState}
             onEditorStateChange={handleEditorChange}
             wrapperClassName="wrapper-class"
@@ -125,7 +126,7 @@ export default function JobPostingEmployer() {
               link: { inDropdown: true },
               // Note: By omitting 'emoji', 'image', and other options, they will not be included in the toolbar
             }}
-          />
+          /> */}
         </div>
         <div className="flex justify-center mt-12">
           <button variant="outline" onClick={onJobPostingSubmit} className="bg-error-darkPink rounded-[32px] w-[20%] h-[64px] text-error-white text-[22px]">Post Job</button>

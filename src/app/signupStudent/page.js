@@ -13,7 +13,7 @@ import { db } from "../../firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
-export default function signupStudent() {
+export default function SignupStudent() {
     const { theme, setTheme } = useTheme();
     const router = useRouter();
     const auth = getAuth();

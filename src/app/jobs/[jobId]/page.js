@@ -14,7 +14,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { Loader2 } from "lucide-react";
 
-export default function page({ params }) {
+export default function Page({ params }) {
     const [role, setRole] = useState(null);
     const [job, setJob] = useState(null);
     const [userUid, setUserUid] = useState(null);
@@ -27,7 +27,7 @@ export default function page({ params }) {
             setJob(jobDoc.data());
         };
         fetchJobs();
-    }, []);
+    }, [jobId]);
     useEffect(() => {
         const fetchUserRole = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -48,7 +48,7 @@ export default function page({ params }) {
             }
         });
         return () => fetchUserRole();
-    }, []);
+    }, [auth]);
     useEffect(() => {
         const fetchUserUid = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -69,7 +69,7 @@ export default function page({ params }) {
             }
         });
         return () => fetchUserUid();
-    }, []);
+    }, [auth]);
 
     if (job === null) {
         return <Loader2 className="animate-spin"></Loader2>;
