@@ -76,7 +76,7 @@ export default function JobPostingCard({ job, index }){
                 </div>
             </CardHeader>
             <CardContent className="justify-center w-full z-1">
-                <p className="text-wrap line-clamp-4">{job.description}</p>
+                <p className="text-wrap line-clamp-3">{job.description}</p>
             </CardContent>
             <CardFooter>
                 <Link href={`/jobs/${job.jobId}`}
