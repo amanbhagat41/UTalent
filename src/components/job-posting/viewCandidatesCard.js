@@ -26,37 +26,49 @@ export function ViewCandidates({candidates, index, startIndex,endIndex,}) {
                             <div style={{ flexBasis: "80%" }}>
                                 <CardHeader>
                                     <CardTitle>{candidate.firstName} {candidate.lastName}</CardTitle>
-
                                     <CardDescription>
-                                        {/* {bid.jobCompanyName} */}
+                                        {candidate.email}      
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent>
                                     <p className="line-clamp-3">
-                                        {/* {bid.jobDescription} */}
+                                        
                                     </p>
+                                    <h1 className="font-bold text-lg">
+                                        Candidate Skills:                                        
+                                    </h1>
+                                    <h1>
+                                        {candidate.skills.join(", ")}                                       
+                                    </h1>
+                                    <h2 className="mt-2 font-bold text-lg">
+                                        Candidate Bio:
+                                    </h2>
+                                    <h2>
+                                        {candidate.bio}
+                                    </h2>
                                 </CardContent>
                                 <CardFooter className="grid grid-rows-2">
-                                    <h1>
-                                        Skills Required:{" "}
-                                        {candidate.skills.join(", ")}
-                                    </h1>
+
                                 </CardFooter>
+                                    
                             </div>
                             <div style={{ flexBasis: "20%" }}>
                                 <div className="grid grid-rows-4 h-[80%] items-center justify-center">
                                     <div className="text-end text-2xl">
                                         {/* {bid.jobNumberOfBids} */}
                                         <span className="ml-1 text-xl">
-                                            Bids
+                                            Bid Amount:
+                                            {candidate.bidAmount}
                                         </span>
                                     </div>
                                     <div className="text-end text-xl text-error-red">
-                                        {/* {bid.jobDaysToDeliver} */}
+                                        {candidate.jobDaysToDeliver}
                                         <span className="ml-1 text-lg">
                                             Days to Deliver
+                                            
                                         </span>
                                     </div>
+                                    <div>
                                     <Link
                                         href={`/`}
                                         legacyBehavior
@@ -65,14 +77,36 @@ export function ViewCandidates({candidates, index, startIndex,endIndex,}) {
                                         <Button
                                             className={`m-auto w-full bg-error-red hover:bg-error-darkRed`}
                                         >
-                                        {/* ${
-                                        isHovered ? "block" : "hidden"
-                                        } */}
+                                           View Resume
+                                        </Button>
+                                    </Link>
+                                    </div>
+                                    <div className="mt-4">
+                                    <Link
+                                        href={`/`}
+                                        legacyBehavior
+                                        passHref
+                                    >
+                                        <Button
+                                            className={`m-auto w-full  bg-error-red hover:bg-error-darkRed`}
+                                        >
                                            Message
                                         </Button>
                                     </Link>
-                                
-            
+                                    </div>
+                                    <div className="mt-4">
+                                        <Link
+                                            href={`/`}
+                                            legacyBehavior
+                                            passHref
+                                        >
+                                            <Button
+                                                className={`m-auto w-full bg-error-red hover:bg-error-darkRed`}
+                                            >
+                                            Accept Candidate
+                                            </Button>
+                                        </Link>
+                                    </div>
                                     
                                 </div>
                             </div>
