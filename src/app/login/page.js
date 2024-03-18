@@ -17,7 +17,7 @@ import { useToast } from "@/components/ui/use-toast"
 import { Label } from "@radix-ui/react-dropdown-menu";
 
 
-export default function login() {
+export default function Login() {
     const { toast } = useToast()
     const { theme, setTheme } = useTheme();
     const router = useRouter();
@@ -152,7 +152,7 @@ export default function login() {
                                     </form>
                                     <div className="flex justify-between">
                                         <div className="text-sm gap-1">
-                                            Don't Have An Account?{" "}
+                                            {"Don't Have An Account?"}
                                             <Link href="/student-employersignup" legacyBehavior passHref>
                                                 <a className="text-error-darkPink underline">Signup</a>
                                             </Link>

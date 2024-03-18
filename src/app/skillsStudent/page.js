@@ -18,7 +18,7 @@ import { useTheme } from "next-themes";
 import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
-export default function skillsStudent() {
+export default function SkillsStudent() {
     const router = useRouter();
     const auth = getAuth();
     const user = auth.currentUser;
@@ -72,7 +72,7 @@ export default function skillsStudent() {
                                 <div className="flex flex-col lg:flex-row justify-between">
                                     <div className="flex-auto lg:w-64">
                                         <div className="pt-4">
-                                            <label htmlFor="skills" className="text-center text-sm font-bold">When adding a skill, press 'enter' to submit it to the list</label>
+                                            <label htmlFor="skills" className="text-center text-sm font-bold">When adding a skill, press enter to submit it to the list</label>
                                             <input
                                                 type="text"
                                                 id="skills"

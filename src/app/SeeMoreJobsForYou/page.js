@@ -1,9 +1,12 @@
-import React from 'react';
-import { TestingDemo } from '@/components/job-posting/jobPostCard';
+"use client";
+import { useState, useEffect  } from "react";import { TestingDemo } from '@/components/job-posting/jobPostCard';
+import { ViewCandidates } from "@/components/job-posting/viewCandidatesCard";
 import { NavigationMenuStudentLoggedIn } from "@/components/navbar/navloggedinStudent";
+import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../public/images/logo-no-bg.png";
 import { Label } from "@/components/ui/label"
+import { getAuth, onAuthStateChanged} from "firebase/auth";
 
 import {
   Pagination,
@@ -15,10 +18,67 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
+import { collection, getDocs, limit, orderBy ,query,doc, getDoc, where} from "firebase/firestore";
+import { db } from "../../firebase";
 import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 
-export default function Page() {
+
+export default function Page({params}) {
+  const [freshJobs, setFreshJobs] = useState([]);
+  const [popularJobs, setPopularJobs] = useState([])
+
+  useEffect(()=> {
+    const fetchJobs = async () => {
+      const q = query(collection(db, "jobPostings"), orderBy("postedDate", "desc"), limit(10))
+      const jobDoc = await getDocs(q);
+      const jobsData = []
+      jobDoc.forEach((doc) => {
+        jobsData.push(doc.data())
+      })
+      setFreshJobs(jobsData)
+    }
+    fetchJobs()
+  },[]);
   
+//   useEffect(()=> {
+//     const fetchUserIdOfBidder = async () => {
+//       if (userUid) {
+//         const q = query(collection(db, "bids"));
+//         const jobDoc = await getDocs(q);
+//         const jobsData = []
+//         const jobsId = []
+//         jobDoc.forEach((doc) => {
+//           const docData = doc.data()
+//           jobsId.push(docData.userId)
+//           jobsData.push(doc.data())
+          
+//         })
+//         setJobId(jobsId)
+//         setJobPost(jobsData)
+//       }
+//     }
+//     fetchUserIdOfBidder()
+//   },[userUid]);
+// useEffect(()=> {
+//         const fetchUserInfo = async () => {
+//           if (userUid && job.length > 0) {
+//             const q = query(collection(db, "users"));
+//             const jobDoc = await getDocs(q);
+//             const jobsData = []
+//             jobDoc.forEach((doc) => {
+//               const docData = doc.data()
+//               jobsData.push(docData)
+//             })
+//             setCandidate(jobsData)
+//           }
+//         }
+//         fetchUserInfo()
+//       },[userUid, job]);
+
+
+  useEffect(() => {
+    console.log(freshJobs);
+  }, [freshJobs]);
   return (
     <>
     <div className="dark:bg-error-black">
@@ -28,7 +88,9 @@ export default function Page() {
         <nav className="bg-error-100 dark:bg-error-black h-20 sticky top-0 z-40 dark:bg-black">
           <div className="flex items-center justify-between h-full">
             <div>
-              <Image src={logo} width="150" height="150" alt="logo"></Image>
+              <Link href="/loggedinStudent" legacyBehavior passHref>
+               <Image src={logo} width="150" height="150" alt="logo" className='cursor-pointer'></Image>
+              </Link>
             </div>
             <div className="flex justify-end flex-grow">
               <NavigationMenuStudentLoggedIn />
@@ -50,7 +112,7 @@ export default function Page() {
             </div>
 
             <div className="w-full md:w-3/4 px-4">
-            <Pagination>
+            <Pagination className="mb-10">
               <PaginationContent>
                 <PaginationItem>
                   <PaginationPrevious href="#" />
@@ -84,17 +146,11 @@ export default function Page() {
 
               {/*!-- Cards Container --*/}
               <div className="grid grid-cols-1 gap-y-9">
-                <TestingDemo />
-                <TestingDemo />
-                <TestingDemo />
-                <TestingDemo />
-                <TestingDemo />
-                <TestingDemo />
-                <TestingDemo />
-                <TestingDemo />
-                <TestingDemo />
-                <TestingDemo />
-
+                <TestingDemo jobPosting={freshJobs} />
+                <TestingDemo jobPosting={freshJobs} />
+                <TestingDemo jobPosting={freshJobs} />
+                <TestingDemo jobPosting={freshJobs} />
+                <TestingDemo jobPosting={freshJobs} />
               </div>
             </div>
           </div>

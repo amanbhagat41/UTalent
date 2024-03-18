@@ -7,7 +7,7 @@ import Image from "next/image";
 import logo from "../../../public/images/logo-no-bg.png";
 import { collection, getDocs, limit, orderBy ,query} from "firebase/firestore";
 import { db } from "../../firebase";
-
+import Link from "next/link";
 import { CarouselDemo } from "@/components/carousel";
 import { JobPostingCarousel } from "@/components/job-posting/jobPostingCarousel";
 import { Label } from "@/components/ui/label";
@@ -48,7 +48,9 @@ export default function Page() {
         <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
           <div className="flex items-center justify-between h-full">
             <div>
-              <Image src={logo} width="150" height="150" alt="logo" ></Image>
+              <Link href="/loggedinStudent" legacyBehavior passHref>
+                <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer" ></Image>
+              </Link>
             </div>
             <div className="flex justify-end flex-grow">
               <NavigationMenuStudentLoggedIn />
@@ -86,7 +88,9 @@ export default function Page() {
 
           {/* Fresh Jobs Section */}
           <div className="w-[88%] flex flex-col items-start mt-10">
-            <Label htmlFor="freshjobs" className="text-[48px] text-error-white font-bold mb-4 underline">Fresh Jobs:</Label>
+            <Link href={`/SeeMoreJobsForYou`} legacyBehavior passHref>
+              <Label htmlFor="freshjobs" className="text-[48px] text-error-white font-bold mb-4 underline cursor-pointer">Fresh Jobs:</Label>
+            </Link>
             <div id="freshjobs" className="w-full flex justify-center">
               <JobPostingCarousel jobs={freshJobs}/>
             </div>
@@ -94,7 +98,9 @@ export default function Page() {
 
           {/* Popular Jobs Section */}
           <div className="w-[88%] flex flex-col items-start mt-10">
-            <Label htmlFor="popularjobs" className="text-[48px] text-error-white font-bold mb-4 underline">Popular Jobs:</Label>
+            <Link href={`/SeeMoreJobsForYou`} legacyBehavior passHref>
+              <Label htmlFor="popularjobs" className="text-[48px] text-error-white font-bold mb-4 underline cursor-pointer">Popular Jobs:</Label>
+            </Link>
             <div id="popularjobs" className="w-full flex justify-center">
               <JobPostingCarousel jobs={popularJobs}/>
             </div>

@@ -22,7 +22,7 @@ import { collection, getDocs, limit, orderBy ,query,doc, getDoc, where} from "fi
 import { db } from "../../../firebase";
 import {Loader2} from "lucide-react"
 
-export default function page({params}) {
+export default function Page({params}) {
     const {jobId}=params
     const [job, setJobId] = useState([]);
     const [candidate, setCandidate] = useState([])
@@ -99,11 +99,12 @@ useEffect(()=> {
         <nav className="bg-error-100 dark:bg-error-black h-20 sticky top-0 z-40 dark:bg-black">
           <div className="flex items-center justify-between h-full">
             <div>
-            <Link href="/loggedinStudent" legacyBehavior passHref>
-              <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
-            </Link>            </div>
+              <Link href="/loggedinStudent" legacyBehavior passHref>
+                <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
+              </Link>
+            </div>
             <div className="flex justify-end flex-grow">
-              <NavViewJobPostingsEmployerLoggedIn />
+              <NavViewJobPostingsEmployerLoggedIn/>
             </div>
             <div className="w-10 h-10"></div>
           </div>
