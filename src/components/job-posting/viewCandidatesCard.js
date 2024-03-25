@@ -44,7 +44,9 @@ export function ViewCandidates({candidates, index, startIndex,endIndex,}) {
                                         Candidate Bio:
                                     </h2>
                                     <h2>
+                                    <p className='line-clamp-3'>
                                         {candidate.bio}
+                                    </p>
                                     </h2>
                                 </CardContent>
                                 <CardFooter className="grid grid-rows-2">
