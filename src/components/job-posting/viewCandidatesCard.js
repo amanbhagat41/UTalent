@@ -25,7 +25,15 @@ export function ViewCandidates({candidates, index, startIndex,endIndex,}) {
                         <div style={{ display: "flex", width: "100%" }}>
                             <div style={{ flexBasis: "80%" }}>
                                 <CardHeader>
-                                    <CardTitle>{candidate.firstName} {candidate.lastName}</CardTitle>
+                                     <Link
+                                       href={`/viewProfile/${candidate.uid}`}
+                                        legacyBehavior
+                                        passHref
+                                    >
+                                    <CardTitle>{candidate.firstName} {candidate.lastName}
+                                  
+                                    </CardTitle>
+                                    </Link>
                                     <CardDescription>
                                         {candidate.email}      
                                     </CardDescription>
