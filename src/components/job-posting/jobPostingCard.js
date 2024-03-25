@@ -49,7 +49,6 @@ export default function JobPostingCard({ job, index }){
                         </h1>
                         </div>
                         <h2 className="text-base line-clamp-1">
-                            {job.location}
                         </h2>
                     </div>
                 </div>
@@ -80,14 +79,14 @@ export default function JobPostingCard({ job, index }){
                                 className="justify-start mt-2 rounded-3xl filter brightness-0 dark:brightness-100"
                             />
                             <h3 className="text-lg font-base ml-2 mt-1">
-                                Job Type
+                                {job.location}
                             </h3>
                         </div>
                     </div>
                 </div>
             </CardHeader>
             <CardContent className="justify-center w-full z-1">
-                <p className="text-wrap line-clamp-4">{job.description}</p>
+                <p className="text-wrap line-clamp-3">{job.description}</p>
             </CardContent>
             <CardFooter>
                 <Link href={`/jobs/${job.jobId}`}
