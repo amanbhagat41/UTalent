@@ -96,19 +96,7 @@ export function ViewCandidates({candidates, index, startIndex,endIndex,}) {
                                         </Button>
                                     </Link>
                                     </div>
-                                    <div className="mt-4">
-                                        <Link
-                                            href={`/`}
-                                            legacyBehavior
-                                            passHref
-                                        >
-                                            <Button
-                                                className={`m-auto w-full bg-error-red hover:bg-error-darkRed`}
-                                            >
-                                            Accept Candidate
-                                            </Button>
-                                        </Link>
-                                    </div>
+                                   
                                     
                                 </div>
                             </div>
