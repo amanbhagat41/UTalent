@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 
 import { Button } from "@/components/ui/button"
-import { Bookmark } from "@/components/ui/bookmark";
 import {
     Card,
     CardContent,
