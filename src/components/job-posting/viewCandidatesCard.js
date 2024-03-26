@@ -30,7 +30,7 @@ export function ViewCandidates({candidates, index, startIndex,endIndex,}) {
                                         legacyBehavior
                                         passHref
                                     >
-                                    <CardTitle>{candidate.firstName} {candidate.lastName}
+                                    <CardTitle className="cursor-pointer">{candidate.firstName} {candidate.lastName}
                                   
                                     </CardTitle>
                                     </Link>

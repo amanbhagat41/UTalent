@@ -13,7 +13,6 @@ import { collection, getDocs, limit, orderBy ,query,doc, getDoc, where} from "fi
 import { db } from "../../../firebase";
 import {Loader2} from "lucide-react"
 import { ViewProfileNavBar } from "@/components/navbar/navViewOtherProfile";
-import { getAuth, onAuthStateChanged} from "firebase/auth";
 
 export default function Page({params}) {
     const {userId}=params
@@ -35,8 +34,9 @@ export default function Page({params}) {
             <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
                 <div className="flex items-center justify-between h-auto">
                 <div>
-
-                    <Image src={logo} width="150" height="150" alt="logo"></Image>
+                    <Link href="/loggedInEmployer" legacyBehavior passHref>
+                    <Image src={logo} width="150" height="150" alt="logo" className="cursor-pointer"></Image>
+                    </Link>
                 </div>
                 <div className="flex justify-end flex-grow ">
                     <ViewProfileNavBar />
@@ -53,7 +53,7 @@ export default function Page({params}) {
                 <div className="flex items-center justify-center h-auto ">
                     <div className="">
                         <Avatar className="w-[10vw] h-[10vw] m-auto">
-                            <AvatarImage src="https://github.com/shadcn.png" />
+                            <AvatarImage src={userData?.profileImageUrl || 'https://github.com/shadcn.png'} />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
                         <div className="grid grid-flow-row auto-rows-max justify-items-center mt-8">
