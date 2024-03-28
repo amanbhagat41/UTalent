@@ -92,17 +92,16 @@ export function ViewCandidates({candidates, index, startIndex,endIndex,}) {
                                     </Link>
                                     </div>
                                     <div className="mt-4">
-                                    <Link
-                                        href={`/`}
-                                        legacyBehavior
-                                        passHref
-                                    >
+                                   
                                         <Button
+                                      onClick={() => window.location = `mailto:${candidate.email}`}
+
                                             className={`m-auto w-full  bg-error-red hover:bg-error-darkRed`}
+                                            
                                         >
                                            Message
                                         </Button>
-                                    </Link>
+                                    
                                     </div>
                                    
                                     
