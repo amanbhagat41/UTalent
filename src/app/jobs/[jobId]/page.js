@@ -45,6 +45,7 @@ export default function Page({ params }) {
                     .catch((error) => {
                         console.log("Error getting document:", error);
                     });
+                    
             }
         });
         return () => fetchUserRole();
