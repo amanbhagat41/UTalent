@@ -88,7 +88,7 @@ useEffect(()=> {
 
 
   useEffect(() => {
-    console.log(candidate);
+    // console.log(candidate);
   }, [candidate]);
   return (
     <>
@@ -208,7 +208,7 @@ useEffect(()=> {
 
               {/*!-- Cards Container --*/}
               <div className="grid grid-cols-1 gap-y-9">
-                    <ViewCandidates candidates={candidate}/>
+                    <ViewCandidates candidates={candidate} jobId={jobId}/>
               </div>
             </div>
           </div>
