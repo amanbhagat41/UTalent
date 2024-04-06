@@ -10,7 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { db, auth } from "../../firebaseKey";
+import { db, auth } from "../../firebase";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {  collection, addDoc, doc, serverTimestamp, getDoc, updateDoc  } from "firebase/firestore";
 import { onAuthStateChanged, getAuth, signOut, updateEmail } from "firebase/auth";

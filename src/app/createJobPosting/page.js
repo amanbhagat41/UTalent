@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { getAuth } from 'firebase/auth';
 import { collection, addDoc, doc, serverTimestamp, getDoc, updateDoc } from 'firebase/firestore';
-import { db } from '../../firebaseKey';
+import { db } from '../../firebase';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 

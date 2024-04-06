@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { db } from "../../firebaseKey";
+import { db } from "../../firebase";
 import { collection, getDoc, doc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";

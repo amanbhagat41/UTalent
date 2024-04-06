@@ -20,7 +20,7 @@ import {
 import { getAuth, onAuthStateChanged} from "firebase/auth";
 import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 import { collection, getDocs, limit, orderBy ,query,doc, getDoc, where} from "firebase/firestore";
-import { db } from "../../firebaseKey";
+import { db } from "../../firebase";
 import {Loader2} from "lucide-react"
 
 

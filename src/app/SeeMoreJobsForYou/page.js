@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/pagination"
 
 import { collection, getDocs, limit, orderBy ,query,doc, getDoc, where} from "firebase/firestore";
-import { db } from "../../firebaseKey";
+import { db } from "../../firebase";
 import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 
 

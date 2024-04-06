@@ -10,7 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { collection, getDocs, limit, orderBy ,query,doc, getDoc, where} from "firebase/firestore";
-import { db } from "../../../firebaseKey";
+import { db } from "../../../firebase";
 import {Loader2} from "lucide-react"
 import { ViewProfileNavBar } from "@/components/navbar/navViewOtherProfile";
 

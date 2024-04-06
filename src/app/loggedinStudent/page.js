@@ -6,7 +6,7 @@ import { NavigationMenuStudentLoggedIn } from "@/components/navbar/navloggedinSt
 import Image from "next/image";
 import logo from "../../../public/images/logo-no-bg.png";
 import { collection, getDocs, limit, orderBy ,query} from "firebase/firestore";
-import { db } from "../../firebaseKey";
+import { db } from "../../firebase";
 import Link from "next/link";
 import { CarouselDemo } from "@/components/carousel";
 import { JobPostingCarousel } from "@/components/job-posting/jobPostingCarousel";
