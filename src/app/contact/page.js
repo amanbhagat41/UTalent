@@ -18,7 +18,7 @@ import reliablework from "../../../public/images/about/reliableWorkLogo.png"
 import earlyinvestment from "../../../public/images/about/earlyInvestmentLogo.png"
 import banner from "../../../public/images/about/university-massachusetts-lowell.jpg"
 import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
-import { db } from "../../firebase";
+import { db } from "../../firebaseKey";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { Loader2 } from "lucide-react";

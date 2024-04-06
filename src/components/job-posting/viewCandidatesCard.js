@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { collection, getDocs, query, doc, getDoc, where } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "../../firebaseKey";
 
 export function ViewCandidates({ candidates, index, startIndex, endIndex, jobId }) {
   const [userData, setUserData] = useState([]);

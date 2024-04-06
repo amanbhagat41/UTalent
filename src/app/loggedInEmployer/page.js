@@ -10,7 +10,7 @@ import { JobPostingCarousel } from "@/components/job-posting/jobPostingCarousel"
 import { Label } from "@/components/ui/label";
 import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 import { collection, getDocs, limit, orderBy ,query} from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "../../firebaseKey";
 import SearchWithQuickFilters from '@/components/ui/SearchWithQuickFilters';
 
 

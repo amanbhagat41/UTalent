@@ -12,7 +12,7 @@ import {
     updateDoc,
     getDoc,
 } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "../../firebaseKey";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { getAuth } from "firebase/auth";

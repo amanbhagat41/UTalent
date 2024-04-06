@@ -16,7 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import "typeface-poppins";
 import { getAuth } from "firebase/auth";
 import {collection,addDoc,doc,getDoc,updateDoc,} from "firebase/firestore";
-import { db } from "../../../firebase";
+import { db } from "../../../firebaseKey";
 import { useRouter } from "next/navigation";
 
 export default function Page({ params }) {

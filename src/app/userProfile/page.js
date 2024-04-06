@@ -9,7 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { db, auth } from "../../firebase";
+import { db, auth } from "../../firebaseKey";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, getDoc, updateDoc,collection } from "firebase/firestore";
 import { onAuthStateChanged, getAuth, signOut } from "firebase/auth";

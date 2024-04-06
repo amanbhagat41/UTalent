@@ -11,7 +11,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { collection, getDocs, limit, orderBy ,query,doc, getDoc, where} from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "../../firebaseKey";
 export default function JobPostingCard({ job, index }){
     const [profileImage, setProfileImageUrl] = useState({ profileImageUrl: 'https://github.com/shadcn.png' });
     const userUid = job.companyId

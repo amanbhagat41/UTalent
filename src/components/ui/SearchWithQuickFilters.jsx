@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { auth, db } from '../../firebase'; // Make sure this path is correct
+import { auth, db } from '../../firebaseKey'; // Make sure this path is correct
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 
