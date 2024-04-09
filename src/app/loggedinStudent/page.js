@@ -12,6 +12,8 @@ import { CarouselDemo } from "@/components/carousel";
 import { JobPostingCarousel } from "@/components/job-posting/jobPostingCarousel";
 import { Label } from "@/components/ui/label";
 import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
+import { Loader2 } from "lucide-react";
+
 import SearchWithQuickFilters from '@/components/ui/SearchWithQuickFilters'; 
 export default function Page() {
   const [freshJobs, setFreshJobs] = useState([]);
@@ -42,9 +44,13 @@ export default function Page() {
     }
     fetchPopularJobs()
   },[]);
+
+  if (freshJobs.length === 0) {
+    return <Loader2 className="animate-spin"></Loader2>;
+}
   return (
     <>
-      <div className="flex flex-col min-h-screen dark:bg-error-black">
+      <div className="flex flex-col min-h-screen dark:bg-error-black test">
         <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
           <div className="flex items-center justify-between h-full">
             <div>
@@ -60,12 +66,12 @@ export default function Page() {
         </nav>
 
 
-        <div className = "flex mb-10 items-center justify-center ">
+        <div className = "flex mb-10 items-center justify-center mt-10 ">
           <SearchWithQuickFilters/>
         </div>
         
         {/* Main content wrapper adjusted for centering */}
-        <div className="flex-grow flex-col items-center justify-center">
+        <div className="flex-grow flex-col items-center justify-center mt-12 ">
           <div className="text-center"> {/* Centering the label horizontally */}
             <Label htmlFor="topJobs" className="text-[32px] font-bold mb-4">Top Jobs</Label>
           </div>
@@ -76,7 +82,7 @@ export default function Page() {
         
 
 
-       <div className="flex items-center justify-center w-full h-full bg-error-100 dark:bg-error-black">
+       <div className="flex items-center justify-center w-full h-full  dark:bg-error-black">
         <div className="mt-12 w-full flex flex-col items-center">
           {/* Jobs For You Section
           <div className="w-[88%] flex flex-col items-start">

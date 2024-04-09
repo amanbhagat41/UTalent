@@ -108,6 +108,10 @@ body {
   background: linear-gradient(to top, #ffffff, transparent);
   z-index: 1;
 }
+.test {
+  background: linear-gradient(to bottom, #ffffff 20%, #1f3555 40%);
+}
+
 @layer base {
   * {
     @apply border-border;

@@ -58,7 +58,7 @@ const SearchWithQuickFilters = () => {
 
     return (
         <div className="space-y-5 w-[50%]">
-            <div className="flex flex-wrap gap-2 mt-[60px] justify-center ">
+            {/* <div className="flex flex-wrap gap-2 mt-[60px] justify-center ">
                 {filters.map((filter) => (
                     <button
                         key={filter}
@@ -68,7 +68,7 @@ const SearchWithQuickFilters = () => {
                         {filter}
                     </button>
                 ))}
-            </div>
+            </div> */}
             <form onSubmit={handleSearch} className="flex justify-center">
               <div className="relative w-full max-w-xl">
                 <input 
