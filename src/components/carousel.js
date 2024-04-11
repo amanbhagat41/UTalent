@@ -37,21 +37,23 @@ function CarouselDemo() {
     <Carousel className="w-full max-w-xl">
       <CarouselContent className="cursor-pointer">
       {randomJobs.map((job, index) => (
-         <Link href={`/jobs/${job.jobId}`}
-         legacyBehavior
-         passHref>
+       
   <CarouselItem key={index}>
-    <div className="p-1">
+     <Link href={`/jobs/${job.jobId}`}
+       legacyBehavior
+        passHref>
+    <div className="p-1" >
       <Card className="rounded-lg overflow-hidden bg-error-black h-96 dark:border-error-white dark:shadow-glow">
         <CardContent className="flex items-center justify-center p-6 bg-gray-200 h-full">
           <span className="text-4xl font-semibold text-error-200">
-            {job && job.title}
+            {job.title}
           </span>
         </CardContent>
       </Card>
     </div>
+    </Link>
   </CarouselItem>
-  </Link>
+
 ))}
 
       </CarouselContent>
