@@ -45,7 +45,7 @@ function CarouselDemo() {
       <Card className="rounded-lg overflow-hidden bg-error-black h-96 dark:border-error-white dark:shadow-glow">
         <CardContent className="flex items-center justify-center p-6 bg-gray-200 h-full">
           <span className="text-4xl font-semibold text-error-200">
-            {job.title}
+            {job && job.title}
           </span>
         </CardContent>
       </Card>
