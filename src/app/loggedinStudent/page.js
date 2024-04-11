@@ -50,7 +50,7 @@ export default function Page() {
 }
   return (
     <>
-      <div className="flex flex-col min-h-screen dark:bg-error-black test">
+      <div className="flex flex-col min-h-screen  dark:bg-error-black">
         <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
           <div className="flex items-center justify-between h-full">
             <div>
@@ -66,7 +66,7 @@ export default function Page() {
         </nav>
 
 
-        <div className = "flex mb-10 items-center justify-center mt-10 ">
+        <div className = "flex mb-10 items-center justify-center mt-12 ">
           <SearchWithQuickFilters/>
         </div>
         
@@ -82,7 +82,7 @@ export default function Page() {
         
 
 
-       <div className="flex items-center justify-center w-full h-full  dark:bg-error-black">
+       <div className="flex items-center justify-center w-full h-full bg-error-100 dark:bg-error-black">
         <div className="mt-12 w-full flex flex-col items-center">
           {/* Jobs For You Section
           <div className="w-[88%] flex flex-col items-start">

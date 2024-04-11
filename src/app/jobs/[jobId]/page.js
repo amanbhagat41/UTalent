@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { NavigationMenuStudentLoggedIn } from "@/components/navbar/navloggedinStudent";
 import { NavigationMenuEmployerLoggedIn } from "@/components/navbar/navloggedinEmployer";
-import { NavigationMenuDemo } from "@/components/navbar/navJobPostingEmployer";
+import { NavigationMenuDemo } from "@/components/navbar/navhomepage";
+
 import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -83,7 +84,19 @@ export default function Page({ params }) {
                 <nav className="bg-error-100 h-20 sticky top-0 z-40 dark:bg-error-black">
                     <div className="flex items-center justify-between h-full">
                         {role === null ? (
-                            <Loader2 className="animate-spin" />
+                            <Link
+                            href="/"
+                            legacyBehavior
+                            passHref
+                        >
+                            <Image
+                                src={logo}
+                                width="150"
+                                height="150"
+                                alt="logo"
+                                className="cursor-pointer"
+                            ></Image>
+                        </Link>
                         ) : role === "Student" ? (
                             <div>
                                 <Link
@@ -120,7 +133,7 @@ export default function Page({ params }) {
 
                         <div className="flex justify-end flex-grow ">
                             {role === null ? (
-                                <Loader2 className="animate-spin" />
+                                <NavigationMenuDemo/>
                             ) : role === "Student" ? (
                                 <NavigationMenuStudentLoggedIn />
                             ) : (
@@ -161,9 +174,15 @@ export default function Page({ params }) {
                             </div>
                             {role === null ? (
                                 <div className="flex justify-center pt-5">
+                                    <Link
+                                        href={`/login`}
+                                        legacyBehavior
+                                        passHref
+                                    >
                                     <Button className="bg-error-300 rounded-3xl w-40 hover:bg-error-100 text-lg h-12 mt-8 dark:text-[#FFFFFF]">
-                                        <Loader2 className="animate-spin" />
+                                        Login
                                     </Button>
+                                    </Link>
                                 </div>
                             ) : role === "Student" ? (
                                 <div className="flex justify-center pt-5">

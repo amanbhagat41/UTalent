@@ -59,7 +59,7 @@ export default function Page() {
         </nav>
 
 
-        <div className = "flex mb-10 items-center justify-center ">
+        <div className = "flex mb-10 items-center justify-center mt-12">
           <SearchWithQuickFilters/>
         </div>
         
