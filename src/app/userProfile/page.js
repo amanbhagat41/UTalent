@@ -16,11 +16,14 @@ import { onAuthStateChanged, getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
 
+
 export default function Page() {
     const MAX_WORDS = 100;
     const [image, setImage] = useState(null);
     const [profileImageUrl, setProfileImageUrl] = useState('https://github.com/shadcn.png'); // Default or placeholder image
     const router = useRouter();
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+
 
     const auth = getAuth();
     const user = auth.currentUser;
@@ -91,11 +94,15 @@ export default function Page() {
         return () => unsubscribe();
     }, []);
 
+    const changePicture = async(e) => {
+        handleImageChange(e);
+        handleUpload(e);
+    };
+
     const handleImageChange = (e) => {
         if (e.target.files[0]) {
             setImage(e.target.files[0]);
         }
-        
     };
 
     const handleUpload = async () => {
@@ -105,6 +112,7 @@ export default function Page() {
 
         try {
             // Upload the file and metadata
+            
             const snapshot = await uploadBytes(storageRef, image);
 
             // Get the URL of the uploaded file
@@ -120,6 +128,7 @@ export default function Page() {
         } catch (error) {
             console.error("Error uploading image: ", error);
         }
+
         
     };
     const goBackToUserProfile = () => {
@@ -214,7 +223,9 @@ export default function Page() {
                                         <AvatarFallback>CN</AvatarFallback>
                                     </Avatar>
                                 </label>
-                                <input id="file-input" type="file" onChange={handleImageChange} className="hidden" />
+                                <input id="file-input" type="file" onChange={changePicture} className="hidden" />
+                                <button type="button" onClick={handleUpload} className="border-2 border-error-black h-12 w-[50%]rounded-[12px] dark:bg-error-white dark:text-error-black">Upload Image</button>
+
                             
                                 <div className="grid grid-flow-row auto-rows-max justify-items-center mt-9 ">
                                     <h1 id="fullName" className="font-semibold text-[1.5vw]">
@@ -307,8 +318,6 @@ export default function Page() {
                                         </form>
                                         <div className="grid grid-cols-1">
                                             <div className="mt-12">
-                                                <input type="file" onChange={handleImageChange} />
-                                                <button type="button" onClick={handleUpload} className="border-2 border-error-black h-12 w-[50%]rounded-[12px] dark:bg-error-white dark:text-error-black">Upload Image</button>
                                             </div>
                                         </div>
                                     </TabsContent>
