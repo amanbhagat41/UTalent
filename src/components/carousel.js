@@ -10,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { collection, getDocs, limit, orderBy ,query} from "firebase/firestore";
+import { collection, getDocs} from "firebase/firestore";
 import { db } from "@/firebase";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
