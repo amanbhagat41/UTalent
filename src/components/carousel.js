@@ -31,6 +31,11 @@ function CarouselDemo() {
     };
     fetchRandomJobs();
   }, []);
+
+  function randomImage(){
+    var images = ['dock.jpeg', 'lake.jpg', 'mountain.jpeg', 'valley.jpeg'];
+
+  }
   
   return (
    
@@ -44,9 +49,39 @@ function CarouselDemo() {
         passHref>
     <div className="p-1" >
       <Card className="rounded-lg overflow-hidden bg-error-black h-96 dark:border-error-white dark:shadow-glow">
-        <CardContent className="flex items-center justify-center p-6 bg-gray-200 h-full">
-          <span className="text-4xl font-semibold text-error-200">
-            {job.title}
+      <CardContent className="bg-black bg-[url('../../public/images/backgrounds/valley.jpeg')]  flex items-left justify-left p-6 bg-white h-full">
+          <span className="font-semibold text-error-200">
+           <div className="text-4xl top-0">{job.title}</div>
+            <div className="text-lg">{job.companyName}</div>
+            <div className="flex items-center ml-0">
+                            <img
+                                src="images/moneySymbol.png"
+                                alt=""
+                                style={{ width: "24px", height: "24px" }}
+                                className="justify-start mt-2 bg-error-white rounded-3xl"
+                            />
+                            <div className="flex items-center space-x-0 ml-2 mt-1">
+                                <span className="text-lg font-semibold">$</span>
+                                <h3 className="text-lg font-semibold">
+                                  {job.rate}
+                                </h3>
+                                <span className="text-lg font-semibold">
+                                  /HR
+                                </span>
+                            </div>
+                        </div>
+                        <div className="flex items-center ml-0">
+                            <img
+                                src="images/briefcase.png"
+                                alt=""
+                                style={{ width: "24px", height: "24px" }}
+                                className="justify-start mt-2 rounded-3xl filter brightness-0 dark:brightness-100"
+                            />
+                            <h3 className="text-lg font-base ml-2 mt-1">
+                                {job.location}
+                            </h3>
+                        </div>
+
           </span>
         </CardContent>
       </Card>
