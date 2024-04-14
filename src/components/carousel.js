@@ -32,10 +32,11 @@ function CarouselDemo() {
     fetchRandomJobs();
   }, []);
 
-  function randomImage(){
-    var images = ['dock.jpeg', 'lake.jpg', 'mountain.jpeg', 'valley.jpeg'];
-
-  }
+function randomImage() {
+    const images = ['dock.jpeg', 'lake.jpg', 'mountain.jpeg', 'valley.jpeg'];
+    const randomIndex = Math.floor(Math.random() * images.length);
+    return `url('/images/backgrounds/${images[randomIndex]}')`;
+}
   
   return (
    
@@ -49,7 +50,7 @@ function CarouselDemo() {
         passHref>
     <div className="p-1" >
       <Card className="rounded-lg overflow-hidden bg-error-black h-96 dark:border-error-white dark:shadow-glow">
-      <CardContent className="bg-black bg-[url('../../public/images/backgrounds/valley.jpeg')]  flex items-left justify-left p-6 bg-white h-full">
+      <CardContent className="bg-black bg-[url('../../public/images/backgrounds/valley.jpeg')]  flex items-left justify-left p-6 bg-white h-full" style={{ backgroundImage: randomImage(index) }}>
           <span className="font-semibold text-error-200">
            <div className="text-4xl top-0">{job.title}</div>
             <div className="text-lg">{job.companyName}</div>
