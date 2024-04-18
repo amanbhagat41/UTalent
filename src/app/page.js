@@ -50,9 +50,9 @@ export default function Page() {
 
        
       </div>
-      <footer className="bg-error-100 h-20 w-full bottom-0 dark:bg-error-black">
+      <footer className="h-20 w-full sticky dark:bg-error-black bg-error-reallyDarkBlue">
           <div className="flex items-center justify-between h-full">
-            <h4 className="text-2xl text-error-200 ml-8">UTalent</h4>
+            <h4 className="text-3xl text-error-200 ml-8 font-extrabold">UTalent</h4>
             <div className="flex justify-end flex-grow mr-10">
               <NavigationMenuDemoFooter></NavigationMenuDemoFooter>
             </div>

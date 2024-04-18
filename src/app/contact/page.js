@@ -156,7 +156,7 @@ export default function Page() {
         </Link>
       </div> */}
 
-      <div className="grid grid-cols-5 mt-6 gap-16">
+      <div className="grid grid-cols-5 mt-6 gap-16 mb-12">
         <div></div>
         <div></div>
         <div className="text-center ">contact@utalent.com</div>

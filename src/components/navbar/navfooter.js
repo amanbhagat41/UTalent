@@ -55,7 +55,7 @@ const components = [
 
 function NavigationMenuDemoFooter() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="uppercase">
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/contact" legacyBehavior passHref>
@@ -67,7 +67,7 @@ function NavigationMenuDemoFooter() {
         <NavigationMenuItem>
           <Link href="https://www.linkedin.com/in/michael-chagnon-24514a254/" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Linkdin
+              LinkedIn
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
