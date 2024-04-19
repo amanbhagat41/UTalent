@@ -90,51 +90,13 @@ export default function Page() {
         });
         return () => unsubscribe();
     }, []);
-    
+    const changePicture = async(e) => {
+        handleImageChange(e);
+        handleUpload(e);
+    };
     const handleImageChange = (e) => {
         if (e.target.files[0]) {
-            const file = e.target.files[0];
-            const validTypes = ['image/jpeg', 'image/png'];
-    
-            // Check if the file type is valid
-            if (!validTypes.includes(file.type)) {
-                toast({
-                    variant: "destructive",
-                    title: "Only PNG and JPG images are allowed.",
-                })
-                return;
-            }
-    
-            // Use FileReader to read the file
-            const reader = new FileReader();
-            reader.onloadend = (e) => {
-                const img = new Image();
-                img.onload = () => {
-                    // Check if the image size is 512x512
-                    if (img.width === 512 && img.height === 512) {
-                        setImage(file);
-                    } else {
-                        toast({
-                            variant: "destructive",
-                            title: "Image must be 512px by 512px.",
-                        })
-                    }
-                };
-                img.onerror = () => {
-                    toast({
-                        variant: "destructive",
-                        title: "There was an error loading the image.",
-                    })
-                };
-                img.src = reader.result;
-            };
-            reader.onerror = () => {
-                toast({
-                    variant: "destructive",
-                    title: "There was an error reading the file.",
-                })
-            };
-            reader.readAsDataURL(file);
+            setImage(e.target.files[0]);
         }
     };
     
@@ -142,32 +104,27 @@ export default function Page() {
         if (!image) return;
         const storage = getStorage();
         const storageRef = ref(storage, `profileImages/${user.uid}`); // Create a reference to 'profileImages/USER_ID'
-        
+
         try {
             // Upload the file and metadata
-            const snapshot = await uploadBytes(storageRef, image);
             
+            const snapshot = await uploadBytes(storageRef, image);
+
             // Get the URL of the uploaded file
             const url = await getDownloadURL(snapshot.ref);
 
             // Save the URL to Firestore under the user's document
             const userRef = doc(db, "users", user.uid);
             await updateDoc(userRef, {
-            profileImageUrl: url,
+                profileImageUrl: url,
             });
             setProfileImageUrl(url);
-            toast({
-                variant: "success",
-                title: "Profile Picture Updated",
-            })
             console.log('Uploaded a file!');
         } catch (error) {
             console.error("Error uploading image: ", error);
-            toast({
-                variant: "destructive",
-                title: "Error uploading image",
-            })
         }
+
+        
     };
     const goBackToUserProfile = () => {
         
@@ -265,13 +222,17 @@ export default function Page() {
             <div className="w-full h-full flex items-start justify-center">
                 <div className="flex items-center">
                     <div className="w-[35vw] h-[35vw]">
-                    <Avatar className="w-[10vw] h-[10vw] m-auto mt-16">
-                        <AvatarImage src={profileImageUrl} />
-                        <AvatarFallback>
-                            <img src={fallBackImage}/>
-                        </AvatarFallback>
-                    </Avatar>
+                    <label htmlFor="file-input">
+                                    <Avatar className="w-[10vw] h-[10vw] m-auto mt-16 hover:opacity-50">
+                                        <AvatarImage src={profileImageUrl} />
+                                        <AvatarFallback>CN</AvatarFallback>
+                                    </Avatar>
+                                </label>
+                                <input id="file-input" type="file" onChange={changePicture} className="hidden" />
+
                     <div className="grid grid-flow-row auto-rows-max justify-items-center mt-9 ">
+                    <button type="button" onClick={handleUpload} className="border-2 border-error-black h-10 w-[50%]rounded-[12px] dark:bg-error-white dark:text-error-black">Upload Image</button>
+
                         <h1 id="fullName" className="font-semibold text-[1.5vw]">
                             {userDetails.companyName}
                         </h1>

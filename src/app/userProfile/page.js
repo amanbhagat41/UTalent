@@ -218,16 +218,17 @@ export default function Page() {
                         <div className="flex items-center">
                             <div className="w-[35vw] h-[35vw]">
                                 <label htmlFor="file-input">
-                                    <Avatar className="w-[10vw] h-[10vw] m-auto mt-16 ">
+                                    <Avatar className="w-[10vw] h-[10vw] m-auto mt-16 hover:opacity-50">
                                         <AvatarImage src={profileImageUrl} />
                                         <AvatarFallback>CN</AvatarFallback>
                                     </Avatar>
                                 </label>
                                 <input id="file-input" type="file" onChange={changePicture} className="hidden" />
-                                <button type="button" onClick={handleUpload} className="border-2 border-error-black h-12 w-[50%]rounded-[12px] dark:bg-error-white dark:text-error-black">Upload Image</button>
+
 
                             
                                 <div className="grid grid-flow-row auto-rows-max justify-items-center mt-9 ">
+                                <button type="button" onClick={handleUpload} className="border-2 border-error-black h-10 w-[50%]rounded-[12px] dark:bg-error-white dark:text-error-black">Upload Image</button>
                                     <h1 id="fullName" className="font-semibold text-[1.5vw]">
                                         {userDetails.firstName} {userDetails.lastName}
                                     </h1>
