@@ -108,19 +108,7 @@ export function ViewCandidates({ candidates, index, startIndex, endIndex, jobId 
                       </div>
                        ))}
                     </div>
-                    <div>
-                      <Link
-                        href={`/`}
-                        legacyBehavior
-                        passHref
-                      >
-                        <Button
-                          className={`m-auto w-full bg-error-red hover:bg-error-darkRed`}
-                        >
-                          View Resume
-                        </Button>
-                      </Link>
-                    </div>
+
                     <div className="mt-4">
                       <Button
                         onClick={() => window.location = `mailto:${candidate.email}`}
