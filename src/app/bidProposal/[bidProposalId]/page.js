@@ -30,6 +30,7 @@ export default function Page({ params }) {
     const [profileImageUrl, setProfileImageUrl] = useState('https://github.com/shadcn.png'); // Default or placeholder image
     const [bid, setbidProposal] = useState(null);
     const [userUid, setUserUid] = useState(null);
+    const [role, setRole] = useState(null);
 
     const { bidProposalId } = params;
     const auth = getAuth();
@@ -61,7 +62,28 @@ export default function Page({ params }) {
         });
         return () => fetchUserUid();
     }, []);
-
+    useEffect(() => {
+        const fetchUserRole = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const uid = user.uid;
+                const userRef = doc(db, "users", uid);
+                getDoc(userRef)
+                    .then((docSnap) => {
+                        if (docSnap.exists()) {
+                            const userData = docSnap.data();
+                            setRole(userData.role); // Set fetched data into userDetails
+                        } else {
+                            console.log("No such document!");
+                        }
+                    })
+                    .catch((error) => {
+                        console.log("Error getting document:", error);
+                    });
+                    
+            }
+        });
+        return () => fetchUserRole();
+    }, [auth]);
     if (bid === null) {
         return <Loader2 className="animate-spin"></Loader2>;
     }
@@ -213,6 +235,16 @@ export default function Page({ params }) {
                                     </div>
                                 </CardContent>
                                 <CardFooter>
+                                {role === null ? (
+                                    <Link href="/" legacyBehavior passHref>
+                                    <Button
+                                        variant="outline"
+                                        className="bg-error-darkPink  rounded-[32px] w-[159px] h-[64px] text-error-white ml-[770px] text-[22px] "
+                                    >
+                                        Close
+                                    </Button>
+                                    </Link>
+                                ) : role === "Student" ? (
                                     <Link href="/bidViewingStudent" legacyBehavior passHref>
                                     <Button
                                         variant="outline"
@@ -221,6 +253,17 @@ export default function Page({ params }) {
                                         Close
                                     </Button>
                                     </Link>
+                                ) : (
+                                    <Link href="/jobViewingEmployer" legacyBehavior passHref>
+                                    <Button
+                                        variant="outline"
+                                        className="bg-error-darkPink  rounded-[32px] w-[159px] h-[64px] text-error-white ml-[770px] text-[22px] "
+                                    >
+                                        Close
+                                    </Button>
+                                    </Link>
+                                )}
+                                    
                                 </CardFooter>
                             </Card>
 

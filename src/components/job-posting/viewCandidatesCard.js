@@ -108,7 +108,6 @@ export function ViewCandidates({ candidates, index, startIndex, endIndex, jobId 
                       </div>
                        ))}
                     </div>
-
                     <div className="mt-4">
                       <Button
                         onClick={() => window.location = `mailto:${candidate.email}`}
