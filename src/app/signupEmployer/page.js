@@ -12,8 +12,9 @@ import { collection, addDoc, doc, setDoc} from "firebase/firestore";
 import { db } from "../../firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
-
+import { useToast } from "@/components/ui/use-toast"
 export default function SignupEmployer() {
+  const { toast } = useToast()
   const { theme, setTheme } = useTheme();
   const router = useRouter();
   const auth = getAuth();
@@ -33,9 +34,21 @@ export default function SignupEmployer() {
     e.preventDefault()
     if (!user.email || !user.companyName || !user.password || !user.confirmPassword) {
       console.log("All fields are required");
+      toast({
+        variant: "destructive",
+        title: "All fields are required",
+    })
       return;
     }
     // Validate if passwords match
+    if (user.password.length !== 6) {
+        console.log("Password must be 6 characters long");
+        toast({
+            variant: "destructive",
+            title: "Password must be 6 characters long",
+        });
+        return;
+    }
     if (user.password !== user.confirmPassword) {
       console.log("Passwords do not match");
       return;
@@ -122,6 +135,7 @@ export default function SignupEmployer() {
                                       name="password"
                                       value={user.password}
                                       onChange={onInputChange}
+                                      placeholder="Please Enter a 6 charcter Password"
                                       className="border border-gray-400 rounded-sm h-8 w-full text-left"
                                   />
                               </div>
@@ -135,6 +149,7 @@ export default function SignupEmployer() {
                                       name="confirmPassword"
                                       value={user.confirmPassword}
                                       onChange={onInputChange}
+                                      placeholder="Please Enter a 6 charcter Password"
                                       className="border border-gray-400 rounded-sm h-8 w-full text-left"
                                   />
                               </div>

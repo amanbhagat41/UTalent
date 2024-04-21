@@ -84,7 +84,7 @@ if (randomJobs.length === 0) {
                         <div className="flex items-center ml-0">
                             <img
                                 src="images/briefcase.png"
-                                alt=""
+                                alt="briefcase"
                                 style={{ width: "24px", height: "24px" }}
                                 className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,1.0)] justify-start mt-2 rounded-3xl filter brightness-0 dark:brightness-100"
                             />
