@@ -56,7 +56,7 @@ const components = [
 function NavigationMenuDemo() {
   return (
     <NavigationMenu>
-      <NavigationMenuList>
+      <NavigationMenuList className="uppercase">
         <NavigationMenuItem>
             <ModeToggle></ModeToggle>
         </NavigationMenuItem>
