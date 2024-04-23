@@ -24,9 +24,41 @@ import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 
 
 export default function Page({params}) {
+  const itemsPerPage = 5;
   const [freshJobs, setFreshJobs] = useState([]);
   const [popularJobs, setPopularJobs] = useState([])
 
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(itemsPerPage);
+  const [pageIndex, setPageIndex] = useState(1);
+  const [totalJobs, setTotalJobs] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+
+  const [role, setRole] = useState(null);
+  const auth = getAuth();
+
+  useEffect(() => {
+      const fetchUserRole = onAuthStateChanged(auth, (user) => {
+          if (user) {
+              const uid = user.uid;
+              const userRef = doc(db, "users", uid);
+              getDoc(userRef)
+                  .then((docSnap) => {
+                      if (docSnap.exists()) {
+                          const userData = docSnap.data();
+                          setRole(userData.role); // Set fetched data into userDetails
+                      } else {
+                          console.log("No such document!");
+                      }
+                  })
+                  .catch((error) => {
+                      console.log("Error getting document:", error);
+                  });
+                  
+          }
+      });
+      return () => fetchUserRole();
+  }, [auth]);
   useEffect(()=> {
     const fetchJobs = async () => {
       const q = query(collection(db, "jobPostings"), orderBy("postedDate", "desc"), limit(10))
@@ -36,10 +68,13 @@ export default function Page({params}) {
         jobsData.push(doc.data())
       })
       setFreshJobs(jobsData)
+      setTotalJobs(jobsData.length)
     }
     fetchJobs()
   },[]);
-  
+  useEffect (()=> {
+    setTotalPages(Math.ceil(totalJobs / itemsPerPage))
+  })
 //   useEffect(()=> {
 //     const fetchUserIdOfBidder = async () => {
 //       if (userUid) {
@@ -88,9 +123,20 @@ export default function Page({params}) {
         <nav className="bg-error-100 dark:bg-error-black h-20 sticky top-0 z-40 dark:bg-black">
           <div className="flex items-center justify-between h-full">
             <div>
-              <Link href="/loggedinStudent" legacyBehavior passHref>
-               <Image src={logo} width="150" height="150" alt="logo" className='cursor-pointer'></Image>
-              </Link>
+            {role === null ? (
+                                    <Link href="/" legacyBehavior passHref>
+                                    <Image src={logo} width="150" height="150" alt="logo" className='cursor-pointer'></Image>
+                                   </Link>
+                                ) : role === "Student" ? (
+                                  <Link href="/loggedinStudent" legacyBehavior passHref>
+                                  <Image src={logo} width="150" height="150" alt="logo" className='cursor-pointer'></Image>
+                                 </Link>
+                                ) : (
+                                  <Link href="/loggedInEmployer" legacyBehavior passHref>
+                                  <Image src={logo} width="150" height="150" alt="logo" className='cursor-pointer'></Image>
+                                 </Link>
+                                )}
+              
             </div>
             <div className="flex justify-end flex-grow">
               <NavigationMenuStudentLoggedIn />
@@ -112,45 +158,43 @@ export default function Page({params}) {
             </div>
 
             <div className="w-full md:w-3/4 px-4">
-            <Pagination className="mb-10">
+            
+            <Pagination className="mb-8">
               <PaginationContent>
                 <PaginationItem>
-                  <PaginationPrevious href="#" />
+                  <PaginationPrevious
+                    className={startIndex === 0 ? "pointer-events-none opacity-50" : undefined
+                    }
+                    onClick={() => {
+                      setStartIndex(startIndex - itemsPerPage);
+                      setEndIndex(endIndex - itemsPerPage);
+                      setPageIndex(pageIndex - 1)
+                      
+                    }}
+                  />
                 </PaginationItem>
-
+                <PaginationContent>
+                  <PaginationItem>
+                    {pageIndex} of {totalPages}
+                  </PaginationItem>
+                </PaginationContent>
                 <PaginationItem>
-                  <PaginationLink href="#" isActive>1</PaginationLink>
-                </PaginationItem>
-
-                <PaginationItem>
-                  <PaginationLink href="#">2</PaginationLink>
-                </PaginationItem>
-
-                <PaginationItem>
-                  <PaginationLink href="#">3</PaginationLink>
-                </PaginationItem>
-
-                <PaginationItem>
-                  <PaginationEllipsis />
-                </PaginationItem>
-
-                <PaginationItem>
-                  <PaginationLink href="#">9</PaginationLink>
-                </PaginationItem>
-
-                <PaginationItem>
-                  <PaginationNext href="#" />
+                  <PaginationNext
+                    className={pageIndex === totalPages ? "pointer-events-none opacity-50" : undefined
+                    }
+                    onClick={() => {
+                      setStartIndex(startIndex + itemsPerPage);
+                      setEndIndex(endIndex + itemsPerPage);
+                      setPageIndex(pageIndex + 1)
+                      
+                    }}
+                  />
                 </PaginationItem>
               </PaginationContent>
             </Pagination>
-
               {/*!-- Cards Container --*/}
               <div className="grid grid-cols-1 gap-y-9">
-                <TestingDemo jobPosting={freshJobs} />
-                <TestingDemo jobPosting={freshJobs} />
-                <TestingDemo jobPosting={freshJobs} />
-                <TestingDemo jobPosting={freshJobs} />
-                <TestingDemo jobPosting={freshJobs} />
+                <TestingDemo jobPosting={freshJobs} startIndex={startIndex} endIndex={endIndex}/>
               </div>
             </div>
           </div>

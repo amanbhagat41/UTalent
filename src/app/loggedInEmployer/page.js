@@ -12,6 +12,7 @@ import { NavigationMenuDemoFooter } from "@/components/navbar/navfooter";
 import { collection, getDocs, limit, orderBy ,query} from "firebase/firestore";
 import { db } from "../../firebase";
 import SearchWithQuickFilters from '@/components/ui/SearchWithQuickFilters';
+import Link from "next/link";
 
 
 export default function Page() {
@@ -77,7 +78,9 @@ export default function Page() {
         <div className="mt-12 w-full flex flex-col items-center">
           {/* Fresh Jobs Section */}
           <div className="w-[88%] flex flex-col items-start mt-10">
-            <Label htmlFor="freshjobs" className="text-[48px] text-error-white font-bold mb-4 underline">Fresh Jobs:</Label>
+          <Link href={`/SeeMoreJobsForYou`} legacyBehavior passHref>
+            <Label htmlFor="freshjobs" className="text-[48px] text-error-white font-bold mb-4 underline cursor-pointer">Fresh Jobs:</Label>
+            </Link>
             <div id="freshjobs" className="w-full flex justify-center">
               <JobPostingCarousel jobs={freshJobs}/>
             </div>

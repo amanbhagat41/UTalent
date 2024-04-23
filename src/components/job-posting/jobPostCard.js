@@ -2,34 +2,34 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button"
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-  } from "@/components/ui/card"
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import Link from "next/link";
-  
-  
-  export function TestingDemo({jobPosting, index, startIndex,endIndex,}) {
-    return (
+
+
+export function TestingDemo({ jobPosting, index, startIndex, endIndex, }) {
+  return (
     <>
-      {jobPosting.map((jobPosting, index) => (
+      {jobPosting.slice(startIndex, endIndex).map((jobPosting, index) => (
         <div key={index}>
           <Card Card className="w-full h-full dark:text-error-white dark:bg-error-darkGray dark:border-1 dark:border-error-white bg-error-white hover:bg-error-hoveredGray transition duration-150 ease-in-out">
             <div style={{ display: 'flex', width: '100%' }}>
               <div style={{ flexBasis: '80%' }}>
                 <CardHeader>
-                    <CardTitle>{jobPosting.title}</CardTitle>
-                    <CardDescription>{jobPosting.companyName}</CardDescription>
+                  <CardTitle>{jobPosting.title}</CardTitle>
+                  <CardDescription>{jobPosting.companyName}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <p>{jobPosting.description}</p>
+                  <p>{jobPosting.description}</p>
                 </CardContent>
                 <CardFooter className="grid grid-rows-2">
-                    <h1>Skills Required</h1>
-                    <p className="text-sm dark:text-error-white" id="skillsReq">{jobPosting.skills}</p>
+                  <h1>Skills Required</h1>
+                  <p className="text-sm dark:text-error-white" id="skillsReq">{jobPosting.skills}</p>
                 </CardFooter>
               </div>
               <div style={{ flexBasis: '20%' }}>
@@ -43,7 +43,13 @@ import Link from "next/link";
                   <div className="text-end text-xl text-error-red">XXX
                     <span className="ml-1 text-lg">Days Left</span>
                   </div>
-                  <Button className={`m-auto w-full bg-error-green hover:bg-error-lightGreen`}>Bid</Button>
+                  <Link
+                    href={`/jobs/${jobPosting.jobId}`}
+                    legacyBehavior
+                    passHref
+                  >
+                    <Button className={`m-auto w-full bg-error-green hover:bg-error-lightGreen`}>View Job</Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -53,4 +59,3 @@ import Link from "next/link";
     </>
   );
 }
-  

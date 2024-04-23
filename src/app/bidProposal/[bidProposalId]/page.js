@@ -30,7 +30,6 @@ export default function Page({ params }) {
     const [profileImageUrl, setProfileImageUrl] = useState('https://github.com/shadcn.png'); // Default or placeholder image
     const [bid, setbidProposal] = useState(null);
     const [userUid, setUserUid] = useState(null);
-    const [role, setRole] = useState(null);
 
     const { bidProposalId } = params;
     const auth = getAuth();
