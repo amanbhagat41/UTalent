@@ -66,24 +66,24 @@ export default function JobPostingEmployer() {
     <div className="bg-error-darkBlue dark:bg-error-black">
       <div className="grid grid-flow-row w-[50%] h-full m-auto pt-12 p-6 rounded-xl bg-error-white border-separate border border-error-gray">
         <div className="border-b-[2px]">
-          <Label htmlFor="titleBox" className="text-[16px]">Job Title</Label>
+          <Label htmlFor="titleBox" className="text-[16px] dark:text-error-black">Job Title</Label>
           <Input id="titleBox" type="text" name="jobTitle" onChange={onInputChange} placeholder="Enter a Title" className="h-[56px] mt-[7px] dark:border-1 mb-8 dark:border-error-white dark:bg-error-black" />
         </div>
         <div className="border-b-[2px] mt-4">
-          <Label htmlFor="reqSkillsBox" className="text-[16px]">Required Skills (put commas in between)</Label>
+          <Label htmlFor="reqSkillsBox" className="text-[16px] dark:text-error-black">Required Skills (put commas in between)</Label>
           <Input id="reqSkillsBox" name="jobSkills" onChange={onInputChange} placeholder="Enter Skills" className="h-[56px] mt-[7px] dark:border-1 mb-8 dark:border-error-white dark:bg-error-black" />
         </div>
         <div className="border-b-[2px] mt-4">
-          <Label htmlFor="jobLocationBox" className="text-[16px]">Location</Label>
+          <Label htmlFor="jobLocationBox" className="text-[16px] dark:text-error-black">Location</Label>
           <Input id="jobLocationBox" name="jobLocation" onChange={onInputChange} placeholder="Job Location" className="h-[56px] mt-[7px] dark:border-1 mb-8 dark:border-error-white dark:bg-error-black" />
         </div>
         <div className="grid grid-cols-2 border-b-[2px] mt-4 gap-4">
           <div className="">
-            <Label htmlFor="daysToDeliverBox" className="text-[16px]">Days to Deliver</Label>
+            <Label htmlFor="daysToDeliverBox" className="text-[16px] dark:text-error-black">Days to Deliver</Label>
             <Input id="daysToDeliverBox" name="daysToDeliver" onChange={onInputChange} placeholder="Days to Deliver" className="h-[56px] mt-[7px] dark:border-1 mb-8 dark:border-error-white dark:bg-error-black" />
           </div>
           <div>
-              <Label htmlFor="rate" className="text-[16px]">Preferred Rate</Label>
+              <Label htmlFor="rate" className="text-[16px] dark:text-error-black">Preferred Rate</Label>
               <Input id = "rate" type="Title" placeholder="$/Hr" name='rate' onChange={onInputChange} className="h-[56px] mt-[7px] dark:border-1 dark:border-error-white dark:bg-error-black"/>
           </div>
         </div>

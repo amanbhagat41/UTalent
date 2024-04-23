@@ -90,7 +90,7 @@ export default function SignupStudent() {
             const errorMessage = error.message;
             toast({
                 variant: "destructive",
-                title: "errorMessage",
+                title: errorMessage,
             })
             console.log(errorCode, errorMessage);
         }
